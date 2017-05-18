@@ -1,0 +1,163 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Storyboard x:Key="DefaultStartStoryboard">
+        <DoubleAnimation From="0" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" Duration="0:0:0.25">
+        </DoubleAnimation>
+        <DoubleAnimation From="0" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" Duration="0:0:0.25">
+        </DoubleAnimation>
+    </Storyboard>
+
+    <Style TargetType="Panel" x:Key="PageManagePanel">
+        <Setter Property="Background" Value="{x:Null}"></Setter>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform></ScaleTransform>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard Storyboard="{StaticResource DefaultStartStoryboard}"></BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <SolidColorBrush x:Key="DefaultForeColor" Color="{Binding ForeColor}"></SolidColorBrush>
+    
+    <Style TargetType="TabItem">
+        <Setter Property="Visibility" Value="Collapsed"></Setter>
+        <Setter Property="Background" Value="{x:Null}"></Setter>
+        <Setter Property="BorderBrush" Value="{x:Null}"></Setter>
+        <Setter Property="Padding" Value="10,5"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Margin" Value="0"></Setter>
+        <Setter Property="Padding" Value="0"></Setter>
+        <Setter Property="Background" Value="{x:Null}"></Setter>
+    </Style>
+
+    <Style TargetType="ComboBox">
+        <Setter Property="TextBlock.Foreground" Value="{Binding Foreground,ElementName=C}"></Setter>
+        <Setter Property="BorderBrush" Value="{x:Null}"></Setter>
+        <Setter Property="MinWidth" Value="100"></Setter>
+        <Setter Property="Background" Value="{Binding Background,ElementName=C}"></Setter>
+    </Style>
+    <Style TargetType="ComboBoxItem">
+        <Setter Property="Background" Value="{Binding Background,ElementName=C}"></Setter>
+        <Setter Property="Margin" Value="0"></Setter>
+        <Setter Property="Padding" Value="5,2,5,2"></Setter>
+        <Setter Property="BorderBrush" Value="{x:Null}"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+    </Style>
+    
+    <Style TargetType="DatePicker">
+        <Setter Property="Background" Value="{Binding Background,ElementName=C}"></Setter>
+        <Setter Property="Foreground" Value="{Binding Foreground,ElementName=C}"></Setter>
+        <Setter Property="BorderBrush" Value="{Binding Foreground,ElementName=C}"></Setter>
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="MinWidth" Value="130"></Setter>
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" Value="{Binding Foreground,ElementName=C}"></Setter>
+                <Setter Property="Foreground" Value="{Binding Background,ElementName=C}"></Setter>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="false">
+                <Setter Property="Background" Value="#0000"></Setter>
+                <Setter Property="Foreground" Value="{Binding Foreground,ElementName=C}"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style TargetType="Label" x:Key="L">
+        <Setter Property="BorderBrush" Value="{x:Null}"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Background" Value="{x:Null}"></Setter>
+        <Setter Property="Height" Value="50"></Setter>
+    </Style>
+    
+    
+    
+    <Style TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+    <Style TargetType="TextBox">
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+    <Style TargetType="TextBox" x:Key="ShortTextBox">
+        <Setter Property="Margin" Value="2"></Setter>
+        <Setter Property="Foreground" Value="{Binding Background,ElementName=C}"></Setter>
+        <Setter Property="Background" Value="{Binding Foreground,ElementName=C}"></Setter>
+        <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+        <Setter Property="MinWidth" Value="205"></Setter>
+        <Setter Property="DockPanel.Dock" Value="Left"></Setter>
+        <Setter Property="Padding" Value="5"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="MaxLength" Value="15"></Setter>
+    </Style>
+    <Style TargetType="TextBox" x:Key="LongTextBox">
+        <Setter Property="Foreground" Value="{Binding Foreground,ElementName=C}"></Setter>
+        <Setter Property="Margin" Value="2"></Setter>
+        <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+        <Setter Property="MinWidth" Value="205"></Setter>
+        <Setter Property="DockPanel.Dock" Value="Left"></Setter>
+        <Setter Property="Background" Value="{Binding Background,ElementName=C}"></Setter>
+        <Setter Property="Padding" Value="5"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="MaxLength" Value="100"></Setter>
+        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+    </Style>
+    
+    <Style  TargetType ="Hyperlink" >
+        <Setter  Property ="Foreground"  Value ="White" />
+        <!-- 清除文字修饰(去掉下划线) -->
+        <Setter  Property ="TextBlock.TextDecorations"  Value ="{x:Null}" />
+        <Style.Triggers >
+            <Trigger  Property ="IsMouseOver"  Value ="True" >
+                <Setter  Property ="Foreground"  Value ="Blue"   />
+                <!-- 在鼠标悬停时显示下划线 -->
+                <Setter  Property ="TextBlock.TextDecorations" >
+                    <Setter.Value >
+                        <TextDecorationCollection >
+                            <TextDecoration  Location ="Underline" />
+                        </TextDecorationCollection >
+                    </Setter.Value >
+                </Setter >
+            </Trigger >
+        </Style.Triggers >
+    </Style >
+
+    <Style TargetType="TextBlock" x:Key="LeftTitle">
+        <Setter Property="Foreground" Value="{Binding Foreground,ElementName=C}"></Setter>
+        <Setter Property="DockPanel.Dock" Value="Left"></Setter>
+        <Setter Property="MinWidth" Value="85"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="TextAlignment" Value="Center"></Setter>
+        <Setter Property="FontSize" Value="15"></Setter>
+    </Style>
+
+    <!--DataGrid样式-->
+    <Style TargetType="DataGridColumnHeader" x:Key="GRIDC">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#1fff" Offset="0"/>
+                    <GradientStop Color="#0fff" Offset="0.5"/>
+                    <GradientStop Color="#1fff" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="{Binding Foreground,ElementName=C}"></Setter>
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="Padding" Value="25,10,25,10"></Setter>
+        <Setter Property="Background" Value="{Binding Background,ElementName=C}"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="BorderBrush" Value="{Binding Foreground,ElementName=C}"></Setter>
+        <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+    </Style>
+
+</ResourceDictionary>

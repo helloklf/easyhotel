@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{607FFA85-8989-40F8-9CDE-6415B0D6BC71}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Project_Term2_BaseData</RootNamespace>
+    <AssemblyName>Project_Term2_BaseData</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseDataDelegates.cs" />
+    <Compile Include="HelpInfo.xaml.cs">
+      <DependentUpon>HelpInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Other.cs" />
+    <Compile Include="Pages\D.cs" />
+    <Compile Include="Pages\OperateType.xaml.cs">
+      <DependentUpon>OperateType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RoomType.xaml.cs">
+      <DependentUpon>RoomType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RoomStateType.xaml.cs">
+      <DependentUpon>RoomStateType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StaffType.xaml.cs">
+      <DependentUpon>StaffType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SupplierType.xaml.cs">
+      <DependentUpon>SupplierType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UnitType.xaml.cs">
+      <DependentUpon>UnitType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WaresType.xaml.cs">
+      <DependentUpon>WaresType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Values.cs" />
+    <Compile Include="WFormIO.cs" />
+    <Page Include="HelpInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AccreditType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CountryInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OperateType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PapersType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RoomType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RoomStateType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StaffType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SupplierType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UnitType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\VipLevel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WaresType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageManage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Pages\AccreditType.xaml.cs">
+      <DependentUpon>AccreditType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CountryInfo.xaml.cs">
+      <DependentUpon>CountryInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PapersType.xaml.cs">
+      <DependentUpon>PapersType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\VipLevel.xaml.cs">
+      <DependentUpon>VipLevel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageManage.xaml.cs">
+      <DependentUpon>PageManage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Appliction_Setting_Save\DllSetting.csproj">
+      <Project>{61c0e6d9-1b04-4ea2-b3f4-566f567b5f16}</Project>
+      <Name>DllSetting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DLL_BLL\DLL_BLL.csproj">
+      <Project>{104a0691-72da-4ae3-9451-2058da32840d}</Project>
+      <Name>DLL_BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inform\Inform.csproj">
+      <Project>{2c84bec9-eb22-4742-a3f5-9c059d93e9e0}</Project>
+      <Name>Inform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyControls\MyControls.csproj">
+      <Project>{10011276-ae9f-420c-b418-92b9ba233555}</Project>
+      <Name>MyControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TModel\TModel.csproj">
+      <Project>{621fb7df-ec11-411e-8d99-3a40908f682f}</Project>
+      <Name>TModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\后退.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\Tile\国家列表.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\Tile\证件类型.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\Tile\授权级别.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\Tile\房间状态.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\Tile\记录.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\Tile\职务类型.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\Tile\地图.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\Tile\VIP分级.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\Tile\操作类型.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\Tile\房间类型.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\Image\未选中.png" />
+    <Resource Include="Pages\Image\选中.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

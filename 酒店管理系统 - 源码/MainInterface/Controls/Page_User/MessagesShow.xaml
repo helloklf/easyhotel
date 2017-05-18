@@ -1,0 +1,155 @@
+﻿<UserControl x:Class="Project_Term2.UserPage.MessagesShow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             Loaded="UserControl_Loaded"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary Source="Style.xaml" />
+    </UserControl.Resources>
+    <ScrollViewer Width="450"
+                  Height="370"
+                  HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Hidden">
+        <StackPanel Name="UserMessage" Visibility="Visible">
+            <TextBox x:Name="C"
+                     Background="{Binding BgColor}"
+                     Foreground="{Binding ForeColor}"
+                     Visibility="Collapsed" />
+
+            <TextBlock Margin="10,10,10,5"
+                       Focusable="False"
+                       FontSize="25"
+                       Foreground="{Binding Foreground,
+                                            ElementName=C}"
+                       Text="系统消息" />
+            <Border Height="2"
+                    Margin="0"
+                    BorderBrush="{Binding Background,
+                                          ElementName=C}"
+                    BorderThickness="2"
+                    Focusable="False" />
+
+            <DockPanel Margin="10"
+                       Background="{Binding Foreground,
+                                            ElementName=C}"
+                       LastChildFill="False">
+                <TextBlock Margin="0"
+                           Background="{x:Null}"
+                           DockPanel.Dock="Left"
+                           Style="{StaticResource MinPage_Header}"
+                           Text="消息条数:"
+                           ToolTip="点击清空" />
+                <TextBlock Name="SCount"
+                           Margin="0"
+                           Background="{x:Null}"
+                           DockPanel.Dock="Left"
+                           Style="{StaticResource MinPage_Header}"
+                           Text="{Binding SMCount}" />
+                <Border Width="30"
+                        Height="30"
+                        Margin="2"
+                        MouseDown="User_ClearMessageList_Sys"
+                        Style="{StaticResource Submit_Smalllab}">
+                    <Image Source="../Image/ICON0/叉.png" />
+                </Border>
+            </DockPanel>
+            <ListBox Name="UserMessageList_Sys"
+                     ItemsSource="{Binding SysMessages}"
+                     Padding="0"
+                     Style="{StaticResource MessageLists}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel Background="{Binding BgColor}">
+                            <Image Height="40"
+                                   Margin="2"
+                                   DockPanel.Dock="Left"
+                                   Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/设置.png" />
+                            <StackPanel MouseDown="MessageInfo_Select" Tag="{Binding MessageGUID}">
+                                <TextBlock Margin="3"
+                                           DockPanel.Dock="Top"
+                                           FontSize="15"
+                                           Foreground="{Binding FColor}"
+                                           Text="{Binding MessageText}"
+                                           TextWrapping="Wrap" />
+                                <Border Height="1"
+                                        Margin="10,2,20,2"
+                                        BorderBrush="{Binding FColor}"
+                                        BorderThickness="1"
+                                        DockPanel.Dock="Top" />
+                                <TextBlock Margin="3"
+                                           DockPanel.Dock="Top"
+                                           FontSize="18"
+                                           Foreground="{Binding FColor}"
+                                           Opacity="0.5"
+                                           Text="{Binding MessageFrom}" />
+                            </StackPanel>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <TextBlock Margin="10,20,10,5"
+                       FontSize="25"
+                       Foreground="{Binding Foreground,
+                                            ElementName=C}"
+                       Text="提示信息" />
+
+            <DockPanel Margin="10"
+                       Background="{Binding Foreground,
+                                            ElementName=C}"
+                       LastChildFill="False">
+                <TextBlock Margin="0"
+                           Background="{x:Null}"
+                           DockPanel.Dock="Left"
+                           Style="{StaticResource MinPage_Header}"
+                           Text="消息条数:"
+                           ToolTip="点击清空" />
+                <TextBlock Name="OCount"
+                           Margin="0"
+                           DockPanel.Dock="Left"
+                           Style="{StaticResource MinPage_Header}"
+                           Text="{Binding OmCount}" />
+                <Border Width="30"
+                        Height="30"
+                        Margin="2"
+                        MouseDown="User_ClearMessageList_Other"
+                        Style="{StaticResource Submit_Smalllab}">
+                    <Image Source="../Image/ICON0/叉.png" />
+                </Border>
+            </DockPanel>
+            <ListBox Name="UserMessageList_Other"
+                     ItemsSource="{Binding OtherMessages}"
+                     Style="{StaticResource MessageLists}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel Background="{Binding BgColor}"
+                                   MouseDown="MessageInfo_Select2"
+                                   Tag="{Binding MessageGUID}">
+                            <Image Height="40"
+                                   Margin="2"
+                                   DockPanel.Dock="Left"
+                                   Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/消息.png" />
+                            <TextBlock Margin="3"
+                                       DockPanel.Dock="Top"
+                                       Foreground="{Binding FColor}"
+                                       Text="{Binding MessageText}"
+                                       TextWrapping="Wrap" />
+                            <Border Height="1"
+                                    Margin="10,2,20,2"
+                                    BorderBrush="{Binding FColor}"
+                                    BorderThickness="1"
+                                    DockPanel.Dock="Top" />
+                            <TextBlock Margin="3"
+                                       DockPanel.Dock="Top"
+                                       Foreground="{Binding FColor}"
+                                       Opacity="0.5"
+                                       Text="{Binding MessageFrom}" />
+                        </DockPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,97 @@
+﻿<Window xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" 
+        x:Class="Project_Term2.StartWindow"
+        InputLanguageManager.InputLanguage="zh-cn"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:my="clr-namespace:Project_Term2" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        ResizeMode="CanResizeWithGrip" PreviewMouseWheel="ScrollViewer_MouseWheel"
+        
+        x:Name="MainC"   MinWidth="800" MinHeight="600"
+        Closing="OnWindowClosing" Loaded="Window_Loaded" KeyDown="MainC_KeyDown"
+        
+        xmlns:UserPage="clr-namespace:Project_Term2.UserPage"
+        xmlns:ToolBar="clr-namespace:Project_Term2.Top"
+        xmlns:home="clr-namespace:Project_Term2.MainMenu"
+        xmlns:menu ="clr-namespace:Project_Term2.LeftMenu"
+        xmlns:Settings="clr-namespace:DllSettingPanel;assembly=DllSettingPanel"
+        xmlns:conts="clr-namespace:Project_Term2.Controls"
+        
+        BorderThickness="2" BorderBrush="{Binding Background,ElementName=C}" Background="{Binding Background,ElementName=C}"
+        Title="主界面" Height="Auto" Width="auto" AllowsTransparency="True" WindowStyle="None" WindowState="Minimized" Icon="Controls/Image/ICON0/红房子.png">
+    
+    <Window.Resources>
+        <ResourceDictionary Source="Style.xaml"></ResourceDictionary>
+    </Window.Resources>
+    <Window.CacheMode>
+        <BitmapCache/>
+    </Window.CacheMode>
+
+    <Grid Name="Grid_" Background="{Binding BgImage}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="C" Visibility="Collapsed" Foreground="{Binding ForeColor}" Background="{Binding BgColor}"></TextBox>
+        <!--侧面导航-->
+        <ContentControl MouseMove="WindowMove" Focusable="True" x:Name="LM">
+            <menu:C_Menu></menu:C_Menu>
+        </ContentControl>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--顶部工具层-->
+            <Border Name="Top_ToolBar" MouseMove="WindowMove" Style="{StaticResource TopBorder}" 
+                    BorderBrush="{Binding Foreground,ElementName=C}">
+                <DockPanel>
+                    <ToolBar:ToolBar DockPanel.Dock="Left"></ToolBar:ToolBar>
+                    <!--标题-->
+                    <ContentControl MouseDoubleClick="TopDoubleClick_WindowSize">
+                        <TextBlock Style="{StaticResource TopTitle}" x:Name="WindowTitle" Text="未登录"></TextBlock>
+                    </ContentControl>
+                </DockPanel>
+            </Border>
+
+            <!--中央层-->
+            <Grid Name="DataCenter" Grid.Row="1">
+                <!--时间系统-->
+                <ContentControl Panel.ZIndex="-1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20">
+                    <conts:C_TimeSpan></conts:C_TimeSpan>
+                </ContentControl>
+
+                <!--主面板-->
+                <ContentControl Name="Page_CorePage_Content" Visibility="Visible">
+                    <TabControl x:Name="MainMenuList" Background="{x:Null}">
+                        <!--主菜单-->
+                        <TabItem x:Name="mainmenu">
+                            <home:C_Home></home:C_Home>
+                        </TabItem>
+                    </TabControl>
+                </ContentControl>
+
+                <!--用户级-->
+                <ContentControl Name="Page_UserPage_Content" Visibility="{Binding UserCenter}">
+                    <Border Name="Page_UserPage_Border" Style="{StaticResource MiniPageBorder}">
+                        <UserPage:UserCenter_Page Width="600" Height="400"></UserPage:UserCenter_Page>
+                    </Border>
+                </ContentControl>
+
+                <!--设置层-->
+                <ContentControl Name="Page_Setting_Content" Visibility="{Binding Setting}">
+                    <Border Style="{StaticResource MiniPageBorder}" >
+                        <Settings:Setting_Page Width="600" Height="400"></Settings:Setting_Page>
+                    </Border>
+                </ContentControl>
+                
+            </Grid>
+
+            <!--底部层-->
+            <DockPanel Name="BottomStateBar" DockPanel.Dock="Bottom" Visibility="Visible" 
+                       Background="#2000" Grid.Row="2">
+                <conts:C_Battery HorizontalAlignment="Right" Margin="5,0"></conts:C_Battery>
+            </DockPanel>
+            
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="DllSettingPanel.FontColor" Loaded="UserControl_Loaded"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary Source="../Style.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+
+    <StackPanel Width="450">
+        <TextBox x:Name="C" Visibility="Collapsed" Foreground="{Binding ForeColor}" Background="{Binding BgColor}"></TextBox>
+        <TextBlock Text="文本颜色" FontSize="25" Foreground="{Binding Foreground,ElementName=C}" Margin="10,10,10,5" Focusable="False"></TextBlock>
+        <Border Height="2" BorderBrush="{Binding  Background,ElementName=C}" BorderThickness="2" Margin="0" Focusable="False"></Border>
+        <StackPanel Margin="10">
+            <TextBlock Text="深色文本" Style="{StaticResource MinPage_Header}" Margin="0" Focusable="False"></TextBlock>
+            <Border Padding="5" Background="White">
+                <!--<Border Padding="5" Background="{Binding Foreground,ElementName=C}">-->
+                    <WrapPanel Name="ColorPanl" Focusable="False" HorizontalAlignment="Center" Margin="10">
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkTurquoise"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DeepSkyBlue"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="CornflowerBlue"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DodgerBlue"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Blue"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkMagenta"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="BlueViolet"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkOrchid"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkViolet"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkBlue"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Indigo"></Button>
+
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkGray"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DimGray"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Black"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkOliveGreen"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkGreen"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkKhaki"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Goldenrod"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkGoldenrod"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Gold"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkOrange"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Coral"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Chocolate"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Red"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="IndianRed"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Crimson"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkRed"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkSalmon"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="HotPink"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Fuchsia"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DeepPink"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkSeaGreen"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="CadetBlue"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkCyan"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkSlateGray"></Button>
+
+                </WrapPanel>
+            </Border>
+
+            <TextBlock Text="浅色文本" Style="{StaticResource MinPage_Header}" Margin="0,20,0,0" Focusable="False"></TextBlock>
+            <Border Padding="5" Background="White"  Focusable="False">
+                <!--<Border Padding="5" Background="{Binding Foreground,ElementName=C}" >-->
+                    <WrapPanel Name="ColorPanl1" Focusable="False" HorizontalAlignment="Center" Margin="10">
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Cornsilk"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Beige"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="AntiqueWhite"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Pink"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Bisque"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Lavender"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Gainsboro"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="BurlyWood"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkKhaki"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Goldenrod"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Aqua"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Aquamarine"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkSeaGreen"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkTurquoise"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DeepSkyBlue"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="CornflowerBlue"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DodgerBlue"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Khaki"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Yellow"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Gold"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Coral"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkOrange"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DarkSalmon"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Fuchsia"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="HotPink"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="DeepPink"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="GreenYellow"></Button>
+                    <Button Content="" Style="{StaticResource ColorSelect}" Background="Chartreuse"></Button>
+                </WrapPanel>
+            </Border>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

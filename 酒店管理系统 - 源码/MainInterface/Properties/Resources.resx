@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutSecurity" xml:space="preserve">
+    <value>为什么会需要此功能？\r\n因为每种用户具有不同的操作权限，可能无法执行某些关键性操作，即时是管理员也是会具有一定限制的。那么，此时你将需要输入超级管理员密码才能继续操作！</value>
+    <comment>关于安全协议的说明</comment>
+  </data>
+  <data name="ApplictionError" xml:space="preserve">
+    <value>应用程序发生了不可预料的严重错误，请将该错误报告给开发者，以便修正！</value>
+    <comment>应用程序严重错误</comment>
+  </data>
+  <data name="ExitLogionQuestion" xml:space="preserve">
+    <value>你当前已经在线，继续此操作将注销当前已经登陆的账户，是否要注销？</value>
+    <comment>账户注销提示</comment>
+  </data>
+  <data name="HelpInfo_HotKey" xml:space="preserve">
+    <value>\r\nF1显示帮助窗口！\r\nF2切换导航栏显示状态！\r\nF3切换工具栏显示状态！\r\nF4切换状态栏显示状态！\r\nF11切换全屏、窗口显示！</value>
+    <comment>快捷键说明</comment>
+  </data>
+  <data name="RoomReadError" xml:space="preserve">
+    <value>此方法需要一个Int型参数表示操作类型。\r\n\t0：读取所有有效数据，\r\n\t1：按房间类型过滤数据，\r\n\t2：按房间状态过滤数据，3：双重条件过滤，4：按搜索方式</value>
+    <comment>房间信息读取器参数无效</comment>
+  </data>
+  <data name="RoomSeacheNoPrice" xml:space="preserve">
+    <value>价格搜索以输入的文本作为客户可以接受的最高价格，查询结果按价格优惠程度排序</value>
+    <comment>价格搜索输入无效</comment>
+  </data>
+  <data name="RoomSeachNotInt" xml:space="preserve">
+    <value>你输入的不是一个有效的整数。如果你要找日结房，请输入24，钟点房请输入1</value>
+    <comment>按房间计费时长搜索输入无效</comment>
+  </data>
+  <data name="RoomSHelpPrice" xml:space="preserve">
+    <value>价格搜索以输入的文本作为客户可以接受的最高价格，查询结果按价格优惠程度排序</value>
+    <comment>价格搜索帮助信息</comment>
+  </data>
+  <data name="SettingSave" xml:space="preserve">
+    <value>应用程序外观设定已存储，下次启动时将自动载入当前设定！</value>
+    <comment>设置保存</comment>
+  </data>
+  <data name="SettringSaveError" xml:space="preserve">
+    <value>实验性功能出现严重的错误，外观设定无法正常保存，请重启应用程序或联系开发者！</value>
+    <comment>设置保存出错</comment>
+  </data>
+  <data name="UserLoginError" xml:space="preserve">
+    <value>用户登陆失败，请检查账号和密码是否输入正确。如果确认无误依然无法正常登陆，请告知开发者！</value>
+    <comment> 用户登录失败</comment>
+  </data>
+  <data name="UserLoginMessage" xml:space="preserve">
+    <value>当您看到这个提示，请您认真的检查您输入的信息。比如说账户名或密码为空，已经密码长度少于6位！</value>
+    <comment>因为输入错误 无法登陆</comment>
+  </data>
+</root>

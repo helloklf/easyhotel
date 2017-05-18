@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+@model LinQ_To_EF.ViewModels.Account.Login
+
+<div class="LoginPage">
+    <div class="DivRow"></div>
+    <div class="DivRow">
+        <header>用户登陆</header>
+    </div>
+    <div class="DivRow">
+        <div class="LoginBlock">
+            <span>
+                <img translate="no" class="SmallImg" src="~/Resource/Icon_White/user.png" />
+                <input name="userName" class="Input" type="text" placeholder="请输入用户名" />
+            </span>
+            <span>
+                <img class="SmallImg" src="~/Resource/Icon_White/lock.png" />
+                <input name="userPassWord" class="Input" type="password" placeholder="这里输入密码" />
+            </span>
+            <span>
+                <a id="LoginBtn">
+                    <img class="SmallImgLink" src="~/Resource/Icon_White/yes.png" />
+                </a>
+            </span>
+            <hr />
+            <div style="float:none;clear:both;">
+                <label id="LoginPwdError">请输入用户名和密码，点击右侧的✔按钮登陆！</label>
+                <a class="isClient" href="javascript:void()">我是客户</a>
+                <br style="display:block; clear:both" />
+            </div>
+        </div>
+    </div>
+    <div class="DivRow"></div>
+</div>
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script>
+    $("#LoginBtn").on("click",null,
+        function () {
+            $.ajax({
+                cache:false,
+                url: "/Account/Login/",
+                type: "POST",
+                data: { uid: $("input[name=userName]").val(), pwd: $("input[name=userPassWord]").val() },
+                success: function (respon) {
+                    if (respon.toLowerCase() == "true")
+                        location.href = "/Home/Index/logined";
+                    else
+                        $("#LoginPwdError").text("用户名或者密码输入错误，请重新输入！");
+                },
+                error: function (respon) {
+                    alert(respon.responseText);
+                }
+            })
+        }
+        );
+</script>
+
+
+<style>
+    .LoginPage #LoginPwdError{
+        color:@(Model.Color??"#fff");
+    }
+
+    .LoginPage{
+        height:100%;
+        position:fixed;
+        overflow:hidden;
+        width:100%;
+    }
+    .LoginPage .DivRow{
+        min-height:20%;
+    }
+    .LoginPage .DivRow header{
+        font-size:50px;
+        color:@(Model.Color??"#fff");
+        text-align:center;position:relative;
+        vertical-align:bottom; bottom:10px;
+    }
+    .LoginPage .SmallImg{
+        height:50px; width:50px; float:left;
+    }
+    .LoginPage .SmallImgLink {
+        height:50px; width:50px;float:left;
+    }
+    .LoginPage .SmallImgLink:hover{
+        background:@(Model.Color??"#fff");
+        border-radius:50%;
+    }
+    .LoginPage .LoginBlock{
+        margin:0 auto; width:700px;  background:rgba(0, 0, 0,0.4); padding:10px;
+    }
+    .LoginPage .LoginBlock hr{
+       height:2px;
+       background:@(Model.Color??"#fff");
+       border:none;
+       margin:5px -10px; padding:0px;float:none ;clear:both;
+    }
+    .LoginPage .LoginBlock .isClient{
+        color:@(Model.Color??"#fff");
+        padding-right:5px; float:right; display:inline-block; clear:both;
+    }
+    .LoginPage .LoginBlock span{
+         background:@(Model.BackgroundColor ?? "Transparent"); display:inline-block ;  clear:both;
+    }
+    .LoginPage .Input{
+        height:25px;
+        color:@(Model.Color ?? "#ff7800");
+        background:transparent;
+        width:250px; font-size:15px; font-weight:600;
+        float:left;
+        margin:5px 0px;  margin-right:10px;
+        padding:5px;  text-align:left; border:none; border-bottom:1px solid @(Model.Color??"#fff");
+    }
+</style>

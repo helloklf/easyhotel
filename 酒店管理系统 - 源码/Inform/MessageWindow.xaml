@@ -1,0 +1,8 @@
+﻿<Window x:Class="Inform.MessageWindow" Loaded="Window_Loaded" Topmost="True"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" WindowState="Maximized"
+        Title="消息系统" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" ShowInTaskbar="False">
+    <ScrollViewer Margin="6,45,6,45" HorizontalAlignment="Right" Background="#0000" VerticalAlignment="Top" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel x:Name="MessageList" HorizontalAlignment="Right"></StackPanel>
+    </ScrollViewer>
+</Window>

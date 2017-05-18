@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="Project_Term2_BaseData.Pages.WaresType"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" x:Name="Main"
+             mc:Ignorable="d" xmlns:my="clr-namespace:MyControls;assembly=MyControls" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary Source="../Style.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+    <DockPanel>
+        <TextBox x:Name="C" Visibility="Collapsed" Foreground="{Binding ForeColor}" Background="{Binding BgColor}"></TextBox>
+
+        <my:DataListMenu DockPanel.Dock="Top" x:Name="IsCheck" OnAddItem="AddItem" OnEditItem="EditItem" OnSelectedItemEnabled="SelectedItemEnabled"  OnSelectedItemEnabledNo="SelectedItemEnabledNo" OnCheckBox_Click="CheckBox_Click"></my:DataListMenu>
+        <Border Height="2" DockPanel.Dock="Top" Opacity="0.6" Margin="2,10" Background="{Binding Background,ElementName=C}"></Border>
+
+        <!--新增数据-->
+        <DockPanel DockPanel.Dock="Right">
+            <Label Content="o" MinWidth="20" VerticalContentAlignment="Center" Opacity="0.7" BorderThickness="0,0,1,0" BorderBrush="{Binding Foreground,ElementName=C}" MouseDown="RightPanelSet"></Label>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                <TabControl BorderBrush="{x:Null}" BorderThickness="0" Visibility="Collapsed" Name="Tab" Background="{x:Null}" Margin="5">
+                    <TabItem Visibility="Collapsed" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0">
+                        <StackPanel>
+                            <TextBlock Text="新增类型" FontSize="25" Margin="0,5,10,10" Foreground="{Binding Foreground,ElementName=C}"></TextBlock>
+                            <DockPanel Margin="5">
+                                <TextBlock Text="类型名称*：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox x:Name="InText" ToolTip="商品类型名(15字以内)，如'苹果'" Style="{StaticResource ShortTextBox}"/>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <TextBlock Text="备注说明：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox x:Name="InRemark" MaxWidth="400" ToolTip="备注信息（100字以内）" Style="{StaticResource LongTextBox}"></TextBox>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <TextBlock Text="商品图片：" ToolTip="设定一张图片，以便轻松的识别" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <Image Height="54" Width="96" HorizontalAlignment="Left" x:Name="WI" ToolTip="点击选择图片，建议使用54x96大小的图片" MouseDown="selectImage" Source="Image/图片.png"></Image>
+                            </DockPanel>
+                            <my:OK MouseDown="Label_MouseDown" HorizontalAlignment="Right" Margin="10,5"></my:OK>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Visibility="Collapsed" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0">
+                        <StackPanel>
+                            <TextBlock Text="修改类型" FontSize="25" Margin="0,5,10,10" Foreground="{Binding Foreground,ElementName=C}"></TextBlock>
+                            <DockPanel Margin="5">
+                                <TextBlock Text="类型名称*：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox x:Name="UpText" ToolTip="商品类型名(15字以内)，如'苹果'" Style="{StaticResource ShortTextBox}"/>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <TextBlock Text="备注说明：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox x:Name="UpRemark" MaxWidth="400" ToolTip="备注信息（100字以内）"  Style="{StaticResource LongTextBox}"></TextBox>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <TextBlock Text="商品图片：" ToolTip="设定一张图片，以便轻松的识别" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <Image Height="54" Width="96" HorizontalAlignment="Left" x:Name="UpWI" ToolTip="点击选择图片，建议分辨率96x54(16:9)" MouseDown="selectImage0"></Image>
+                            </DockPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+                                <my:No MouseDown="ReturnList"></my:No>
+                                <my:OK MouseDown="Label_MouseDown_1" Margin="10,5"></my:OK>
+                            </StackPanel>
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+            </ScrollViewer>
+        </DockPanel>
+        <!--现有数据操作-->
+        <DockPanel Margin="5">
+            <my:DataListBox x:Name="LB" SelectedValuePath="ALevelID" OnAddItem="AddItem" OnEditItem="EditItem" OnSelectedItemEnabled="SelectedItemEnabled" OnLBContextMenuOpening="LB_ContextMenuOpening" OnSelectedItemEnabledNo="SelectedItemEnabledNo">
+                <my:DataListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel Background="#FFFFCC" MinWidth="300">
+                            <StackPanel Margin="10">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Height="54" Width="96" Source="{Binding WaresImage}" Margin="5"></Image>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                            <TextBlock VerticalAlignment="Center">编号：</TextBlock>
+                                            <TextBlock VerticalAlignment="Center" Text="{Binding WaresID}" Padding="2"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                            <TextBlock VerticalAlignment="Center">有效性：</TextBlock>
+                                            <TextBlock VerticalAlignment="Center" Text="{Binding IsValidText}" Padding="2"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                            <TextBlock VerticalAlignment="Center">商品类型：</TextBlock>
+                                            <TextBlock VerticalAlignment="Center" FontSize="18" Text="{Binding WaresName}" Padding="2"></TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock VerticalAlignment="Center">类型备注：</TextBlock>
+                                    <TextBlock VerticalAlignment="Center" MaxWidth="215" TextWrapping="Wrap" Text="{Binding WaresRemark}" Padding="2"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </DockPanel>
+                    </DataTemplate>
+                </my:DataListBox.ItemTemplate>
+            </my:DataListBox>
+        </DockPanel>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="Project_Term2.UserPage.UserCenter_Page"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"  Loaded="UserControl_Loaded"
+             xmlns:myc="clr-namespace:Project_Term2.UserPage"
+             xmlns:user="clr-namespace:Project_Term2.Page_User.CreateUser"
+             d:DesignHeight="400" d:DesignWidth="600">
+    <UserControl.Resources>
+        <ResourceDictionary Source="Style.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+    <DockPanel Margin="0">
+        <!--列表-->
+        <DockPanel Name="List" Style="{StaticResource SmallPage_LeftList}" Background="{Binding Background,ElementName=C}" Margin="0,2,0,0">
+            <TextBox x:Name="C" Visibility="Collapsed" Foreground="{Binding ForeColor}" Background="{Binding BgColor}"></TextBox>
+            <TextBlock DockPanel.Dock="Top" FontSize="35" Foreground="{Binding Foreground,ElementName=C}" Text="用　户" Style="{StaticResource LeftList_Title}"></TextBlock>
+            <RadioButton Name="Menu_UserInfo" Content="资　料" Click="TabTo0" Style="{StaticResource LMenu}" Focusable="True"></RadioButton>
+            <RadioButton Name="Menu_Message" Content="消　息" Click="TabTo1" Style="{StaticResource LMenu}" Focusable="True"></RadioButton>
+            <RadioButton Name="Menu_Userlogin" Content="登　录" Click="TabTo2" Style="{StaticResource LMenu}" Focusable="True"></RadioButton>
+            <RadioButton Content="注　册" Visibility="Collapsed" Click="TabTo3" Style="{StaticResource LMenu}" Focusable="True"></RadioButton>
+            <RadioButton Content="说　明" Click="TabTo4" Style="{StaticResource LMenu}" Focusable="True"></RadioButton>
+            <RadioButton Content="关　闭" x:Name="CloseBut" Style="{StaticResource LMenu}" Click="Close_MiniPage_Content" Focusable="True"></RadioButton>
+        </DockPanel>
+        <Border Width="2" Margin="0,1,0,0" DockPanel.Dock="Left" Background="{Binding Foreground,ElementName=C}"></Border>
+
+        <TabControl VerticalAlignment="Stretch" Background="{Binding Background,ElementName=C}" DockPanel.Dock="Top" Name="Tab" BorderThickness="0" BorderBrush="{x:Null}">
+            <!--用户中心-->
+            <TabItem Visibility="Collapsed" BorderThickness="0" BorderBrush="{x:Null}">
+                <myc:UserInfo></myc:UserInfo>
+            </TabItem>
+            
+            <!--消息列表-->
+            <TabItem Visibility="Collapsed" BorderThickness="0" BorderBrush="{x:Null}">
+                <myc:MessagesShow></myc:MessagesShow>
+            </TabItem>
+            
+            <!--用户登陆-->
+            <TabItem Visibility="Collapsed" BorderThickness="0" BorderBrush="{x:Null}">
+                <ScrollViewer Name="UserLogin" VerticalScrollBarVisibility="Hidden" Height="370" Width="400">
+                    <StackPanel>
+                        <!--用户登录-->
+                        <TextBlock Text="用户登录" FontSize="25" Foreground="{Binding Foreground,ElementName=C}" Margin="10,10,10,5"></TextBlock>
+                        <Border Padding="10">
+                            <DockPanel LastChildFill="False" Background="{Binding Foreground,ElementName=C}">
+                                <TextBlock Text="正常登录" Style="{StaticResource MinPage_Header}" Margin="0"></TextBlock>
+                                <DockPanel DockPanel.Dock="Top" >
+                                    <TextBlock Text="账号：" Style="{StaticResource TextBoxTitle}"></TextBlock>
+                                    <TextBox Name="User_Login_UName" DockPanel.Dock="Left" Style="{StaticResource TextBox_Default}">Develop</TextBox>
+                                </DockPanel>
+                                <DockPanel DockPanel.Dock="Top" >
+                                    <TextBlock Text="密码：" Style="{StaticResource TextBoxTitle}"></TextBlock>
+                                    <PasswordBox Name="UserLogin_Pass" Style="{StaticResource PassWordBox_Default}" Password="DevelopLogin"></PasswordBox>
+                                </DockPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Top" Margin="15,5">
+                                <Border MouseDown="ReSetText" Style="{StaticResource Submit_Smalllab}">
+                                    <Image Source="../Image/ICON0/叉.png" ></Image>
+                                </Border>
+                                <Border MouseDown="Button_GoLogin" Style="{StaticResource Submit_Smalllab}">
+                                    <Image Source="../Image/ICON0/勾.png" ></Image>
+                                </Border>
+                                </StackPanel>
+                            </DockPanel>
+                        </Border>
+
+                        <StackPanel Visibility="Visible">
+                        <!--操作安全授权-->
+                            <TextBlock Text="安全授权(?)" FontSize="25" MouseDown="AboutThis" Foreground="{Binding Foreground,ElementName=C}" Margin="10,20,10,5"></TextBlock>
+                            <Border Padding="10">
+                            <DockPanel Height="auto" Background="{Binding Foreground,ElementName=C}">
+                                <TextBlock Text="安全授权" Style="{StaticResource MinPage_Header}" Margin="0"></TextBlock>
+                                <TextBlock Name="User_AdvPassWord" Text="授权码：" Style="{StaticResource TextBoxTitle}"></TextBlock>
+                                <Border Style="{StaticResource Submit_Smalllab}" Margin="0,10,15,10" MouseDown="User_AdvPass">
+                                    <Image Source="../Image/ICON0/勾.png" ></Image>
+                                </Border>
+                                <TextBox Style="{StaticResource TextBox_Default}"></TextBox>
+                            </DockPanel>
+                        </Border>
+                        </StackPanel>
+                        
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!--用户注册-->
+            <TabItem Visibility="Collapsed" BorderThickness="0" BorderBrush="{x:Null}">
+                <user:UserReg></user:UserReg>
+            </TabItem>
+            
+            <!--帮助信息-->
+            <TabItem Visibility="Collapsed" BorderThickness="0" BorderBrush="{x:Null}">
+                <myc:AboutInfo></myc:AboutInfo>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</UserControl>

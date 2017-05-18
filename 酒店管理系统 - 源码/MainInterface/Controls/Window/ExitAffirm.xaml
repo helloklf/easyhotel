@@ -1,0 +1,36 @@
+﻿<Window x:Class="Project_Term2.ExitAffirm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="结束程序"
+        Width="500"
+        SizeToContent="Height"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow">
+    <StackPanel Margin="25">
+        <Label Height="55" FontSize="35">退出确认</Label>
+        <TextBlock FontSize="20" TextWrapping="Wrap">你正企图结束一个服务器端应用。关闭此应用则与之相关的管理活动都将被终止......</TextBlock>
+
+        <TextBlock FontSize="20">确认关闭：退出应用程序，同时终止所有服务（系统遇到不可修复错误需要重启时）</TextBlock>
+
+        <TextBlock FontSize="20">取消操作：不关闭应用程序（建议。如果您只是要注销用户，请在主界面上点击“注销”按钮）</TextBlock>
+
+        <StackPanel Margin="10"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button Margin="2"
+                    Background="Red"
+                    BorderThickness="0"
+                    Click="Button_Click"
+                    Content="确定关闭"
+                    FontSize="20"
+                    Padding="10" />
+            <Button Margin="2"
+                    Background="Green"
+                    BorderThickness="0"
+                    Click="Button_Click_1"
+                    Content="取消操作"
+                    FontSize="20"
+                    Padding="10" />
+        </StackPanel>
+    </StackPanel>
+</Window>

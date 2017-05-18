@@ -1,0 +1,688 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{403ABD33-821F-40AA-82CA-0F64E904E03E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Project_Term2</RootNamespace>
+    <AssemblyName>酒店管理系统-主程序</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ExpressionBlendVersion>12.0.51020.0</ExpressionBlendVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Project_Term2.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Personal.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="microsoft.expression.drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AppClass\Delegates.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppClass\Functions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppClass\InfoText.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppClass\Other_Functions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppClass\Values.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppClass\WFormIO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\BlankForm.xaml.cs">
+      <DependentUpon>BlankForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\C_TimeSpan.xaml.cs">
+      <DependentUpon>C_TimeSpan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataView\DataGrid1.xaml.cs">
+      <DependentUpon>DataGrid1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataView\RoomListDataLoad.cs" />
+    <Compile Include="Controls\DataView\RoomList.xaml.cs">
+      <DependentUpon>RoomList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataView\RoomListDelegates.cs" />
+    <Compile Include="Controls\LeftMenu\C_Menu.xaml.cs">
+      <DependentUpon>C_Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LeftMenu\C_FrameMenu.xaml.cs">
+      <DependentUpon>C_FrameMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LeftMenu\C_DataMenu.xaml.cs">
+      <DependentUpon>C_DataMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainMenu\C_Home.cs" />
+    <Compile Include="Controls\MainMenu\C_Home.xaml.cs">
+      <DependentUpon>C_Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainMenu\C_Home_Quick.cs" />
+    <Compile Include="Controls\MainMenu\Style.cs" />
+    <Compile Include="Controls\Page_User\AboutInfo.xaml.cs">
+      <DependentUpon>AboutInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Page_User\CreateUser\UserReg.xaml.cs">
+      <DependentUpon>UserReg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SearchBox.xaml.cs">
+      <DependentUpon>SearchBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Window\ExitAffirm.xaml.cs">
+      <DependentUpon>ExitAffirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Window\LockPage.cs" />
+    <Compile Include="Controls\Window\LockPage.xaml.cs">
+      <DependentUpon>LockPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Window\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Page_User\MessageList.cs" />
+    <Compile Include="Controls\ToolBar.xaml.cs">
+      <DependentUpon>ToolBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Page_User\CreateUser\UserType\Default.xaml.cs">
+      <DependentUpon>Default.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Page_User\CreateUser\UserType\High.xaml.cs">
+      <DependentUpon>High.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Page_User\CreateUser\UserType\Low.xaml.cs">
+      <DependentUpon>Low.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Page_User\MessagesShow.xaml.cs">
+      <DependentUpon>MessagesShow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Page_User\UserCenter_Page.xaml.cs">
+      <DependentUpon>UserCenter_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Page_User\UserInfo.xaml.cs">
+      <DependentUpon>UserInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Page_User\CreateUser\UserType\VeryHeight.xaml.cs">
+      <DependentUpon>VeryHeight.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\C_Battery.xaml.cs">
+      <DependentUpon>C_Battery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InterfaceDelegates.cs" />
+    <Compile Include="InterfaceControl.cs" />
+    <Page Include="Controls\BlankForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\C_TimeSpan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DataView\DataGrid1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DataView\DataGridStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DataView\RoomList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LeftMenu\C_Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LeftMenu\C_FrameMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LeftMenu\C_DataMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LeftMenu\Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainMenu\C_Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainMenu\Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Page_User\AboutInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Page_User\CreateUser\UserReg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Page_User\Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SearchBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Window\ExitAffirm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\C_Battery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResourceDictionary1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Window\LockPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Window\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ToolBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Page_User\CreateUser\UserType\Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Page_User\CreateUser\UserType\High.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Page_User\CreateUser\UserType\Low.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Page_User\MessagesShow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Page_User\UserCenter_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Page_User\UserInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Page_User\CreateUser\UserType\VeryHeight.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StartWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StartWindow.xaml.cs">
+      <DependentUpon>StartWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Appliction_Setting_Save\DllSetting.csproj">
+      <Project>{61c0e6d9-1b04-4ea2-b3f4-566f567b5f16}</Project>
+      <Name>DllSetting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DllSettingPanel\DllSettingPanel.csproj">
+      <Project>{b4563596-b339-4f9d-8bf8-00fd78e6ebe4}</Project>
+      <Name>DllSettingPanel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DLL_BLL\DLL_BLL.csproj">
+      <Project>{104a0691-72da-4ae3-9451-2058da32840d}</Project>
+      <Name>DLL_BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inform\Inform.csproj">
+      <Project>{2c84bec9-eb22-4742-a3f5-9c059d93e9e0}</Project>
+      <Name>Inform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyControls\MyControls.csproj">
+      <Project>{10011276-ae9f-420c-b418-92b9ba233555}</Project>
+      <Name>MyControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project_Term2_BaseData\Project_Term2_BaseData.csproj">
+      <Project>{607ffa85-8989-40f8-9cde-6415b0d6bc71}</Project>
+      <Name>Project_Term2_BaseData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project_Term2_Client\Project_Term2_Client.csproj">
+      <Project>{2a9bca89-4ff1-445e-b80f-47c3ea400c5b}</Project>
+      <Name>Project_Term2_Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project_Term2_RoomList\Project_Term2_RoomList.csproj">
+      <Project>{fcf2d445-a955-4ea7-9f42-e9496334927c}</Project>
+      <Name>Project_Term2_RoomList</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project_Term2_Staff\Project_Term2_Staff.csproj">
+      <Project>{582e075d-989a-4766-813f-eaa1fc38d816}</Project>
+      <Name>Project_Term2_Staff</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TModel\TModel.csproj">
+      <Project>{621fb7df-ec11-411e-8d99-3a40908f682f}</Project>
+      <Name>TModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\JPEG\个体入住.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\JPEG\团体入住.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\JPEG\酒店退房.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\JPEG\客户交费.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\JPEG\当日账目.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\上.png" />
+    <Resource Include="Controls\Image\ICON0\下.png" />
+    <Resource Include="Controls\Image\ICON0\云.png" />
+    <Resource Include="Controls\Image\ICON0\消息.png" />
+    <Resource Include="Controls\Image\ICON0\列表.png" />
+    <Resource Include="Controls\Image\ICON0\刷新.png" />
+    <Resource Include="Controls\Image\ICON0\勾.png" />
+    <Resource Include="Controls\Image\ICON0\叉.png" />
+    <Resource Include="Controls\Image\ICON0\右.png" />
+    <Resource Include="Controls\Image\ICON0\向右.png" />
+    <Resource Include="Controls\Image\ICON0\向左.png" />
+    <Resource Include="Controls\Image\ICON0\图片.png" />
+    <Resource Include="Controls\Image\ICON0\处理中.png" />
+    <Resource Include="Controls\Image\ICON0\宫格.png" />
+    <Resource Include="Controls\Image\ICON0\层.png" />
+    <Resource Include="Controls\Image\ICON0\左.png" />
+    <Resource Include="Controls\Image\ICON0\平板.png" />
+    <Resource Include="Controls\Image\ICON0\手机.png" />
+    <Resource Include="Controls\Image\ICON0\搜索.png" />
+    <Resource Include="Controls\Image\ICON0\文件夹.png" />
+    <Resource Include="Controls\Image\ICON0\旋转.png" />
+    <Resource Include="Controls\Image\ICON0\显示器.png" />
+    <Resource Include="Controls\Image\ICON0\未选中.png" />
+    <Resource Include="Controls\Image\ICON0\未锁定.png" />
+    <Resource Include="Controls\Image\ICON0\标记.png" />
+    <Resource Include="Controls\Image\ICON0\爱心.png" />
+    <Resource Include="Controls\Image\ICON0\用户.png" />
+    <Resource Include="Controls\Image\ICON0\电源.png" />
+    <Resource Include="Controls\Image\ICON0\眼睛.png" />
+    <Resource Include="Controls\Image\ICON0\网络.png" />
+    <Resource Include="Controls\Image\ICON0\菜单.png" />
+    <Resource Include="Controls\Image\ICON0\表盘.png" />
+    <Resource Include="Controls\Image\ICON0\设置.png" />
+    <Resource Include="Controls\Image\ICON0\购物车.png" />
+    <Resource Include="Controls\Image\ICON0\赞.png" />
+    <Resource Include="Controls\Image\ICON0\选中.png" />
+    <Resource Include="Controls\Image\ICON0\邮件.png" />
+    <Resource Include="Controls\Image\ICON0\链接.png" />
+    <Resource Include="Controls\Image\ICON0\锁定.png" />
+    <Resource Include="Controls\Image\ICON0\飞机.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\时钟1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\工具栏.png" />
+    <Resource Include="Controls\Image\ICON0\皮肤.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\手.png" />
+    <Resource Include="Controls\Image\ICON0\无.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\信息.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\DB.png" />
+    <Resource Include="Controls\Image\ICON0\SQL.png" />
+    <Resource Include="Controls\Image\ICON0\Window.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\Black.png" />
+    <Resource Include="Controls\Image\ICON0\White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\NoTran.png" />
+    <Resource Include="Controls\Image\ICON0\Tran.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\全屏.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\电池\中.png" />
+    <Resource Include="Controls\Image\ICON0\电池\低.png" />
+    <Resource Include="Controls\Image\ICON0\电池\充电.png" />
+    <Resource Include="Controls\Image\ICON0\电池\满.png" />
+    <Resource Include="Controls\Image\ICON0\电池\空.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\JPEG\房间查询.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Personal.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\房间.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\下楼.png" />
+    <Resource Include="Controls\Image\ICON0\人民币.png" />
+    <Resource Include="Controls\Image\ICON0\人群.png" />
+    <Resource Include="Controls\Image\ICON0\城市.png" />
+    <Resource Include="Controls\Image\ICON0\房屋.png" />
+    <Resource Include="Controls\Image\ICON0\钥匙.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\Quick\文档.png" />
+    <Resource Include="Controls\Image\Quick\浏览器.png" />
+    <Resource Include="Controls\Image\Quick\计算器.png" />
+    <Resource Include="Controls\Image\Quick\音乐.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\Quick\浏览器 %282%29.png" />
+    <Resource Include="Controls\Image\Quick\计算器 %282%29.png" />
+    <Resource Include="Controls\Image\Quick\音乐 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\Quick\记事本 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\Quick\软键盘 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\Quick\任务管理器 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\Quick\放大镜 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\Quick\图片 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\Quick\截屏 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\空房.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\哭脸.png" />
+    <Resource Include="Controls\Image\ICON0\笑脸.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\JPEG\酒店规模.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\JPEG\空房.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\客户.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\Tile\登陆.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\帮助.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\退出.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\JPEG\客服.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\关于.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\房间列表.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\JPEG\背景.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\红房子.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\ICON0\历史记录.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\JPEG\在职员工.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\JPEG\员工信息.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Image\JPEG\添加员工.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Image\-.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Image\+.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Image\叉.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Image\返回.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Image\勾.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Image\后退.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Image\垃圾桶.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Image\垃圾桶2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Image\图片.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Image\未选中.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Image\修改.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Image\选中.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Tile\VIP.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Tile\VIP卡.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Tile\搬房子.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Tile\操作类型.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Tile\地图.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Tile\地图.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Tile\盾.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Tile\房子.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Tile\红房子.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Tile\记录.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Tile\人.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Tile\小房子.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Tile\写.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Tile\证件类型.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\后退.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Image\黄金VIP.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\MainMenu\Pages\Image\头像.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="Project_Term2_Client.PageManage" x:Name="this"
+             xmlns:local="clr-namespace:Project_Term2_Client"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Loaded="UserControl_Loaded"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:myc="clr-namespace:MyControls;assembly=MyControls"
+             mc:Ignorable="d"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#3555" xmlns:my="clr-namespace:Project_Term2_Client">
+    <UserControl.Resources>
+        <ResourceDictionary Source="Style.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+    <DockPanel Style="{StaticResource PageManagePanel}">
+        <TextBox x:Name="C" Visibility="Collapsed" Foreground="{Binding ForeColor}" Background="{Binding BgColor}"></TextBox>
+        <!--页面转换-->
+        <Label x:Name="Left_Right" DockPanel.Dock="Right" Content="o" MinWidth="20" VerticalContentAlignment="Center" Opacity="0.7" MouseDown="RightPanelSet" BorderBrush="{Binding Background,ElementName=C}" BorderThickness="0,0,2,0"></Label>
+
+        <DockPanel DockPanel.Dock="Top">
+            <DockPanel x:Name="LeftMenu" Margin="25,20,25,10">
+                <DockPanel DockPanel.Dock="Top">
+                    <myc:Retreat MouseLeftButtonUp="ReturnTo_MainMenu" VerticalAlignment="Center" DockPanel.Dock="Left"></myc:Retreat>
+                    <TextBlock Text="客户中心" HorizontalAlignment="Left" FontSize="45" MinWidth="160" Margin="15" MouseLeftButtonDown="To0" Foreground="{Binding Foreground,ElementName=C}"></TextBlock>
+                </DockPanel>
+                <ScrollViewer Margin="60,0,0,0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden" Focusable="False">
+                    <WrapPanel x:Name="ML" Focusable="False">
+                        <WrapPanel.Resources>
+                            <Style TargetType="myc:MenuItem">
+                                <Setter Property="Width" Value="240"></Setter>
+                                <Setter Property="Height" Value="135"></Setter>
+                                <Setter Property="Foreground" Value="{Binding Foreground,ElementName=this}"></Setter>
+                            </Style>
+                        </WrapPanel.Resources>
+                        <myc:MenuItem Click="To1" Background="White" ItemBackground="pages/Image/head.png" ItemTitle="客户管理"></myc:MenuItem>
+                        <myc:MenuItem Click="To2" Background="#FFA00505" ItemBackground="pages/Image/黄金VIP.jpg" ItemTitle="VIP 管理"></myc:MenuItem>
+                    </WrapPanel>
+                </ScrollViewer>
+            </DockPanel>
+        </DockPanel>
+        <DockPanel x:Name="RightMenu" DockPanel.Dock="Top" Visibility="Collapsed" Margin="25,20,25,10">
+            <DockPanel DockPanel.Dock="Top">
+                <myc:Retreat MouseDown="ReturnMenu" VerticalAlignment="Center" DockPanel.Dock="Left"></myc:Retreat>
+                <TextBlock x:Name="PageTitle" Text="客户中心" HorizontalAlignment="Left" FontSize="45" MinWidth="160" Margin="15" MouseDown="To0" Foreground="{Binding Foreground,ElementName=C}"></TextBlock>
+            </DockPanel>
+            <TabControl Focusable="False" DockPanel.Dock="Right" BorderThickness="0" BorderBrush="{x:Null}" 
+                    Background="{x:Null}" Name="Tab" Padding="0">
+                <!--说明页-->
+                <TabItem>
+                    <local:HelpInfo></local:HelpInfo>
+                </TabItem>
+                <TabItem>
+                    <my:ClientList></my:ClientList>
+                </TabItem>
+                <TabItem>
+                    <my:VIPList></my:VIPList>
+                </TabItem>
+            </TabControl>
+        </DockPanel>
+    </DockPanel>
+</UserControl>

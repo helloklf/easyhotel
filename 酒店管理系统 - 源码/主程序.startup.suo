@@ -1,0 +1,11 @@
+{
+  "MRU": [
+    "MainInterface",
+    "DLL_BLL"
+  ],
+  "MultiProjectConfigurations": {},
+  "SingleProjectMode": 0,
+  "SingleProjectMruCount": 5,
+  "ActivateCommandLineArguments": false,
+  "Version": 2
+}

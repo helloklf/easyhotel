@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="Project_Term2_Client.ClientList" 
+             xmlns:my="clr-namespace:MyControls;assembly=MyControls"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Loaded="UserControl_Loaded"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+    <UserControl.Resources>
+    <ResourceDictionary Source="../Style.xaml"/>
+    </UserControl.Resources>
+
+    <DockPanel>
+        <TextBox x:Name="C" Visibility="Collapsed" Foreground="{Binding ForeColor}" Background="{Binding BgColor}"></TextBox>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10,5">
+            <my:AddItemBtn Height="50" MouseDown="AddItem" Visibility="Collapsed"></my:AddItemBtn>
+        </StackPanel>
+        <Border Height="2" DockPanel.Dock="Top" Opacity="0.6" Margin="2,10" Background="{Binding Background,ElementName=C}"></Border>
+
+        
+        <!--修改数据-->
+        <DockPanel DockPanel.Dock="Right">
+            <Label Content="o" MinWidth="20" VerticalContentAlignment="Center" Opacity="0.7" BorderThickness="0,0,1,0" BorderBrush="{Binding Foreground,ElementName=C}" MouseDown="RightPanelSet"></Label>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                <TabControl BorderBrush="{x:Null}" BorderThickness="0" Background="{x:Null}" Name="RightPanel" Visibility="Collapsed">
+                    <TabItem Visibility="Collapsed" BorderBrush="{x:Null}" BorderThickness="0" Background="{x:Null}">
+                        <StackPanel Margin="15,10" MinWidth="400">
+                            <TextBlock Text="客户档案修改" Foreground="{Binding Foreground,ElementName=C}" FontSize="18" Margin="0,10,10,0"></TextBlock>
+                            <Border Height="2" DockPanel.Dock="Top" BorderThickness="0" Background="{Binding Foreground,ElementName=C}" Margin="0,5,0,5"></Border>
+
+                            <DockPanel Margin="5">
+                                <TextBlock Text="客户姓名*：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox x:Name="InText" ToolTip="员工姓名(15字以内)" Style="{StaticResource ShortTextBox}"/>
+                            </DockPanel>
+
+                            <StackPanel Margin="5" Orientation="Horizontal">
+                                <TextBlock Text="性　　别：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <RadioButton Content="男" x:Name="Sex1" IsChecked="True" Foreground="White" VerticalAlignment="Center"></RadioButton>
+                                <RadioButton Content="女" x:Name="Sex0" Foreground="White" VerticalAlignment="Center"></RadioButton>
+                            </StackPanel>
+
+
+                            <DockPanel x:Name="Address" Margin="5">
+                                <TextBlock Text="客户地址：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox Style="{StaticResource ShortTextBox}" x:Name="InAdress"></TextBox>
+                            </DockPanel>
+
+                            <DockPanel Margin="5">
+                                <TextBlock Text="证件类型*：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <ComboBox x:Name="InPapers" ItemsSource="{Binding}" FontSize="15" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" SelectedValuePath="PapersID" DisplayMemberPath="PapersName"></ComboBox>
+                            </DockPanel>
+
+                            <DockPanel Margin="5">
+                                <TextBlock Text="证件号码*：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox x:Name="InCardID" ToolTip="有效二代身份证证件号" Style="{StaticResource ShortTextBox}" MaxLength="30"/>
+                            </DockPanel>
+
+                            <DockPanel Margin="5">
+                                <TextBlock Text="手机号码：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox x:Name="InTel" ToolTip="客户的联系方式(20字以内)" Style="{StaticResource ShortTextBox}"/>
+                            </DockPanel>
+
+                            <DockPanel Margin="5" x:Name="IsVip">
+                                <TextBlock Text="VIP编号：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBlock MinWidth="35" TextAlignment="Center" DockPanel.Dock="Right" VerticalAlignment="Center">
+                                    <Hyperlink Foreground="{Binding Foreground,ElementName=C}">添加</Hyperlink>
+                                </TextBlock>
+                                <TextBox x:Name="InVIPID" ToolTip="客户的VIP号，如果没有则留空（15位以下）" Style="{StaticResource ShortTextBox}"/>
+                            </DockPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <my:OK MouseDown="yes_MouseDown" Margin="10,5"></my:OK>
+                            </StackPanel>
+                        </StackPanel>
+                    </TabItem></TabControl>
+            </ScrollViewer>
+        </DockPanel>
+            
+        <!--数据列表-->
+        <ListBox MouseDoubleClick="LB_MouseDoubleClick" x:Name="LB" SelectedValuePath="VIPID" ItemsSource="{Binding}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel Background="#FFFFCC" MinWidth="350">
+                        <StackPanel Margin="10">
+                            <StackPanel Orientation="Horizontal" Visibility="Visible">
+                                <TextBlock VerticalAlignment="Center">客户编号：</TextBlock>
+                                <TextBlock VerticalAlignment="Center" Text="{Binding GUID}" Padding="2"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center">姓名：</TextBlock>
+                                <TextBlock VerticalAlignment="Center" FontSize="18" Text="{Binding ClientIName}" Padding="2"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center">证件类型：</TextBlock>
+                                <TextBlock VerticalAlignment="Center" Text="{Binding PapersName}" Padding="2"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center">证件号：</TextBlock>
+                                <TextBlock VerticalAlignment="Center" Text="{Binding ClientIDCard}" Padding="2"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center">地址：</TextBlock>
+                                <TextBlock VerticalAlignment="Center" Text="{Binding ClientAdress}" Padding="2"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center">VIP编号：</TextBlock>
+                                <TextBlock VerticalAlignment="Center" Text="{Binding ClientVIPID}" Padding="2"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center">联系电话：</TextBlock>
+                                <TextBlock VerticalAlignment="Center" Text="{Binding ClientTel}" Padding="2"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </DockPanel>
+</UserControl>

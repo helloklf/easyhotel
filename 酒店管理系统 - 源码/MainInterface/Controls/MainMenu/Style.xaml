@@ -1,0 +1,449 @@
+﻿<ResourceDictionary x:Class="Project_Term2.MainMenu.Style_C"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--  网格菜单样式  -->
+    <Style x:Key="MainMenu_Lables" TargetType="Label">
+        <Setter Property="BorderBrush" Value="{Binding Foreground, ElementName=C}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Height" Value="117" />
+        <Setter Property="Width" Value="208" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="Margin" Value="20,20,0,0" />
+        <Setter Property="Background" Value="{Binding Background, ElementName=C}" />
+        <EventSetter Event="MouseDown" Handler="Menu_Lable_MD" />
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="true" />
+                    <Condition Property="IsFocused" Value="false" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderThickness" Value="1" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="false" />
+                    <Condition Property="IsFocused" Value="false" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderThickness" Value="0" />
+            </MultiTrigger>
+            <Trigger Property="IsFocused" Value="true">
+                <Setter Property="BorderThickness" Value="3" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--  主菜单大磁贴  -->
+    <Style x:Key="ToolTile" TargetType="Border">
+        <Setter Property="BorderThickness" Value="3" />
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="true" />
+                    <Condition Property="IsFocused" Value="false" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="{Binding Foreground, ElementName=C}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="false" />
+                    <Condition Property="IsFocused" Value="false" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="#0000" />
+            </MultiTrigger>
+            <Trigger Property="IsFocused" Value="true">
+                <Setter Property="BorderBrush" Value="{Binding Foreground, ElementName=C}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--  主菜单小磁贴  -->
+    <Style x:Key="ToolTile2" TargetType="Border">
+        <Setter Property="BorderThickness" Value="1" />
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="true" />
+                    <Condition Property="IsFocused" Value="false" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="{Binding Background, ElementName=C}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="false" />
+                    <Condition Property="IsFocused" Value="false" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="#0000" />
+            </MultiTrigger>
+            <Trigger Property="IsFocused" Value="true">
+                <Setter Property="BorderBrush" Value="{Binding Background, ElementName=C}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--  主菜单大磁贴标题  -->
+    <Style x:Key="TooLTileTitle" TargetType="TextBlock">
+        <Setter Property="DockPanel.Dock" Value="Bottom" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Padding" Value="10,5" />
+        <Setter Property="FontSize" Value="30" />
+        <Setter Property="Foreground" Value="{Binding Foreground, ElementName=C}" />
+        <Setter Property="Background" Value="{Binding Background, ElementName=C}" />
+    </Style>
+    <!--  主菜单大磁贴标题容器  -->
+    <Style x:Key="TooLTileTitleStack" TargetType="StackPanel">
+        <Setter Property="DockPanel.Dock" Value="Bottom" />
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="Background" Value="{Binding Background, ElementName=C}" />
+    </Style>
+
+
+    <!--  主菜单小磁贴  -->
+    <Style x:Key="SmallTile" TargetType="Label">
+        <Setter Property="Height" Value="55" />
+        <Setter Property="Width" Value="55" />
+        <Setter Property="BorderThickness" Value="3" />
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="true" />
+                    <Condition Property="IsFocused" Value="false" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="{Binding Foreground, ElementName=C}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="false" />
+                    <Condition Property="IsFocused" Value="false" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="#0000" />
+            </MultiTrigger>
+            <Trigger Property="IsFocused" Value="true">
+                <Setter Property="BorderBrush" Value="{Binding Foreground, ElementName=C}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--  主菜单大磁贴显示列表  -->
+    <Style x:Key="TileListbox" TargetType="ListBox">
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="ItemsSource" Value="{Binding}" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <DockPanel MinWidth="200" Background="#7FFF00AE">
+                        <DockPanel Margin="10,5">
+                            <TextBlock Margin="20,3,10,3"
+                                       DockPanel.Dock="Right"
+                                       FontSize="15"
+                                       Text="{Binding Text}" />
+                            <TextBlock FontSize="18" Text="{Binding Title}" />
+                        </DockPanel>
+                    </DockPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ScrollBar">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="White" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="SelectiveScrollingGrid.Background" Value="White" />
+        <Setter Property="Opacity" Value="0.75" />
+    </Style>
+
+    <!--<Style TargetType="ScrollBar">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ScrollBar}">
+                    <Grid x:Name="GridRoot" Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Background="{TemplateBinding Background}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition MaxHeight="18"/>
+                            <RowDefinition Height="0.00001*"/>
+                            <RowDefinition MaxHeight="18"/>
+                        </Grid.RowDefinitions>
+
+                        <RepeatButton x:Name="DecreaseRepeat" Style="{DynamicResource SimpleRepeatButton}" Command="ScrollBar.LineUpCommand">
+                            <Grid>
+                                <Path x:Name="DecreaseArrow" Stroke="{TemplateBinding Foreground}" StrokeThickness="1" Data="M 0 4 L 8 4 L 4 0 Z"/>
+                            </Grid>
+                        </RepeatButton>
+
+    -->
+    <!--  Track 是一种特殊的布局容器，可调整用于在其一侧执行跳转滚动的 thumb 和 repeat button 的大小  -->
+    <!--
+                        <Track Grid.Row="1" x:Name="PART_Track" Orientation="Vertical" IsDirectionReversed="true">
+                            <Track.Thumb>
+                                <Thumb Style="{DynamicResource SimpleThumbStyle}"/>
+                            </Track.Thumb>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton x:Name="PageUp" Style="{DynamicResource SimpleScrollRepeatButtonStyle}" Command="ScrollBar.PageDownCommand"/>
+                            </Track.IncreaseRepeatButton>
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton x:Name="PageDown" Style="{DynamicResource SimpleScrollRepeatButtonStyle}" Command="ScrollBar.PageUpCommand"/>
+                            </Track.DecreaseRepeatButton>
+                        </Track>
+
+                        <RepeatButton Grid.Row="2" x:Name="IncreaseRepeat" Style="{DynamicResource SimpleRepeatButton}" Command="ScrollBar.LineDownCommand">
+                            <Grid>
+                                <Path x:Name="IncreaseArrow" Stroke="{TemplateBinding Foreground}" StrokeThickness="1" Data="M 0 0 L 4 4 L 8 0 Z"/>
+                            </Grid>
+                        </RepeatButton>
+                    </Grid>
+
+    -->
+    <!--
+        它对 ScrollBar 使用一个模板，并将其旋转为“水平”
+        它还会更改命令，使其执行“向左”和“向右”命令，而不是执行“向上”和“向下”命令
+    -->
+    <!--
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Orientation" Value="Horizontal">
+
+    -->
+    <!--  将 ScrollBar 从“垂直”旋转为“水平”  -->
+    <!--
+                            <Setter Property="LayoutTransform" TargetName="GridRoot">
+                                <Setter.Value>
+                                    <RotateTransform Angle="-90"/>
+                                </Setter.Value>
+                            </Setter>
+
+    -->
+    <!--  Track 在内部绑定到“方向”，因此我们需要将其旋转回“垂直”  -->
+    <!--
+                            <Setter TargetName="PART_Track" Property="Orientation" Value="Vertical"/>
+
+    -->
+    <!--  更改命令，以执行“水平”命令  -->
+    <!--
+                            <Setter Property="Command" Value="ScrollBar.LineLeftCommand" TargetName="DecreaseRepeat"/>
+                            <Setter Property="Command" Value="ScrollBar.LineRightCommand" TargetName="IncreaseRepeat"/>
+                            <Setter Property="Command" Value="ScrollBar.PageLeftCommand" TargetName="PageDown"/>
+                            <Setter Property="Command" Value="ScrollBar.PageRightCommand" TargetName="PageUp"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+
+    <Style TargetType="ListBoxItem">
+        <Setter Property="Focusable" Value="False" />
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="true">
+                <Setter Property="Foreground" Value="White" />
+            </Trigger>
+            <Trigger Property="IsSelected" Value="false">
+                <Setter Property="Foreground" Value="#BFFDFFFD" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <!--  功能板块划分标题  -->
+    <Style x:Key="TitleText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{Binding Foreground, ElementName=C}" />
+        <Setter Property="Margin" Value="0,25,0,0" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Padding" Value="10,3" />
+        <Setter Property="ToolTip" Value="单击此处可以收起或展开分组列表" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" Value="{Binding Background, ElementName=C}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--  系统菜单样式  -->
+    <Style TargetType="{x:Type ContextMenu}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ContextMenu}">
+                    <Border x:Name="Border"
+                            Background="#8333"
+                            BorderThickness="1"
+                            CornerRadius="2">
+                        <Border.BorderBrush>
+                            <SolidColorBrush Color="#000" />
+                        </Border.BorderBrush>
+                        <ItemsPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.0020000" Value="0" />
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.3450000" Value="150" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Height)">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.0020000" Value="0" />
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.3450000" Value="200" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--  系统菜单项样式  -->
+    <Style TargetType="{x:Type MenuItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type MenuItem}">
+                    <Border MinWidth="120"
+                            CornerRadius="0"
+                            Padding="10">
+                        <Border.Background>
+                            <SolidColorBrush x:Name="MyAnimatedBrushBackground" Color="Transparent" />
+                        </Border.Background>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="White" Text=" " />
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              ContentSource="Icon" />
+                            <TextBlock Foreground="White" Text="   " />
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              ContentSource="Header" />
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                      Storyboard.TargetName="MyAnimatedBrushBackground"
+                                                                      Storyboard.TargetProperty="Color">
+                                            <LinearColorKeyFrame KeyTime="00:00:00.0020000" Value="Transparent" />
+                                            <LinearColorKeyFrame KeyTime="00:00:00.0320000" Value="#000" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                      Storyboard.TargetName="MyAnimatedBrushBackground"
+                                                                      Storyboard.TargetProperty="Color">
+                                            <LinearColorKeyFrame KeyTime="00:00:00.0020000" Value="#000" />
+                                            <LinearColorKeyFrame KeyTime="00:00:00.0320000" Value="Transparent" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  平面风格的单选按钮  -->
+    <Style x:Key="LMenu" TargetType="RadioButton">
+        <Setter Property="FontSize" Value="20" />
+        <!--<Setter Property="MinHeight" Value="60"></Setter>-->
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="bd" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                <EasingColorKeyFrame KeyTime="0" Value="#fff" />
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="Transparent" />
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <BulletDecorator Background="Transparent">
+                        <Border x:Name="bd"
+                                HorizontalAlignment="Stretch"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="0">
+                            <Border.OpacityMask>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Offset="0" Color="Black" />
+                                    <GradientStop Offset="1" Color="White" />
+                                </LinearGradientBrush>
+                            </Border.OpacityMask>
+                            <ContentPresenter Width="{TemplateBinding Width}"
+                                              Height="{TemplateBinding Height}"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              RecognizesAccessKey="True"
+                                              TextBlock.Foreground="{TemplateBinding Foreground}" />
+                        </Border>
+                    </BulletDecorator>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsChecked" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="#5CCC" />
+                <Setter Property="BorderBrush" Value="{Binding Background, ElementName=C}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsChecked" Value="false" />
+                    <Condition Property="IsMouseOver" Value="false" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="#7F020202" />
+            </MultiTrigger>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter Property="Background" Value="#5F00" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="TabItem">
+        <Setter Property="Visibility" Value="Collapsed" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="{x:Null}" />
+    </Style>
+    <Style TargetType="TabControl">
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="{x:Null}" />
+    </Style>
+</ResourceDictionary>

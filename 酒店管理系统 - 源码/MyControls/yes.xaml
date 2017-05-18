@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="MyControls.yes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Loaded="UserControl_Loaded"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  Margin="0,0,3,0"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary Source="but.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource Submit_Smalllab}">
+        <StackPanel Orientation="Horizontal">
+            <TextBox x:Name="C" Visibility="Collapsed" Foreground="{Binding ForeColor}" Background="{Binding BgColor}"></TextBox>
+            <Image Source="Image/勾.png"></Image>
+            <TextBlock VerticalAlignment="Center" Margin="0,0,12,0">确定</TextBlock>
+        </StackPanel>
+    </Border>
+</UserControl>

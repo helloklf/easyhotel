@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinQ_To_EF", "LinQ To EF\LinQ_To_EF.csproj", "{3A11A2BF-6648-49B9-A00F-D772EA867DBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinQ_To_EF.Tests", "LinQ_To_EF.Tests\LinQ_To_EF.Tests.csproj", "{07D9452C-A530-42DB-A73F-E9CE8D214A56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleHelper", "StyleHelper\StyleHelper.csproj", "{EBF9A9F3-4EDB-49D8-B5A9-54C2AAB04C4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A11A2BF-6648-49B9-A00F-D772EA867DBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A11A2BF-6648-49B9-A00F-D772EA867DBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A11A2BF-6648-49B9-A00F-D772EA867DBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A11A2BF-6648-49B9-A00F-D772EA867DBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D9452C-A530-42DB-A73F-E9CE8D214A56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D9452C-A530-42DB-A73F-E9CE8D214A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D9452C-A530-42DB-A73F-E9CE8D214A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D9452C-A530-42DB-A73F-E9CE8D214A56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBF9A9F3-4EDB-49D8-B5A9-54C2AAB04C4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBF9A9F3-4EDB-49D8-B5A9-54C2AAB04C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBF9A9F3-4EDB-49D8-B5A9-54C2AAB04C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBF9A9F3-4EDB-49D8-B5A9-54C2AAB04C4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

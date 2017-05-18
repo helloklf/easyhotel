@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="Project_Term2.LeftMenu.C_Menu"
+            Background="#5000"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:LeftMenu="clr-namespace:Project_Term2.LeftMenu"
+            Loaded="UserControl_Loaded"
+            mc:Ignorable="d">
+    <UserControl.Resources>
+        <!--复选框-->
+        <Style x:Key="CheckStyle" TargetType="{x:Type CheckBox}">
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Width" Value="180"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="IsChecked" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <DockPanel LastChildFill="False">
+                            <Border x:Name="CheckFlag0" VerticalAlignment="Center" CornerRadius="1" BorderThickness="0" Height="45">
+                                <TextBlock x:Name="Content0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="菜单" FontSize="20"/>
+                            </Border>
+                            <Border x:Name="CheckFlag1" VerticalAlignment="Center" CornerRadius="1" BorderThickness="0" Height="45">
+                                <TextBlock x:Name="Content1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="导航" FontSize="20"/>
+                            </Border>
+                        </DockPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Content1" Property="TextBlock.Foreground" Value="{Binding Foreground,ElementName=C}"></Setter>
+                                <Setter TargetName="Content0" Property="TextBlock.Foreground" Value="{Binding Background,ElementName=C}"></Setter>
+                                <Setter TargetName="CheckFlag1" Property="Width" Value="75"></Setter>
+                                <Setter TargetName="CheckFlag0" Property="Width" Value="105"></Setter>
+                                <Setter TargetName="CheckFlag0" Property="Background" Value="{Binding Foreground,ElementName=C}"></Setter>
+                                <Setter TargetName="CheckFlag1" Property="Background" Value="#0000"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="Content0" Property="TextBlock.Foreground" Value="{Binding Foreground,ElementName=C}"></Setter>
+                                <Setter TargetName="Content1" Property="TextBlock.Foreground" Value="{Binding Background,ElementName=C}"></Setter>
+                                <Setter TargetName="CheckFlag0" Property="Width" Value="75"></Setter>
+                                <Setter TargetName="CheckFlag1" Property="Width" Value="105"></Setter>
+                                <Setter TargetName="CheckFlag0" Property="Background" Value="#0000"></Setter>
+                                <Setter TargetName="CheckFlag1" Property="Background" Value="{Binding Foreground,ElementName=C}"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Label" x:Key="hide">
+            <Setter Property="DockPanel.Dock" Value="Right"></Setter>
+            <Setter Property="ToolTip" Value="点击收起或展开列表"></Setter>
+            <Setter Property="Content" Value="…"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="Width" Value="20"></Setter>
+            <Setter Property="Padding" Value="0"></Setter>
+            <Setter Property="Opacity" Value="0.75"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="BorderBrush" Value="White"></Setter>
+            <Setter Property="BorderThickness" Value="2,0,0,0"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="{Binding Foreground,ElementName=C}"></Setter>
+                    <Setter Property="Foreground" Value="{Binding BorderBrush,ElementName=C}"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <TextBox x:Name="C" Visibility="Collapsed" Foreground="{Binding ForeColor}" Background="{Binding BgColor}"></TextBox>
+        <DockPanel>
+            <Label MouseDown="LeftMenuState_Clcik" Style="{StaticResource hide}"></Label>
+            <DockPanel x:Name="MainMenu_Left" Visibility="Visible">
+                <CheckBox x:Name="ISMenu" Style="{StaticResource CheckStyle}" DockPanel.Dock="Bottom" Click="ISMenu_Click"></CheckBox>
+                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                    <TabControl x:Name="TAB" BorderBrush="{x:Null}" BorderThickness="0" Background="{x:Null}">
+                        <TabItem Visibility="Collapsed" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}">
+                            <LeftMenu:C_DataMenu></LeftMenu:C_DataMenu>
+                        </TabItem>
+                        <TabItem Visibility="Collapsed" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}">
+                            <LeftMenu:C_FrameMenu></LeftMenu:C_FrameMenu>
+                        </TabItem>
+                    </TabControl>
+                </ScrollViewer>
+            </DockPanel>
+        </DockPanel>
+
+    </Grid>
+</UserControl>

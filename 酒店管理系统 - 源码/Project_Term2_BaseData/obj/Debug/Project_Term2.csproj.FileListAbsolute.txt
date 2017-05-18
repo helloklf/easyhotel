@@ -1,0 +1,102 @@
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\bin\Debug\Project_Term2.dll.config
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\bin\Debug\Project_Term2.dll
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\bin\Debug\Project_Term2.pdb
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\bin\Debug\DLL_BLL.dll
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\bin\Debug\TModel.dll
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\bin\Debug\DLL_DAL.dll
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\bin\Debug\DLL_BLL.pdb
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\bin\Debug\TModel.pdb
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\bin\Debug\DLL_DAL.pdb
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Project_Term2.csprojResolveAssemblyReference.cache
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\B.baml
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\A.baml
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Style.baml
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\yes.baml
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\B.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\A.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\AccreditType.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\CountryInfo.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\PapersType.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\RoomStateType.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\VipLevel.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\yes.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Project_Term2_MarkupCompile.cache
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Project_Term2_MarkupCompile.lref
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\AccreditType.baml
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\CountryInfo.baml
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\PapersType.baml
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\RoomStateType.baml
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\VipLevel.baml
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Project_Term2.g.resources
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Project_Term2.Properties.Resources.resources
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Project_Term2.csproj.GenerateResource.Cache
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Project_Term2.dll
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Project_Term2.pdb
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\RoomType.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\RoomType.baml
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\OperateType.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\OperateType.baml
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\UnitType.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\UnitType.baml
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\WaresType.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\WaresType.baml
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\SupplierType.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\SupplierType.baml
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\StaffType.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Pages\StaffType.baml
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Back.baml
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Back.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Main_BaseData.g.cs
+C:\Users\Develop\Desktop\Project_Term2\Project_Term2\obj\Debug\Main_BaseData.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\bin\Debug\Project_Term2.dll.config
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\bin\Debug\Project_Term2.dll
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\bin\Debug\Project_Term2.pdb
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\bin\Debug\DLL_BLL.dll
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\bin\Debug\TModel.dll
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\bin\Debug\DLL_DAL.dll
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\bin\Debug\DLL_BLL.pdb
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\bin\Debug\TModel.pdb
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\bin\Debug\DLL_DAL.pdb
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Project_Term2.csprojResolveAssemblyReference.cache
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\B.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\A.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Back.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Style.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\yes.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\B.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\A.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Back.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\AccreditType.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\CountryInfo.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\OperateType.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\PapersType.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\RoomType.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\RoomStateType.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\StaffType.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\SupplierType.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\UnitType.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\VipLevel.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\WaresType.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\BD.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\yes.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Project_Term2_MarkupCompile.cache
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Project_Term2_MarkupCompile.lref
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\AccreditType.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\CountryInfo.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\OperateType.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\PapersType.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\RoomType.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\RoomStateType.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\StaffType.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\SupplierType.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\UnitType.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\VipLevel.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Pages\WaresType.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\BD.baml
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Project_Term2.g.resources
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Project_Term2.Properties.Resources.resources
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Project_Term2.csproj.GenerateResource.Cache
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Project_Term2.dll
+C:\Users\Develop\Desktop\Project_Term2 - 副本\Project_Term2\obj\Debug\Project_Term2.pdb

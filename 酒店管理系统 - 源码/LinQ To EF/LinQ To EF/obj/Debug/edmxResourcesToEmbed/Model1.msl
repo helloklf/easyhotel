@@ -1,0 +1,452 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TavernManageModelStoreContainer" CdmEntityContainer="TavernManageEntities">
+    <EntitySetMapping Name="T_AccountOld">
+      <EntityTypeMapping TypeName="TavernManageModel.T_AccountOld">
+        <MappingFragment StoreEntitySet="T_AccountOld">
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+          <ScalarProperty Name="ClientGUID" ColumnName="ClientGUID" />
+          <ScalarProperty Name="OperateTime" ColumnName="OperateTime" />
+          <ScalarProperty Name="OperateMoney" ColumnName="OperateMoney" />
+          <ScalarProperty Name="OperatorTypeID" ColumnName="OperatorTypeID" />
+          <ScalarProperty Name="OperatorGUID" ColumnName="OperatorGUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_AccreditList">
+      <EntityTypeMapping TypeName="TavernManageModel.T_AccreditList">
+        <MappingFragment StoreEntitySet="T_AccreditList">
+          <ScalarProperty Name="AccreditGUID" ColumnName="AccreditGUID" />
+          <ScalarProperty Name="AStartDate" ColumnName="AStartDate" />
+          <ScalarProperty Name="AEndDate" ColumnName="AEndDate" />
+          <ScalarProperty Name="ALevel" ColumnName="ALevel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_AccreditType">
+      <EntityTypeMapping TypeName="TavernManageModel.T_AccreditType">
+        <MappingFragment StoreEntitySet="T_AccreditType">
+          <ScalarProperty Name="ALevelID" ColumnName="ALevelID" />
+          <ScalarProperty Name="ALevelName" ColumnName="ALevelName" />
+          <ScalarProperty Name="ALevelRemark" ColumnName="ALevelRemark" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_BookRoom">
+      <EntityTypeMapping TypeName="TavernManageModel.T_BookRoom">
+        <MappingFragment StoreEntitySet="T_BookRoom">
+          <ScalarProperty Name="guid" ColumnName="guid" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="BookTime" ColumnName="BookTime" />
+          <ScalarProperty Name="BookValidTime" ColumnName="BookValidTime" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_ClientInfo">
+      <EntityTypeMapping TypeName="TavernManageModel.T_ClientInfo">
+        <MappingFragment StoreEntitySet="T_ClientInfo">
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+          <ScalarProperty Name="ClientCType" ColumnName="ClientCType" />
+          <ScalarProperty Name="ClientIDCard" ColumnName="ClientIDCard" />
+          <ScalarProperty Name="ClientIName" ColumnName="ClientIName" />
+          <ScalarProperty Name="ClientSex" ColumnName="ClientSex" />
+          <ScalarProperty Name="ClientAdress" ColumnName="ClientAdress" />
+          <ScalarProperty Name="ClientTel" ColumnName="ClientTel" />
+          <ScalarProperty Name="ClientVIPID" ColumnName="ClientVIPID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_ClientRoom">
+      <EntityTypeMapping TypeName="TavernManageModel.T_ClientRoom">
+        <MappingFragment StoreEntitySet="T_ClientRoom">
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+          <ScalarProperty Name="ClientGUID" ColumnName="ClientGUID" />
+          <ScalarProperty Name="ClientAccount" ColumnName="ClientAccount" />
+          <ScalarProperty Name="InTime" ColumnName="InTime" />
+          <ScalarProperty Name="LastDeduct" ColumnName="LastDeduct" />
+          <ScalarProperty Name="OperatorGUID" ColumnName="OperatorGUID" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_ClientRoomOld">
+      <EntityTypeMapping TypeName="TavernManageModel.T_ClientRoomOld">
+        <MappingFragment StoreEntitySet="T_ClientRoomOld">
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+          <ScalarProperty Name="ClientGUID" ColumnName="ClientGUID" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="CRinTime" ColumnName="CRinTime" />
+          <ScalarProperty Name="CROutTime" ColumnName="CROutTime" />
+          <ScalarProperty Name="OperatorOGUID" ColumnName="OperatorOGUID" />
+          <ScalarProperty Name="OperatorEGUID" ColumnName="OperatorEGUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_CountryInfo">
+      <EntityTypeMapping TypeName="TavernManageModel.T_CountryInfo">
+        <MappingFragment StoreEntitySet="T_CountryInfo">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_OperateType">
+      <EntityTypeMapping TypeName="TavernManageModel.T_OperateType">
+        <MappingFragment StoreEntitySet="T_OperateType">
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="OperateName" ColumnName="OperateName" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_OutInInfo">
+      <EntityTypeMapping TypeName="TavernManageModel.T_OutInInfo">
+        <MappingFragment StoreEntitySet="T_OutInInfo">
+          <ScalarProperty Name="IOGUID" ColumnName="IOGUID" />
+          <ScalarProperty Name="IOWaresID" ColumnName="IOWaresID" />
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+          <ScalarProperty Name="IOCount" ColumnName="IOCount" />
+          <ScalarProperty Name="IOUnit" ColumnName="IOUnit" />
+          <ScalarProperty Name="OperatorGUID" ColumnName="OperatorGUID" />
+          <ScalarProperty Name="OperatorTime" ColumnName="OperatorTime" />
+          <ScalarProperty Name="IORemark" ColumnName="IORemark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_PaperType">
+      <EntityTypeMapping TypeName="TavernManageModel.T_PaperType">
+        <MappingFragment StoreEntitySet="T_PaperType">
+          <ScalarProperty Name="PapersID" ColumnName="PapersID" />
+          <ScalarProperty Name="PapersName" ColumnName="PapersName" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_RoomList">
+      <EntityTypeMapping TypeName="TavernManageModel.T_RoomList">
+        <MappingFragment StoreEntitySet="T_RoomList">
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="RoomState" ColumnName="RoomState" />
+          <ScalarProperty Name="RoomRemark" ColumnName="RoomRemark" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_RoomStateType">
+      <EntityTypeMapping TypeName="TavernManageModel.T_RoomStateType">
+        <MappingFragment StoreEntitySet="T_RoomStateType">
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="StateColor" ColumnName="StateColor" />
+          <ScalarProperty Name="StateRemark" ColumnName="StateRemark" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_RoomType">
+      <EntityTypeMapping TypeName="TavernManageModel.T_RoomType">
+        <MappingFragment StoreEntitySet="T_RoomType">
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="TypePrice" ColumnName="TypePrice" />
+          <ScalarProperty Name="TypeImage" ColumnName="TypeImage" />
+          <ScalarProperty Name="TypeVipPrice" ColumnName="TypeVipPrice" />
+          <ScalarProperty Name="TypeRequency" ColumnName="TypeRequency" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_StaffInfo">
+      <EntityTypeMapping TypeName="TavernManageModel.T_StaffInfo">
+        <MappingFragment StoreEntitySet="T_StaffInfo">
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+          <ScalarProperty Name="StaffSex" ColumnName="StaffSex" />
+          <ScalarProperty Name="StaffCouID" ColumnName="StaffCouID" />
+          <ScalarProperty Name="StaffAdress" ColumnName="StaffAdress" />
+          <ScalarProperty Name="StaffIdCard" ColumnName="StaffIdCard" />
+          <ScalarProperty Name="StaffInDate" ColumnName="StaffInDate" />
+          <ScalarProperty Name="StaffImage" ColumnName="StaffImage" />
+          <ScalarProperty Name="StaffTel" ColumnName="StaffTel" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_StaffList">
+      <EntityTypeMapping TypeName="TavernManageModel.T_StaffList">
+        <MappingFragment StoreEntitySet="T_StaffList">
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+          <ScalarProperty Name="StaffPwdMD5" ColumnName="StaffPwdMD5" />
+          <ScalarProperty Name="StaffGuid" ColumnName="StaffGuid" />
+          <ScalarProperty Name="StaffAccredit" ColumnName="StaffAccredit" />
+          <ScalarProperty Name="STypeID" ColumnName="STypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_StaffType">
+      <EntityTypeMapping TypeName="TavernManageModel.T_StaffType">
+        <MappingFragment StoreEntitySet="T_StaffType">
+          <ScalarProperty Name="STypeID" ColumnName="STypeID" />
+          <ScalarProperty Name="STypeName" ColumnName="STypeName" />
+          <ScalarProperty Name="STypeALevelID" ColumnName="STypeALevelID" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_StockInfo">
+      <EntityTypeMapping TypeName="TavernManageModel.T_StockInfo">
+        <MappingFragment StoreEntitySet="T_StockInfo">
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+          <ScalarProperty Name="WaresID" ColumnName="WaresID" />
+          <ScalarProperty Name="Inventory" ColumnName="Inventory" />
+          <ScalarProperty Name="LowCuount" ColumnName="LowCuount" />
+          <ScalarProperty Name="StockUnit" ColumnName="StockUnit" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_SupplierInfo">
+      <EntityTypeMapping TypeName="TavernManageModel.T_SupplierInfo">
+        <MappingFragment StoreEntitySet="T_SupplierInfo">
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="SupplierCouID" ColumnName="SupplierCouID" />
+          <ScalarProperty Name="SupplierAdress" ColumnName="SupplierAdress" />
+          <ScalarProperty Name="SupplierTel" ColumnName="SupplierTel" />
+          <ScalarProperty Name="SupplierTypeID" ColumnName="SupplierTypeID" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_SupplierType">
+      <EntityTypeMapping TypeName="TavernManageModel.T_SupplierType">
+        <MappingFragment StoreEntitySet="T_SupplierType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_UnitType">
+      <EntityTypeMapping TypeName="TavernManageModel.T_UnitType">
+        <MappingFragment StoreEntitySet="T_UnitType">
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_VIPInfo">
+      <EntityTypeMapping TypeName="TavernManageModel.T_VIPInfo">
+        <MappingFragment StoreEntitySet="T_VIPInfo">
+          <ScalarProperty Name="VIPID" ColumnName="VIPID" />
+          <ScalarProperty Name="VIPIntegral" ColumnName="VIPIntegral" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_VIPLevel">
+      <EntityTypeMapping TypeName="TavernManageModel.T_VIPLevel">
+        <MappingFragment StoreEntitySet="T_VIPLevel">
+          <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+          <ScalarProperty Name="LevelName" ColumnName="LevelName" />
+          <ScalarProperty Name="LevelIntegral" ColumnName="LevelIntegral" />
+          <ScalarProperty Name="VipDiscount" ColumnName="VipDiscount" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_WaresType">
+      <EntityTypeMapping TypeName="TavernManageModel.T_WaresType">
+        <MappingFragment StoreEntitySet="T_WaresType">
+          <ScalarProperty Name="WaresID" ColumnName="WaresID" />
+          <ScalarProperty Name="WaresName" ColumnName="WaresName" />
+          <ScalarProperty Name="WaresImage" ColumnName="WaresImage" />
+          <ScalarProperty Name="WaresRemark" ColumnName="WaresRemark" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_Charge">
+      <EntityTypeMapping TypeName="TavernManageModel.View_Charge">
+        <MappingFragment StoreEntitySet="View_Charge">
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+          <ScalarProperty Name="ClientAccount" ColumnName="ClientAccount" />
+          <ScalarProperty Name="LastDeduct" ColumnName="LastDeduct" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="TypePrice" ColumnName="TypePrice" />
+          <ScalarProperty Name="VipDiscount" ColumnName="VipDiscount" />
+          <ScalarProperty Name="Multiple" ColumnName="Multiple" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_ClientRoomState">
+      <EntityTypeMapping TypeName="TavernManageModel.View_ClientRoomState">
+        <MappingFragment StoreEntitySet="View_ClientRoomState">
+          <ScalarProperty Name="DataGUID" ColumnName="DataGUID" />
+          <ScalarProperty Name="ClientAccount" ColumnName="ClientAccount" />
+          <ScalarProperty Name="InRoomTime" ColumnName="InRoomTime" />
+          <ScalarProperty Name="LastDeduct" ColumnName="LastDeduct" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_ConsumeHistory">
+      <EntityTypeMapping TypeName="TavernManageModel.view_ConsumeHistory">
+        <MappingFragment StoreEntitySet="view_ConsumeHistory">
+          <ScalarProperty Name="客户编号" ColumnName="客户编号" />
+          <ScalarProperty Name="客户姓名" ColumnName="客户姓名" />
+          <ScalarProperty Name="操作类型" ColumnName="操作类型" />
+          <ScalarProperty Name="操作金额" ColumnName="操作金额" />
+          <ScalarProperty Name="操作时间" ColumnName="操作时间" />
+          <ScalarProperty Name="客户名" ColumnName="客户名" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_HousingHistory">
+      <EntityTypeMapping TypeName="TavernManageModel.view_HousingHistory">
+        <MappingFragment StoreEntitySet="view_HousingHistory">
+          <ScalarProperty Name="记录编号" ColumnName="记录编号" />
+          <ScalarProperty Name="客户姓名" ColumnName="客户姓名" />
+          <ScalarProperty Name="房间编号" ColumnName="房间编号" />
+          <ScalarProperty Name="入住时间" ColumnName="入住时间" />
+          <ScalarProperty Name="退房时间" ColumnName="退房时间" />
+          <ScalarProperty Name="入住登记" ColumnName="入住登记" />
+          <ScalarProperty Name="退房操作" ColumnName="退房操作" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_RoomInfo">
+      <EntityTypeMapping TypeName="TavernManageModel.View_RoomInfo">
+        <MappingFragment StoreEntitySet="View_RoomInfo">
+          <ScalarProperty Name="房间编号" ColumnName="房间编号" />
+          <ScalarProperty Name="类型编号" ColumnName="类型编号" />
+          <ScalarProperty Name="类型名" ColumnName="类型名" />
+          <ScalarProperty Name="单价" ColumnName="单价" />
+          <ScalarProperty Name="结算频率" ColumnName="结算频率" />
+          <ScalarProperty Name="状态编号" ColumnName="状态编号" />
+          <ScalarProperty Name="状态名" ColumnName="状态名" />
+          <ScalarProperty Name="颜色" ColumnName="颜色" />
+          <ScalarProperty Name="房间备注" ColumnName="房间备注" />
+          <ScalarProperty Name="有效状态" ColumnName="有效状态" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_RoomInfoAll">
+      <EntityTypeMapping TypeName="TavernManageModel.View_RoomInfoAll">
+        <MappingFragment StoreEntitySet="View_RoomInfoAll">
+          <ScalarProperty Name="房间编号" ColumnName="房间编号" />
+          <ScalarProperty Name="类型编号" ColumnName="类型编号" />
+          <ScalarProperty Name="类型名" ColumnName="类型名" />
+          <ScalarProperty Name="单价" ColumnName="单价" />
+          <ScalarProperty Name="结算频率" ColumnName="结算频率" />
+          <ScalarProperty Name="状态编号" ColumnName="状态编号" />
+          <ScalarProperty Name="状态名" ColumnName="状态名" />
+          <ScalarProperty Name="颜色" ColumnName="颜色" />
+          <ScalarProperty Name="房间备注" ColumnName="房间备注" />
+          <ScalarProperty Name="有效状态" ColumnName="有效状态" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_RoomInfoNo">
+      <EntityTypeMapping TypeName="TavernManageModel.View_RoomInfoNo">
+        <MappingFragment StoreEntitySet="View_RoomInfoNo">
+          <ScalarProperty Name="房间编号" ColumnName="房间编号" />
+          <ScalarProperty Name="类型编号" ColumnName="类型编号" />
+          <ScalarProperty Name="类型名" ColumnName="类型名" />
+          <ScalarProperty Name="单价" ColumnName="单价" />
+          <ScalarProperty Name="结算频率" ColumnName="结算频率" />
+          <ScalarProperty Name="状态编号" ColumnName="状态编号" />
+          <ScalarProperty Name="状态名" ColumnName="状态名" />
+          <ScalarProperty Name="颜色" ColumnName="颜色" />
+          <ScalarProperty Name="房间备注" ColumnName="房间备注" />
+          <ScalarProperty Name="有效状态" ColumnName="有效状态" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_RoomStateCount">
+      <EntityTypeMapping TypeName="TavernManageModel.View_RoomStateCount">
+        <MappingFragment StoreEntitySet="View_RoomStateCount">
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="RCount" ColumnName="RCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_RoomTypeCount">
+      <EntityTypeMapping TypeName="TavernManageModel.View_RoomTypeCount">
+        <MappingFragment StoreEntitySet="View_RoomTypeCount">
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="RCount" ColumnName="RCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Proc_AccountRemind" FunctionName="TavernManageModel.Store.Proc_AccountRemind">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TavernManageModel.Proc_AccountRemind_Result">
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+          <ScalarProperty Name="ClientIName" ColumnName="ClientIName" />
+          <ScalarProperty Name="ClientAccount" ColumnName="ClientAccount" />
+          <ScalarProperty Name="LastDeduct" ColumnName="LastDeduct" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_AutoDeleteBook" FunctionName="TavernManageModel.Store.Proc_AutoDeleteBook" />
+    <FunctionImportMapping FunctionImportName="Proc_AutoSettleAccounts" FunctionName="TavernManageModel.Store.Proc_AutoSettleAccounts" />
+    <FunctionImportMapping FunctionImportName="Proc_BookClientIn" FunctionName="TavernManageModel.Store.Proc_BookClientIn" />
+    <FunctionImportMapping FunctionImportName="Proc_BookRoom" FunctionName="TavernManageModel.Store.Proc_BookRoom" />
+    <FunctionImportMapping FunctionImportName="Proc_ClientCheckIn" FunctionName="TavernManageModel.Store.Proc_ClientCheckIn" />
+    <FunctionImportMapping FunctionImportName="Proc_ClientOut" FunctionName="TavernManageModel.Store.Proc_ClientOut" />
+    <FunctionImportMapping FunctionImportName="Proc_DeleteBookRoom" FunctionName="TavernManageModel.Store.Proc_DeleteBookRoom" />
+    <FunctionImportMapping FunctionImportName="Proc_EmptyRoomCount" FunctionName="TavernManageModel.Store.Proc_EmptyRoomCount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TavernManageModel.Proc_EmptyRoomCount_Result">
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="EmptyRoom" ColumnName="EmptyRoom" />
+          <ScalarProperty Name="AllRoom" ColumnName="AllRoom" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_PriceSearch" FunctionName="TavernManageModel.Store.Proc_PriceSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TavernManageModel.Proc_PriceSearch_Result">
+          <ScalarProperty Name="房间编号" ColumnName="房间编号" />
+          <ScalarProperty Name="类型编号" ColumnName="类型编号" />
+          <ScalarProperty Name="类型名" ColumnName="类型名" />
+          <ScalarProperty Name="单价" ColumnName="单价" />
+          <ScalarProperty Name="结算频率" ColumnName="结算频率" />
+          <ScalarProperty Name="状态编号" ColumnName="状态编号" />
+          <ScalarProperty Name="状态名" ColumnName="状态名" />
+          <ScalarProperty Name="颜色" ColumnName="颜色" />
+          <ScalarProperty Name="房间备注" ColumnName="房间备注" />
+          <ScalarProperty Name="有效状态" ColumnName="有效状态" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_RoomChange" FunctionName="TavernManageModel.Store.proc_RoomChange" />
+    <FunctionImportMapping FunctionImportName="Proc_StaffResign" FunctionName="TavernManageModel.Store.Proc_StaffResign" />
+    <FunctionImportMapping FunctionImportName="Proc_UserLogin" FunctionName="TavernManageModel.Store.Proc_UserLogin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TavernManageModel.Proc_UserLogin_Result">
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+          <ScalarProperty Name="StaffImage" ColumnName="StaffImage" />
+          <ScalarProperty Name="STypeID" ColumnName="STypeID" />
+          <ScalarProperty Name="STypeName" ColumnName="STypeName" />
+          <ScalarProperty Name="ALevelID" ColumnName="ALevelID" />
+          <ScalarProperty Name="ALevelName" ColumnName="ALevelName" />
+          <ScalarProperty Name="StaffPwdMD5" ColumnName="StaffPwdMD5" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Inform.P_MessageBox" BorderBrush="#FFD1FF00" Background="#7F000000" Padding="1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Loaded="UserControl_Loaded"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" Height="100" Width="400" Margin="0,20,0,0">
+    <UserControl.Resources>
+        <Style TargetType="Border" x:Key="Submit_Smalllab">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="1" Opacity="0.5" Color="{Binding Background,ElementName=C}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="CornerRadius" Value="90"></Setter>
+            <Setter Property="DockPanel.Dock" Value="Right"></Setter>
+            <Setter Property="VerticalAlignment" Value="Top"></Setter>
+            <Setter Property="BorderThickness" Value="2"></Setter>
+            <Setter Property="BorderBrush" Value="{Binding Foreground,ElementName=C}"></Setter>
+            <Setter Property="Height" Value="25"></Setter>
+            <Setter Property="Width" Value="25"></Setter>
+            <Setter Property="Padding" Value="0"></Setter>
+            <Setter Property="Margin" Value="2"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="{Binding Foreground,ElementName=C}"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <DockPanel Height="Auto" Background="{Binding Background,ElementName=C}">
+        <TextBox x:Name="C" Visibility="Collapsed" Foreground="{Binding ForeColor}" Background="{Binding BgColor}"></TextBox>
+        <Image Height="100" Name="MessImage" Width="100" Source="城市.png" Stretch="None" >
+            <Image.Effect>
+                <DropShadowEffect Color="{Binding Foreground,ElementName=C}" ShadowDepth="1"/>
+            </Image.Effect>
+        </Image>
+        <StackPanel DockPanel.Dock="Right">
+            <Border Style="{StaticResource Submit_Smalllab}" Background="Red" MouseDown="No_MouseDown">
+                <Image Source="叉.png" ></Image>
+            </Border>
+            <Border x:Name="IsPin" Style="{StaticResource Submit_Smalllab}" Background="Green" MouseDown="NoAutoCler" ToolTip="固定消息">
+                <Image Source="收藏.png"></Image>
+            </Border>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+            <TextBlock FontSize="15" Name="MessText" Foreground="{Binding Foreground,ElementName=C}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="10"></TextBlock>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

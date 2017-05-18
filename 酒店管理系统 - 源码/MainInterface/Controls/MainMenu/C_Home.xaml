@@ -1,0 +1,1014 @@
+﻿<UserControl x:Class="Project_Term2.MainMenu.C_Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:myc="clr-namespace:MyControls;assembly=MyControls"
+             Loaded="UserControl_Loaded"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary Source="Style.xaml" />
+    </UserControl.Resources>
+
+    <TabControl Name="MainTab" Style="{StaticResource PageManage}">
+        <!--  主要菜单  -->
+        <TabItem>
+            <DockPanel Grid.Column="0" Background="#3555">
+                <TextBlock x:Name="C"
+                           Background="{Binding BgColor}"
+                           Foreground="{Binding ForeColor}"
+                           Visibility="Collapsed" />
+                <DockPanel Height="55"
+                           Margin="25,20,25,10"
+                           HorizontalAlignment="Left"
+                           DockPanel.Dock="Top">
+                    <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+                        <Border>
+                            <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/菜单.png" />
+                        </Border>
+                        <TextBlock VerticalAlignment="Center"
+                                   DockPanel.Dock="Left"
+                                   FontSize="45"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   MouseDown="HelpPage"
+                                   Text="主面板" />
+                    </StackPanel>
+                    <!--  隐藏项切换  -->
+                    <CheckBox Name="IsCkecked_Hide"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              Click="TabChange_Click"
+                              Foreground="{Binding Foreground,
+                                                   ElementName=C}">
+                        <CheckBox.Template>
+                            <ControlTemplate TargetType="CheckBox">
+                                <Border Width="125" Height="40">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image x:Name="IsC" Source="../Image/ICON0/未选中.png" />
+                                        <TextBlock HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="18"
+                                                   Text="更多功能" />
+                                    </StackPanel>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsChecked" Value="True">
+                                        <Setter TargetName="IsC" Property="Image.Source" Value="../Image/ICON0/选中.png" />
+                                    </Trigger>
+
+                                    <Trigger Property="IsChecked" Value="false">
+                                        <Setter TargetName="IsC" Property="Image.Source" Value="../Image/ICON0/未选中.png" />
+                                    </Trigger>
+
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </CheckBox.Template>
+                    </CheckBox>
+                </DockPanel>
+                <TabControl Name="Tab"
+                            Margin="0"
+                            Padding="0">
+                    <!--  首页面  -->
+                    <TabItem>
+                        <DockPanel Margin="30,0">
+                            <!--  功能导航  -->
+                            <StackPanel Margin="-30,0" DockPanel.Dock="Bottom">
+
+                                <!--  基本功能  -->
+                                <Grid x:Name="SysFunPanel" Background="{Binding Foreground, ElementName=C}">
+                                    <Border Name="SysFun" Background="#59000000">
+                                        <WrapPanel Name="MainMenu_Function" HorizontalAlignment="Center">
+                                            <!--  用户登录  -->
+                                            <Border Height="40"
+                                                    MinWidth="90"
+                                                    DockPanel.Dock="Left"
+                                                    MouseLeftButtonDown="Tile_UserLogin"
+                                                    Style="{StaticResource ToolTile2}">
+                                                <StackPanel Orientation="Horizontal" ToolTip="如果未登陆，点击我打开登陆页面">
+                                                    <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/用户.png" />
+                                                    <TextBlock HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="20"
+                                                               Foreground="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Text="登录" />
+                                                </StackPanel>
+                                            </Border>
+                                            <!--  用户注销  -->
+                                            <Border Height="40"
+                                                    MinWidth="90"
+                                                    DockPanel.Dock="Left"
+                                                    MouseLeftButtonDown="Tile_UserLogOff"
+                                                    Style="{StaticResource ToolTile2}">
+                                                <StackPanel Orientation="Horizontal" ToolTip="注销当前已经登陆的账户">
+                                                    <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/退出.png" />
+                                                    <TextBlock HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="20"
+                                                               Foreground="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Text="注销" />
+                                                </StackPanel>
+                                            </Border>
+                                            <!--  打开消息系统  -->
+                                            <Border Height="40"
+                                                    MinWidth="90"
+                                                    MouseLeftButtonDown="Tile_MesageSystem"
+                                                    Style="{StaticResource ToolTile2}">
+                                                <StackPanel Orientation="Horizontal" ToolTip="显示当前信息条数，点击去信息中心查看">
+                                                    <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/消息.png" />
+                                                    <TextBlock x:Name="MCount"
+                                                               HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="20"
+                                                               Foreground="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Text="{Binding MessageCount}" />
+                                                    <TextBlock HorizontalAlignment="Right"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="20"
+                                                               Foreground="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Text="条" />
+                                                </StackPanel>
+                                            </Border>
+                                            <!--  打开设置面板  -->
+                                            <Border Height="40"
+                                                    MinWidth="90"
+                                                    MouseLeftButtonDown="Tile_SettingOpen"
+                                                    Style="{StaticResource ToolTile2}">
+                                                <StackPanel Orientation="Horizontal" ToolTip="打开应用程序设置中心">
+                                                    <Image HorizontalAlignment="Left" Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/皮肤.png" />
+                                                    <TextBlock HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="20"
+                                                               Foreground="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Text="皮肤" />
+                                                </StackPanel>
+                                            </Border>
+                                            <!--  消息系统提示风格  -->
+                                            <Border Height="40"
+                                                    MinWidth="90"
+                                                    MouseLeftButtonDown="Tile_WindowStyle"
+                                                    Style="{StaticResource ToolTile2}">
+                                                <StackPanel Orientation="Horizontal" ToolTip="切换消息提示风格（窗口提示或侧边悬浮块）">
+                                                    <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/Tran.png" />
+                                                    <TextBlock HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="20"
+                                                               Foreground="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Text="风格" />
+                                                </StackPanel>
+                                            </Border>
+                                            <!--  锁定界面  -->
+                                            <Border Height="40"
+                                                    MinWidth="90"
+                                                    DockPanel.Dock="Left"
+                                                    MouseLeftButtonDown="Tile_LockWindow"
+                                                    Style="{StaticResource ToolTile2}">
+                                                <StackPanel Orientation="Horizontal" ToolTip="锁定当前应用程序主界面，输入登陆密码才可解锁！">
+                                                    <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/未锁定.png" />
+                                                    <TextBlock HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="20"
+                                                               Foreground="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Text="锁定" />
+                                                </StackPanel>
+                                            </Border>
+                                            <!--  帮助  -->
+                                            <Border Height="40"
+                                                    MinWidth="90"
+                                                    DockPanel.Dock="Left"
+                                                    MouseLeftButtonDown="Tile_HelpOpen"
+                                                    Style="{StaticResource ToolTile2}">
+                                                <StackPanel Orientation="Horizontal" ToolTip="消息提示风格">
+                                                    <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/帮助.png" />
+                                                    <TextBlock HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="20"
+                                                               Foreground="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Text="帮助" />
+                                                </StackPanel>
+                                            </Border>
+                                        </WrapPanel>
+                                    </Border>
+                                </Grid>
+
+                                <!--  主要功能  -->
+                                <Grid x:Name="BasicPanel">
+                                    <Border Name="BasicFun" Margin="0,0,0,20">
+                                        <WrapPanel Name="MainMenu_Main" HorizontalAlignment="Center">
+                                            <!--  房间列表  -->
+                                            <Border Background="#FF0091E4"
+                                                    MouseLeftButtonDown="Fun_AllRoomList"
+                                                    Style="{StaticResource ToolTile}">
+                                                <StackPanel Orientation="Horizontal" ToolTip="关于酒店住房的事务">
+                                                    <Image Height="64" Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/房间.png" />
+                                                    <TextBlock HorizontalAlignment="Right"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="20"
+                                                               Foreground="White"
+                                                               Padding="0,0,13,0"
+                                                               Text="房间事务" />
+                                                </StackPanel>
+                                            </Border>
+                                            <!--  历史记录  -->
+                                            <Border Background="#FF5D3104"
+                                                    MouseLeftButtonDown="Fun_History"
+                                                    Style="{StaticResource ToolTile}">
+                                                <StackPanel Orientation="Horizontal" ToolTip="查看客户的住房历史和消费记录">
+                                                    <Image Height="64" Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/历史记录.png" />
+                                                    <TextBlock HorizontalAlignment="Right"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="20"
+                                                               Foreground="White"
+                                                               Padding="0,0,13,0"
+                                                               Text="历史记录" />
+                                                </StackPanel>
+                                            </Border>
+                                            <!--  客户管理  -->
+                                            <Border Grid.Column="1"
+                                                    Background="#FF7605AA"
+                                                    MouseLeftButtonDown="Fun_ClientList"
+                                                    Style="{StaticResource ToolTile}">
+                                                <StackPanel Orientation="Horizontal" ToolTip="查看和修改客户入住酒店时登记的档案、管理VIP账号">
+                                                    <Image Height="64"
+                                                           HorizontalAlignment="Left"
+                                                           Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/客户.png" />
+                                                    <TextBlock HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="20"
+                                                               Foreground="White"
+                                                               Padding="0,0,13,0"
+                                                               Text="客户管理" />
+                                                </StackPanel>
+                                            </Border>
+                                            <!--  房间管理  -->
+                                            <Border Grid.Column="3"
+                                                    Background="#FF14615D"
+                                                    MouseLeftButtonDown="Fun_RoomManage"
+                                                    Style="{StaticResource ToolTile}">
+                                                <StackPanel Orientation="Horizontal" ToolTip="管理酒店的房间，可以进行添加、禁用等操作">
+                                                    <Image Height="64" Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/城市.png" />
+                                                    <TextBlock HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="20"
+                                                               Foreground="White"
+                                                               Padding="0,0,13,0"
+                                                               Text="房间管理" />
+                                                </StackPanel>
+                                            </Border>
+                                            <!--  员工管理  -->
+                                            <Border Grid.Column="2"
+                                                    Background="#FF03B824"
+                                                    MouseLeftButtonDown="Fun_StaffList"
+                                                    Style="{StaticResource ToolTile}">
+                                                <StackPanel Orientation="Horizontal" ToolTip="管理员工档案和在职员工的登陆账号">
+                                                    <Image Height="64" Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/笑脸.png" />
+                                                    <TextBlock HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="20"
+                                                               Foreground="White"
+                                                               Padding="0,0,13,0"
+                                                               Text="员工管理" />
+                                                </StackPanel>
+                                            </Border>
+                                            <!--  基础数据  -->
+                                            <Border Grid.Column="4"
+                                                    Background="#FFE64D04"
+                                                    MouseLeftButtonDown="Fun_BaseDataMange"
+                                                    Style="{StaticResource ToolTile}">
+                                                <StackPanel Orientation="Horizontal" ToolTip="设置和查询数据库最底层的数据">
+                                                    <Image Height="64" Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/SQL.png" />
+                                                    <TextBlock HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="20"
+                                                               Foreground="White"
+                                                               Padding="0,0,13,0"
+                                                               Text="数据维护" />
+                                                </StackPanel>
+                                            </Border>
+                                        </WrapPanel>
+                                    </Border>
+                                </Grid>
+
+                            </StackPanel>
+
+                            <!--  永久显示的块  -->
+                            <Border Name="ForthwithInfo"
+                                    MaxWidth="250"
+                                    VerticalAlignment="Top"
+                                    DockPanel.Dock="Right">
+                                <WrapPanel Name="MainMenu_Lable_Tile">
+                                    <!--  基本状态  -->
+                                    <Border Width="125"
+                                            Height="120"
+                                            Background="#FFFF8B00"
+                                            Style="{StaticResource ToolTile}">
+                                        <StackPanel x:Name="TypeMaxCount" Margin="10">
+                                            <TextBlock Foreground="White" Text="总数最多" />
+                                            <TextBlock Margin="2,5"
+                                                       FontSize="17"
+                                                       Foreground="White"
+                                                       Text="{Binding Title}" />
+                                            <TextBlock Margin="2,5"
+                                                       HorizontalAlignment="Center"
+                                                       FontSize="35"
+                                                       Foreground="White"
+                                                       Text="{Binding Text}" />
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Width="125"
+                                            Height="120"
+                                            Background="#FF43B900"
+                                            Style="{StaticResource ToolTile}">
+                                        <StackPanel x:Name="TypeMinCount" Margin="10">
+                                            <TextBlock Foreground="White" Text="总数最少" />
+                                            <TextBlock Margin="2,5"
+                                                       FontSize="17"
+                                                       Foreground="White"
+                                                       Text="{Binding Title}" />
+                                            <TextBlock Margin="2,5"
+                                                       HorizontalAlignment="Center"
+                                                       FontSize="35"
+                                                       Foreground="White"
+                                                       Text="{Binding Text}" />
+                                        </StackPanel>
+                                    </Border>
+                                </WrapPanel>
+                            </Border>
+
+                            <!--  即时信息  -->
+                            <Border BorderThickness="3" DockPanel.Dock="Left">
+                                <DockPanel x:Name="ForthwithInfoPanel">
+                                    <!--  菜单  -->
+                                    <Border DockPanel.Dock="Left">
+                                        <UniformGrid Width="45"
+                                                     MinHeight="250"
+                                                     VerticalAlignment="Top"
+                                                     Background="#8000"
+                                                     Rows="4">
+                                            <RadioButton Click="ToolTile_ToHotelScale"
+                                                         IsChecked="True"
+                                                         Style="{StaticResource LMenu}">
+                                                <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/城市.png" />
+                                            </RadioButton>
+                                            <RadioButton Click="ToolTile_ToRoomState" Style="{StaticResource LMenu}">
+                                                <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/房间列表.png" />
+                                            </RadioButton>
+                                            <RadioButton Click="ToolTile_ToEmptyRoom" Style="{StaticResource LMenu}">
+                                                <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/空房.png" />
+                                            </RadioButton>
+                                            <RadioButton Click="ToolTile_ToFund" Style="{StaticResource LMenu}">
+                                                <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/人民币.png" />
+                                            </RadioButton>
+                                        </UniformGrid>
+                                    </Border>
+                                    <!--  数据展示  -->
+                                    <TabControl x:Name="TabToolTiles">
+                                        <!--  酒店规模  -->
+                                        <TabItem>
+                                            <DockPanel>
+                                                <TextBlock DockPanel.Dock="Top"
+                                                           FontSize="25"
+                                                           Foreground="{Binding Foreground,
+                                                                                ElementName=C}"
+                                                           Opacity="0.75"
+                                                           Padding="10,0,10,10"
+                                                           Text="酒店规模" />
+                                                <ListBox x:Name="RoomTypeCountLB" Style="{StaticResource TileListbox}" />
+                                            </DockPanel>
+                                        </TabItem>
+                                        <!--  房间状态  -->
+                                        <TabItem>
+                                            <StackPanel>
+                                                <TextBlock FontSize="30"
+                                                           Foreground="{Binding Foreground,
+                                                                                ElementName=C}"
+                                                           Opacity="0.75"
+                                                           Padding="10,0,10,10"
+                                                           Text="房间状态" />
+                                                <ListBox x:Name="RoomStateCountLB" Style="{StaticResource TileListbox}" />
+                                            </StackPanel>
+                                        </TabItem>
+                                        <!--  空房数量  -->
+                                        <TabItem>
+                                            <DockPanel>
+                                                <TextBlock DockPanel.Dock="Top"
+                                                           FontSize="25"
+                                                           Foreground="{Binding Foreground,
+                                                                                ElementName=C}"
+                                                           Opacity="0.75"
+                                                           Padding="10,0,10,10"
+                                                           Text="空房情况" />
+                                                <ListBox x:Name="RoomEmptyCountLB" Style="{StaticResource TileListbox}">
+                                                    <ListBox.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <WrapPanel />
+                                                        </ItemsPanelTemplate>
+                                                    </ListBox.ItemsPanel>
+                                                    <ListBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border Width="250" Background="#7FFF00AE">
+                                                                <DockPanel Margin="10,5">
+                                                                    <TextBlock Margin="0,3,10,3"
+                                                                               DockPanel.Dock="Right"
+                                                                               FontSize="15"
+                                                                               Text="{Binding Text_1}" />
+                                                                    <TextBlock Margin="20,3,10,3"
+                                                                               DockPanel.Dock="Right"
+                                                                               FontSize="15"
+                                                                               Text="{Binding Text}" />
+                                                                    <TextBlock FontSize="18" Text="{Binding Title}" />
+                                                                </DockPanel>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ListBox.ItemTemplate>
+                                                </ListBox>
+                                            </DockPanel>
+                                        </TabItem>
+                                        <!--  资金出入  -->
+                                        <TabItem>
+                                            <StackPanel>
+                                                <TextBlock FontSize="25"
+                                                           Foreground="{Binding Foreground,
+                                                                                ElementName=C}"
+                                                           Opacity="0.75"
+                                                           Padding="10,0,10,10"
+                                                           Text="24小时账目" />
+                                                <ListBox x:Name="RoomFundIO" Style="{StaticResource TileListbox}" />
+                                            </StackPanel>
+                                        </TabItem>
+                                    </TabControl>
+                                </DockPanel>
+                            </Border>
+                        </DockPanel>
+                    </TabItem>
+
+                    <!--  隐藏面板  -->
+                    <TabItem Background="{x:Null}"
+                             BorderBrush="{x:Null}"
+                             BorderThickness="0"
+                             Visibility="Collapsed">
+                        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                                      ScrollViewer.PanningMode="Both"
+                                      VerticalScrollBarVisibility="Hidden"
+                                      Visibility="Visible">
+                            <StackPanel Margin="20">
+
+                                <!--  房间事务  -->
+                                <StackPanel x:Name="RoomTranPanel">
+                                    <TextBlock Margin="0"
+                                               FontSize="35"
+                                               MouseLeftButtonDown="RoomInfoPanel_Click"
+                                               Style="{StaticResource TitleText}"
+                                               Text="房间事务" />
+                                    <Border Name="RoomTran">
+                                        <WrapPanel Name="MainMenu_Lable_List">
+                                            <Label MouseLeftButtonDown="RoomSelect_Click" Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Panel.ZIndex="2"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               FontSize="15"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5,3"
+                                                               Text="房间查询" />
+                                                    <Image Panel.ZIndex="1"
+                                                           Source="../Image/JPEG/房间查询.jpg"
+                                                           Stretch="Fill" />
+                                                </Grid>
+                                            </Label>
+                                            <Label MouseLeftButtonDown="Go_ClientIn" Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Panel.ZIndex="2"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               FontSize="15"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5,3"
+                                                               Text="单人入住" />
+                                                    <Image Panel.ZIndex="1"
+                                                           Source="../Image/JPEG/酒店退房.jpg"
+                                                           Stretch="Fill" />
+                                                </Grid>
+                                            </Label>
+                                            <Label MouseLeftButtonDown="Go_Client_Pay" Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Panel.ZIndex="2"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               FontSize="15"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5,3"
+                                                               Text="客户交费" />
+                                                    <Image Panel.ZIndex="1"
+                                                           Source="../Image/JPEG/客户交费.jpg"
+                                                           Stretch="Fill" />
+                                                </Grid>
+                                            </Label>
+                                            <Label MouseLeftButtonDown="Go_ClientExit" Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Panel.ZIndex="2"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               FontSize="15"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5,3"
+                                                               Text="退房结账" />
+                                                    <Image Panel.ZIndex="1"
+                                                           Source="../Image/JPEG/个体入住.jpg"
+                                                           Stretch="Fill" />
+                                                </Grid>
+                                            </Label>
+                                            <Label MouseLeftButtonDown="Go_TodayAccounts" Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Panel.ZIndex="2"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               FontSize="15"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5,3"
+                                                               Text="24小时账目" />
+                                                    <Image Panel.ZIndex="1"
+                                                           Source="../Image/JPEG/当日账目.jpg"
+                                                           Stretch="Fill" />
+                                                </Grid>
+                                            </Label>
+                                            <Label MouseLeftButtonDown="Go_RoomBook" Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Panel.ZIndex="2"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               FontSize="15"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5,3"
+                                                               Text="查看预订" />
+                                                    <Image Panel.ZIndex="1"
+                                                           Source="../Image/JPEG/客服.jpg"
+                                                           Stretch="Fill" />
+                                                </Grid>
+                                            </Label>
+                                        </WrapPanel>
+                                    </Border>
+                                </StackPanel>
+
+                                <!--  员工事务  -->
+                                <StackPanel x:Name="StaffTranPanel">
+                                    <TextBlock Margin="0"
+                                               FontSize="35"
+                                               MouseLeftButtonDown="StaffPanel_Click"
+                                               Style="{StaticResource TitleText}"
+                                               Text="员工事务" />
+                                    <Border Name="StaffTran" Margin="0,0,0,20">
+                                        <WrapPanel Name="StaffTranWrap">
+                                            <!--  添加员工  -->
+                                            <Label MouseLeftButtonDown="RoomSelect_Click" Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <Image Source="/酒店管理系统-主程序;component/Controls/Image/JPEG/添加员工.jpg" Stretch="Uniform" />
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5">
+                                                        添加员工
+                                                    </TextBlock>
+                                                </Grid>
+                                            </Label>
+                                            <!--  员工档案  -->
+                                            <Label MouseLeftButtonDown="RoomSelect_Click" Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <Image Source="/酒店管理系统-主程序;component/Controls/Image/JPEG/员工信息.jpg" Stretch="Uniform" />
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5">
+                                                        员工档案
+                                                    </TextBlock>
+                                                </Grid>
+                                            </Label>
+                                            <!--  在职员工  -->
+                                            <Label MouseLeftButtonDown="RoomSelect_Click" Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <Image Source="/酒店管理系统-主程序;component/Controls/Image/JPEG/在职员工.jpg" Stretch="Uniform" />
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5">
+                                                        在职员工
+                                                    </TextBlock>
+                                                </Grid>
+                                            </Label>
+                                        </WrapPanel>
+                                    </Border>
+                                </StackPanel>
+
+                                <!--  客户事务  -->
+                                <StackPanel x:Name="ClientTranPanel">
+                                    <TextBlock Margin="0"
+                                               FontSize="35"
+                                               MouseLeftButtonDown="BDTranPanel_Click"
+                                               Style="{StaticResource TitleText}"
+                                               Text="客户事务" />
+                                    <Border Name="ClientTran" Margin="0,0,0,20">
+                                        <WrapPanel Name="ClientTranWrap">
+                                            <Label HorizontalContentAlignment="Stretch"
+                                                   Background="White"
+                                                   MouseLeftButtonDown="RoomSelect_Click"
+                                                   Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <Image Margin="15"
+                                                           Source="pages/Image/头像.png"
+                                                           Stretch="Uniform" />
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5">
+                                                        客户管理
+                                                    </TextBlock>
+                                                </Grid>
+                                            </Label>
+                                            <Label MouseLeftButtonDown="RoomSelect_Click" Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <Image Source="pages/Image/黄金VIP.jpg" Stretch="Fill" />
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5">
+                                                        VIP 管理
+                                                    </TextBlock>
+                                                </Grid>
+                                            </Label>
+                                        </WrapPanel>
+                                    </Border>
+                                </StackPanel>
+
+                                <!--  基础数据  -->
+                                <StackPanel x:Name="BDTranPanel">
+                                    <TextBlock Margin="0"
+                                               FontSize="35"
+                                               MouseLeftButtonDown="BDTranPanel_Click"
+                                               Style="{StaticResource TitleText}"
+                                               Text="基础数据" />
+                                    <Border Name="BDTran" Margin="0,0,0,20">
+                                        <WrapPanel Name="BDTranWrap">
+                                            <Label MouseLeftButtonDown="RoomSelect_Click" Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <Image Source="Pages/Tile/证件类型.jpg" Stretch="Uniform" />
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5">
+                                                        证件类型
+                                                    </TextBlock>
+                                                </Grid>
+                                            </Label>
+                                            <Label MouseLeftButtonDown="RoomSelect_Click" Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <Image Source="Pages/Tile/地图.png" Stretch="Fill" />
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5">
+                                                        国家列表
+                                                    </TextBlock>
+                                                </Grid>
+                                            </Label>
+                                            <Label MouseLeftButtonDown="RoomSelect_Click" Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <Image Source="Pages/Tile/VIP卡.jpg" Stretch="Fill" />
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5">
+                                                        VIP分级
+                                                    </TextBlock>
+                                                </Grid>
+                                            </Label>
+                                            <Label HorizontalContentAlignment="Stretch"
+                                                   Background="#FFFFA200"
+                                                   MouseLeftButtonDown="RoomSelect_Click"
+                                                   Style="{StaticResource MainMenu_Lables}">
+                                                <Grid HorizontalAlignment="Stretch">
+                                                    <Image Margin="15" Source="Pages/Tile/盾.png" />
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5">
+                                                        授权级别
+                                                    </TextBlock>
+                                                </Grid>
+                                            </Label>
+                                            <Label MouseLeftButtonDown="RoomSelect_Click" Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <Image Source="Pages/Tile/搬房子.jpg" Stretch="Uniform" />
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5">
+                                                        房间类型
+                                                    </TextBlock>
+                                                </Grid>
+                                            </Label>
+                                            <Label HorizontalContentAlignment="Stretch"
+                                                   Background="#FF8ECD08"
+                                                   MouseLeftButtonDown="RoomSelect_Click"
+                                                   Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <Image Source="Pages/Tile/红房子.png" Stretch="Uniform" />
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5">
+                                                        房间状态
+                                                    </TextBlock>
+                                                </Grid>
+                                            </Label>
+                                            <Label MouseLeftButtonDown="RoomSelect_Click" Style="{StaticResource MainMenu_Lables}">
+                                                <Grid>
+                                                    <Image Source="Pages/Tile/操作类型.jpg" Stretch="Uniform" />
+                                                    <TextBlock HorizontalAlignment="Left"
+                                                               VerticalAlignment="Bottom"
+                                                               Background="{Binding Background,
+                                                                                    ElementName=C}"
+                                                               Foreground="{Binding Foreground,
+                                                                                    ElementName=C}"
+                                                               Padding="5">
+                                                        操作类型
+                                                    </TextBlock>
+                                                </Grid>
+                                            </Label>
+                                        </WrapPanel>
+                                    </Border>
+                                </StackPanel>
+
+                                <!--  快捷方式  -->
+                                <StackPanel x:Name="QuickLinkPanel">
+                                    <TextBlock MouseLeftButtonDown="QuickPanel_Click"
+                                               Style="{StaticResource TitleText}"
+                                               Text="快捷方式" />
+                                    <Border Height="1"
+                                            Background="{Binding Foreground,
+                                                                 ElementName=C}"
+                                            Opacity="0.5" />
+                                    <Border Name="Tab_2">
+                                        <!--  显示一些快捷方式  -->
+                                        <WrapPanel Name="MainMenu_Lable_Quick">
+                                            <DockPanel MinWidth="100"
+                                                       MinHeight="100"
+                                                       Margin="3">
+                                                <DockPanel MinWidth="50" DockPanel.Dock="Left">
+                                                    <Label Background="#FFCD0000"
+                                                           DockPanel.Dock="Top"
+                                                           MouseLeftButtonDown="Open_Notepad"
+                                                           Style="{StaticResource SmallTile}"
+                                                           ToolTip="记事本">
+                                                        <Image Source="/酒店管理系统-主程序;component/Controls/Image/Quick/记事本 (2).png" />
+                                                    </Label>
+                                                    <Label Background="Gold"
+                                                           MouseLeftButtonDown="Open_IEXPLORE"
+                                                           Style="{StaticResource SmallTile}"
+                                                           ToolTip="浏览器">
+                                                        <Image Source="/酒店管理系统-主程序;component/Controls/Image/Quick/浏览器 (2).png" />
+                                                    </Label>
+                                                </DockPanel>
+                                                <DockPanel MinWidth="50" DockPanel.Dock="Left">
+                                                    <Label Background="#FF159101"
+                                                           DockPanel.Dock="Top"
+                                                           MouseLeftButtonDown="Open_Calculator"
+                                                           Style="{StaticResource SmallTile}"
+                                                           ToolTip="计算器">
+                                                        <Image Source="/酒店管理系统-主程序;component/Controls/Image/Quick/计算器 (2).png" />
+                                                    </Label>
+                                                    <Label Background="#FF780483"
+                                                           MouseLeftButtonDown="Open_Play"
+                                                           Style="{StaticResource SmallTile}"
+                                                           ToolTip="媒体播放器">
+                                                        <Image Source="/酒店管理系统-主程序;component/Controls/Image/Quick/音乐 (2).png" />
+                                                    </Label>
+                                                </DockPanel>
+                                            </DockPanel>
+
+
+                                            <DockPanel MinWidth="100"
+                                                       MinHeight="100"
+                                                       Margin="3">
+                                                <DockPanel MinWidth="50" DockPanel.Dock="Left">
+                                                    <Label Background="#FF6090F7"
+                                                           DockPanel.Dock="Top"
+                                                           MouseLeftButtonDown="Open_SoftKeyboard"
+                                                           Style="{StaticResource SmallTile}"
+                                                           ToolTip="软键盘">
+                                                        <Image Source="/酒店管理系统-主程序;component/Controls/Image/Quick/软键盘 (2).png" />
+                                                    </Label>
+                                                    <Label Background="#FFFF4600"
+                                                           MouseLeftButtonDown="Open_Task"
+                                                           Style="{StaticResource SmallTile}"
+                                                           ToolTip="任务管理器">
+                                                        <Image Source="/酒店管理系统-主程序;component/Controls/Image/Quick/任务管理器 (2).png" />
+                                                    </Label>
+                                                </DockPanel>
+                                                <DockPanel MinWidth="50" DockPanel.Dock="Left">
+                                                    <Label Background="#FF910177"
+                                                           DockPanel.Dock="Top"
+                                                           MouseLeftButtonDown="Open_Magnify"
+                                                           Style="{StaticResource SmallTile}"
+                                                           ToolTip="屏幕放大镜">
+                                                        <Image Source="/酒店管理系统-主程序;component/Controls/Image/Quick/放大镜 (2).png" />
+                                                    </Label>
+                                                    <Label Background="#FF328304"
+                                                           MouseLeftButtonDown="Open_Mspaint"
+                                                           Style="{StaticResource SmallTile}"
+                                                           ToolTip="画图">
+                                                        <Image Source="/酒店管理系统-主程序;component/Controls/Image/Quick/图片 (2).png" />
+                                                    </Label>
+                                                </DockPanel>
+                                            </DockPanel>
+
+                                            <DockPanel MinWidth="100"
+                                                       MinHeight="100"
+                                                       Margin="3"
+                                                       HorizontalAlignment="Left"
+                                                       VerticalAlignment="Top">
+                                                <DockPanel MinWidth="50"
+                                                           HorizontalAlignment="Left"
+                                                           VerticalAlignment="Top"
+                                                           DockPanel.Dock="Left">
+                                                    <Label HorizontalAlignment="Left"
+                                                           VerticalAlignment="Top"
+                                                           Background="#FF6090F7"
+                                                           DockPanel.Dock="Top"
+                                                           MouseLeftButtonDown="Open_SnippingTool"
+                                                           Style="{StaticResource SmallTile}"
+                                                           ToolTip="截屏">
+                                                        <Image Source="/酒店管理系统-主程序;component/Controls/Image/Quick/截屏 (2).png" />
+                                                    </Label>
+                                                </DockPanel>
+                                            </DockPanel>
+
+                                        </WrapPanel>
+                                    </Border>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                </TabControl>
+            </DockPanel>
+        </TabItem>
+
+
+        <!--  帮助文档  -->
+        <TabItem Background="{x:Null}"
+                 BorderBrush="{x:Null}"
+                 BorderThickness="0">
+            <!--  标题区域  -->
+            <DockPanel DockPanel.Dock="Top">
+                <DockPanel Margin="25,20,25,10" DockPanel.Dock="Top">
+                    <myc:Retreat VerticalAlignment="Center"
+                                 DockPanel.Dock="Left"
+                                 MouseDown="ReturnTo_RoomList" />
+                    <TextBlock MinWidth="160"
+                               Margin="15"
+                               HorizontalAlignment="Left"
+                               FontSize="45"
+                               Foreground="{Binding Foreground,
+                                                    ElementName=C}"
+                               Text="房间列表-功能说明" />
+                </DockPanel>
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                    <StackPanel Margin="65,0,0,20">
+                        <TextBlock FontSize="25"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="25">
+                            关于房间列表：
+                        </TextBlock>
+                        <TextBlock FontSize="18"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="20,0,20,0"
+                                   TextWrapping="Wrap">
+                            此页面提供客户入住、房费续交、换退房操作、预订、退订、预订入住、房态修改。
+                        </TextBlock>
+
+                        <TextBlock FontSize="25"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="25">
+                            筛选条件使用
+                        </TextBlock>
+                        <TextBlock FontSize="18"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="20,20,20,0"
+                                   TextWrapping="Wrap">
+                            筛选条件位于大标题右侧，下来列表中的所有条件均来源于基础数据设定，如果找不到你需要的条件，请向管理员咨询。并且每个筛选条件下拉框都有一个复选框与之对应，如果勾选了与其对应的复选框，则该筛选条件不会生效。下拉框1设置房间类型筛选条件，下拉框2设置房间状态筛选条件。两种条件可同时使用。
+                        </TextBlock>
+
+                        <TextBlock FontSize="25"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="25">
+                            刷新功能使用
+                        </TextBlock>
+                        <TextBlock FontSize="18"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="20,20,20,0"
+                                   TextWrapping="Wrap">
+                            刷新按钮位于界面左上角，点击刷新按钮可以重新加载本页面内的数据。
+                        </TextBlock>
+
+                        <TextBlock FontSize="25"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="25">
+                            搜索功能使用
+                        </TextBlock>
+                        <TextBlock FontSize="18"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="20,20,20,0"
+                                   TextWrapping="Wrap">
+                            搜索功能框位于界面下方，点击搜索框左侧下拉列表可选择搜索方式。
+                        </TextBlock>
+
+
+
+                        <TextBlock FontSize="25"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="25">
+                            房间操作
+                        </TextBlock>
+                        <TextBlock FontSize="18"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="20,20,20,0"
+                                   TextWrapping="Wrap">
+                            对于房间的一般性操作，只需双击房间图标即可进行操作。其它操作使用鼠标右键通过菜单操作。注意：根据房间状态不同，右键菜单显示的功能并不是一样的，请留意。
+                        </TextBlock>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </DockPanel>
+        </TabItem>
+
+    </TabControl>
+</UserControl>

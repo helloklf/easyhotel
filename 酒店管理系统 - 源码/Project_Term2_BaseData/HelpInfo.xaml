@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Project_Term2_BaseData.HelpInfo" x:Name="this" Foreground="{Binding ForeColor}"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+        <StackPanel>
+            <TextBlock FontSize="25" Padding="25" Foreground="{Binding Foreground,ElementName=this}">关于基础数据：</TextBlock>
+            <TextBlock TextWrapping="Wrap" Padding="20,0,20,0" FontSize="18" Foreground="{Binding Foreground,ElementName=this}">
+                            　　 　　基础数据是保证应用程序能够正常运作的基本数据，基础数据作为数据关系脉络的最高级别。鉴于其管理网络的复杂性，基础数据一经添加，不允许修改（与权限无关）。但你仍可以通过禁用条目来停止使用这些数据。条目被禁用后，将不再提供使用，但现存的相关信息保留原有结构。
+            </TextBlock>
+            <TextBlock TextWrapping="Wrap" Padding="20,20,20,0" FontSize="18" Foreground="{Binding Foreground,ElementName=this}">
+                            　　 　　在数据显示子页面，点击菜单栏上的‘添加’按钮快速打开新增数据页面。选择列表中的某条数据后点‘修改’可以编辑该条信息、点击‘移除’可禁用选的的项。如果你想恢复被移除的项，点击菜单栏最左边的‘回收’选框显示被禁用的项目，选择项目后点击菜单栏上的‘恢复’即可重新启用。再次点击‘回收’选框回到之前页面。
+            </TextBlock>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

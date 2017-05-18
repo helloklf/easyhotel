@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "房间列表";
+}
+
+@model LinQ_To_EF.ViewModels.Home.RoomListVM
+
+<style>
+    .FloatBlock {
+        z-index: 999999;
+        text-align: center;
+        margin: 0 auto;
+        position: fixed;
+        width: 100%;
+        top: 35%;
+        background: #ffd800;
+        border: 2px solid #fff;
+        border-left: 0px;
+        border-right: 0px;
+    }
+
+    #Html_DataList ul {
+        list-style: decimal;
+    }
+
+    #Html_DataList li {
+        float: left;
+        width: 250px;
+        border: 1px solid #fff;
+        margin: 20px;
+        padding: 10px;
+        color: #fff;
+        background: #ff6a00;
+        cursor: pointer;
+    }
+
+    #Html_DataList .DropDownList {
+        padding: 5px;
+        background: #ff6a00;
+        border: 1px solid #fff;
+        color: #fff;
+        font-size: 18px;
+    }
+
+    #Html_DataList .DropDownList * {
+        background: #ff6a00;
+        color: #fff;
+        font-size: 17px;
+    }
+    /*#Html_DataList li:hover{
+        color:#ff6a00; background:#fff;
+    }*/
+    #RoomsFilterReset {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 900;
+    }
+</style>
+<div id="Html_DataList" style="overflow:auto; position:relative; padding:20px;">
+    <h1>房间列表</h1>
+    状态  @Html.DropDownList("RoomStateType", new SelectList(Model.StateTypes, "StateID", "StateName", "0"), new { @class = "DropDownList" })
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    类型 @Html.DropDownList("RoomType", new SelectList(Model.RoomTypes, "TypeID", "TypeName", "0"), new { @class = "DropDownList" })
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="javascript:void()" title="重置" id="RoomsFilterReset">🔃</a>
+    <ul>
+        @{
+            foreach (var item in Model.Rooms)
+            {
+                <li id="@item.房间编号" onclick="RoomSelect('@item.房间编号')" data-typeid="@item.类型编号" data-stateid="@item.状态编号" style="opacity:0.7; background:@item.颜色" title="@item.房间备注">
+                    <img src="~/Resource/Icon_White/lock.png" style="float:left; " />
+                    <div style="float:left; margin-left:10px;">
+                        <strong style="font-size:15px;margin-bottom:5px; display:block;">编号：@item.房间编号</strong>
+                        类型： @item.类型名
+                        <br />
+                        状态： @item.状态名
+                        <br />
+                        价格： ￥ @item.单价 / @item.结算频率 小时
+                        <br style="clear:both;display:block;" />
+                    </div>
+                </li>
+            }
+        }
+    </ul>
+</div>
+<script>
+    $("select[name=RoomStateType]").change(setRoomListVisibility);
+    $("select[name=RoomType]").change(setRoomListVisibility);
+    function setRoomListVisibility($event)
+    {
+        var stateId = $("select[name=RoomStateType]").val();
+        var typeId = $("select[name=RoomType]").val();
+        var rooms = $("#Html_DataList li");
+        if ((stateId == 0 || stateId == null) && (typeId == 0 || stateId == null))
+        {
+            //alert("全部");
+            rooms.show(200);
+        }
+        else if (stateId == 0 || stateId == null) {
+            //alert("所有状态");
+            rooms.filter("[data-typeid=" + typeId + "]").show(200);
+            rooms.filter("[data-typeid!=" + typeId + "]").fadeOut(500);
+            //$("#Html_DataList li[data-typeid=" + typeId + "]").show(200);
+            //$("#Html_DataList li[data-typeid!=" + typeId + "]").fadeOut(500);
+        }
+        else if (typeId == null || typeId == 0) {
+            //alert("所有类型");
+            rooms.filter("[data-stateid=" + stateId + "]").show(200);
+            rooms.filter("[data-stateid!=" + stateId + "]").fadeOut(500);
+            //$("#Html_DataList li[data-stateid=" + stateId + "]").show(200);
+            //$("#Html_DataList li[data-stateid!=" + stateId + "]").fadeOut(500);
+        }
+        else {
+            rooms.filter("[data-stateid=" + stateId + "][typeid=" + typeId + "]").show(200);
+            rooms.not("[data-stateid=" + stateId + "][typeid=" + typeId + "]").fadeOut(500);
+            //$("#Html_DataList li[data-stateid=" + stateId + "][typeid=" + typeId + "]").show(200);
+            //$("#Html_DataList li[data-stateid!=" + stateId + "]").fadeOut(500);
+            //$("#Html_DataList li[data-typeid!=" + typeId + "]").fadeOut(500);
+        }
+    }
+    $("#RoomsFilterReset").click(function ()
+    {
+        $("select[name=RoomStateType]").val(0);
+        $("select[name=RoomType]").val(0);
+        setRoomListVisibility();
+    });
+    function RoomSelect(id) {
+        //alert($("#" + id)[0].attributes["title"].value);
+        //alert($("#" + id)[0].getAttribute("title"));
+    }
+</script>

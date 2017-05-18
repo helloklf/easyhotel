@@ -1,0 +1,130 @@
+﻿<Window x:Class="Inform.P_QuestionBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        AllowsTransparency="True"
+        KeyDown="Window_KeyDown"
+        Padding="5"
+        WindowState="Maximized"
+        WindowStyle="None">
+    <Window.Background>
+        <SolidColorBrush Color="#7000" />
+    </Window.Background>
+    <Window.Style>
+        <Style TargetType="Window">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Window.Background).(SolidColorBrush.Color)">
+                                <ColorKeyFrameCollection>
+                                    <SplineColorKeyFrame KeyTime="0:0:0" Value="#0000" />
+                                    <SplineColorKeyFrame KeyTime="0:0:0.5" Value="#9000" />
+                                    <SplineColorKeyFrame KeyTime="0:0:1" Value="#5000" />
+                                </ColorKeyFrameCollection>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Style>
+
+    <Window.Resources>
+        <Style x:Key="Submit_Smalllab" TargetType="Border">
+            <!--<Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="1" Opacity="0.5" Color="White"/>
+                </Setter.Value>
+            </Setter>-->
+            <Setter Property="CornerRadius" Value="1" />
+            <Setter Property="DockPanel.Dock" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="White" />
+            <Setter Property="Height" Value="45" />
+            <Setter Property="MinWidth" Value="45" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="2" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="{Binding Foreground, ElementName=C}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Height="Auto"
+          MinHeight="150"
+          Margin="0,100"
+          VerticalAlignment="Center"
+          Background="#FF8ACB00">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*" />
+            <ColumnDefinition Width="70*" />
+            <ColumnDefinition Width="15*" />
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Column="1" Margin="0,10">
+            <Image Name="MessImage"
+                   Height="128"
+                   VerticalAlignment="Top"
+                   Source="城市.png"
+                   Stretch="Uniform">
+                <!--<Image.Effect>
+                    <DropShadowEffect Color="White" ShadowDepth="1"/>
+                </Image.Effect>-->
+            </Image>
+            <StackPanel VerticalAlignment="Bottom"
+                        DockPanel.Dock="Right"
+                        Orientation="Horizontal">
+                <Border Background="Red"
+                        DockPanel.Dock="Right"
+                        MouseDown="CloseWindow_Yes"
+                        Padding="0"
+                        Style="{StaticResource Submit_Smalllab}"
+                        ToolTip="是">
+                    <StackPanel Orientation="Horizontal">
+                        <Image VerticalAlignment="Center" Source="勾.png" />
+                        <TextBlock VerticalAlignment="Center"
+                                   FontSize="18"
+                                   Foreground="White"
+                                   Padding="0,5,10,5">
+                            (Y)
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+                <Border Background="#FF91E400"
+                        DockPanel.Dock="Right"
+                        MouseDown="CloseWindow_No"
+                        Padding="0"
+                        Style="{StaticResource Submit_Smalllab}"
+                        ToolTip="否">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="5"
+                               VerticalAlignment="Center"
+                               Source="叉.png" />
+                        <TextBlock VerticalAlignment="Center"
+                                   FontSize="18"
+                                   Foreground="White"
+                                   Padding="0,5,10,5">
+                            (N)
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <TextBlock Name="TitleText"
+                       Margin="10"
+                       VerticalAlignment="Center"
+                       DockPanel.Dock="Top"
+                       FontSize="25"
+                       Foreground="#fff"
+                       TextWrapping="Wrap" />
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                <TextBlock Name="MessText"
+                           Margin="10"
+                           VerticalAlignment="Center"
+                           FontSize="18"
+                           Foreground="#9fff"
+                           TextWrapping="Wrap" />
+            </ScrollViewer>
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "首页";
+}
+@model LinQ_To_EF.ViewModels._RootLayout
+
+<style>
+    #HomePageMainContent{
+        margin:0px auto; width:auto; padding:20px; min-height:650px;
+    }
+    #HomePageLeftBlock{
+        float:left; width:200px; text-align:left; background-color:rgba(0,0,0,0.3);
+    }
+    .HomePageMenu{ 
+        list-style:none; font-size:18px; font-weight:600; padding:0px 30px;
+    }
+    .HomePageMenu li{
+        margin:0px;
+        padding:10px 5px; border-left:0px; border-right:0px; border-top:1px; border-bottom:1px; border-color:transparent; border-style:solid;
+    }
+    .HomePageMenu li:hover{
+        border-color:#fff;  cursor:pointer;
+    }
+    .HomePageMenu li:active{
+        background:#e3e3e3; border-color:#fff; 
+    }
+
+    #HomePageRightBlock{
+        float:left; margin-left:20px; text-align:left; background-color:rgba(0,0,0,0.3)
+    }
+    #HomePageLeftBlock .Lheader{
+        padding-left:20px;
+    }
+    #HomePage .TopBar{
+         background-color:rgba(255,255,255,0.3); color:#fff; border-bottom:2px solid #fff; margin-top:0px; top:0px; position:relative; 
+    }
+    #HomePage .TopBar .HomePageheader{
+        font-size:30px; font-weight:700; padding:15px;float:left; 
+    }
+    #HomePage .TopBar a{
+        text-decoration:none; font-weight:600; font-size:17px;
+    }
+    #HomePage .HomePageBottomBlock{text-align:center;
+        background-color:rgba(128,128,128,0.3); color:#fff; padding:10px 50px; border-top:2px solid #808080; margin-bottom:0px; bottom:0px; position:relative; 
+    }
+
+</style>
+
+<div id="HomePage">
+    <div class="TopBar">
+        <header class="HomePageheader">酒店管理系统 - 云端</header>
+        <div style=" float:right;padding:20px;">
+            <a href="javascript:AjaxGetPageContent('/Home/Content')">@(Model.IsOnline ? "在线：" + Model.UserId : "未登陆")</a>
+        </div>
+        <br style="clear:both; float:none;" />
+    </div>
+    <div id="HomePageMainContent">
+        <div id="HomePageLeftBlock">
+            <h2 class="Lheader">导航 - 菜单</h2>
+            <ul class="HomePageMenu">
+                <li onclick="AjaxGetPageContent('/Home/Content')">首页</li>
+                <li onclick="location.href = '/Account/Login'">用户登陆</li>
+                <li onclick="AjaxGetPageContent('/Home/RoomList')">房间列表</li>
+                <li onclick="AjaxGetPageContent('/Home/More')">更多功能...</li>
+            </ul>
+            <br style="clear:both" />
+        </div>
+        <div id="HomePageRightBlock">
+            <div id="HomePageRightBlock_Content">
+                @{Html.RenderAction("Content");}
+            </div>
+            <br style="clear:both" />
+        </div>
+        <br style="clear:both" />
+    </div>
+    <div class="HomePageBottomBlock">
+        <div style="font-weight:600; font-size:12px;">技术：ASP.NET MVC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作者：OmArea.Com&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间：2015-04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类型：原创作品</div>
+        <div style="margin-top:7px; font-size:9px; opacity:0.8;">本应用程序案例根据 WPF桌面应用程序“酒店管理系统2014”移植，保留其部分风格</div>
+    </div>
+</div>
+<div id="LoginedMessageBox" style="height:200px;" class="FloatBlock">
+    <h1>您已成功登陆！</h1>
+</div>
+<script>
+    if (location.href.toLowerCase().indexOf("logined") > -1) {
+        $("#LoginedMessageBox").fadeOut(3000);
+    }
+    else {
+        $("#LoginedMessageBox").hide();
+    }
+
+    function ResetHomePageMainContentSize() {
+        var total = $("#HomePageMainContent").width();
+        //alert(total);
+        $("#HomePageRightBlock").width(total - $("#HomePageLeftBlock").width()-20);
+    }
+    $(window).resize(ResetHomePageMainContentSize);
+    ResetHomePageMainContentSize();
+</script>
+<script>
+    function AjaxGetPageContent(pageUrl){
+        $.ajax({
+            url: pageUrl,
+            data: {},
+            cahce:false,
+            success: function (respon) {
+                $("#HomePageRightBlock_Content").html(respon); ResetHomePageMainContentSize();
+            },
+            error:function(error)
+            {
+                alert(error);
+            }
+        });
+    }
+</script>
+<style>
+    body{
+        height:100%; width:100%;
+        /*overflow:hidden;
+        background:@(Model.BackgroundColor??"#a0a0a0");*/
+        background-image:url( '/Resource/BackgroundImg' );
+        color:@(Model.Color ?? "#e3e3e3");
+        background-repeat:no-repeat;
+        background-attachment:fixed;
+        background-size:cover;
+    }
+</style>

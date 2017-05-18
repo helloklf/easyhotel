@@ -1,0 +1,1021 @@
+﻿<UserControl x:Class="Project_Term2.DataView.RoomList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:myc="clr-namespace:MyControls;assembly=MyControls"
+             Loaded="UserControl_Loaded"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary Source="DataGridStyle.xaml" />
+    </UserControl.Resources>
+    <TabControl Name="MainTab" Style="{StaticResource PageManage}">
+        <TabItem Background="{x:Null}"
+                 BorderBrush="{x:Null}"
+                 BorderThickness="0">
+            <DockPanel Grid.Column="0" Background="#3555">
+                <TextBlock x:Name="C"
+                           Background="{Binding BgColor}"
+                           Foreground="{Binding ForeColor}"
+                           Visibility="Collapsed" />
+
+                <!--  标题区域  -->
+                <DockPanel DockPanel.Dock="Top">
+                    <DockPanel Margin="25,20,25,10" DockPanel.Dock="Top">
+                        <myc:Retreat VerticalAlignment="Center"
+                                     DockPanel.Dock="Left"
+                                     MouseLeftButtonUp="ReturnTo_MainMenu" />
+                        <TextBlock MinWidth="160"
+                                   Margin="15"
+                                   HorizontalAlignment="Left"
+                                   FontSize="45"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   MouseDown="ToHelpPage"
+                                   Text="房间列表" />
+                        <StackPanel Margin="5"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <ComboBox x:Name="ComRoomType"
+                                          DisplayMemberPath="TypeName"
+                                          FontSize="14"
+                                          SelectedValuePath="TypeID"
+                                          SelectionChanged="ComRoomType_SelectionChanged" />
+                                <CheckBox x:Name="AllRoomType"
+                                          VerticalAlignment="Center"
+                                          Click="ComRoomType_Changed"
+                                          Content="全部类型"
+                                          FontSize="14"
+                                          Foreground="{Binding Foreground,
+                                                               ElementName=C}"
+                                          IsChecked="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <ComboBox x:Name="ComRoomState"
+                                          DisplayMemberPath="StateName"
+                                          FontSize="14"
+                                          SelectedValuePath="StateID"
+                                          SelectionChanged="ComRoomState_SelectionChanged" />
+                                <CheckBox x:Name="AllStateType"
+                                          VerticalAlignment="Center"
+                                          Click="ComRoomState_Changed"
+                                          Content="全部状态"
+                                          FontSize="14"
+                                          Foreground="{Binding Foreground,
+                                                               ElementName=C}" />
+                            </StackPanel>
+                        </StackPanel>
+                        <Label HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               MouseDown="ReLoadData"
+                               Padding="0"
+                               ToolTip="刷新本窗口内的所有数据">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="Background" Value="{Binding Foreground, ElementName=C}" />
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="false">
+                                            <Setter Property="Background" Value="{x:Null}" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                            <Image Height="35" Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/旋转.png" />
+                        </Label>
+                    </DockPanel>
+                </DockPanel>
+
+                <!--  搜索栏  -->
+                <Border MinWidth="400"
+                        MinHeight="40"
+                        Margin="100,10,100,10"
+                        HorizontalAlignment="Center"
+                        Background="{Binding Background,
+                                             ElementName=C}"
+                        BorderBrush="{Binding Foreground,
+                                              ElementName=C}"
+                        BorderThickness="1"
+                        DockPanel.Dock="Bottom">
+                    <DockPanel>
+                        <Expander x:Name="SearchType"
+                                  MinWidth="50"
+                                  Margin="5"
+                                  VerticalAlignment="Center"
+                                  FontSize="15"
+                                  Foreground="{Binding Foreground,
+                                                       ElementName=C}"
+                                  Header="按房号">
+                            <ListBox x:Name="SearchTypeList"
+                                     Background="{x:Null}"
+                                     BorderBrush="{x:Null}"
+                                     FontSize="15"
+                                     Foreground="{Binding Foreground,
+                                                          ElementName=C}"
+                                     SelectedValuePath="Content"
+                                     SelectionChanged="SearchTypeChanged">
+                                <ListBoxItem Margin="17,1,5,1"
+                                             Content="按房号"
+                                             ToolTip="按房间编号模糊查询" />
+                                <ListBoxItem Margin="17,1,5,1"
+                                             Content="按类型"
+                                             ToolTip="按房间类型模糊查询" />
+                                <ListBoxItem Margin="17,1,5,1"
+                                             Content="按状态"
+                                             ToolTip="按房间状态模糊查询" />
+                                <ListBoxItem Margin="17,1,5,1"
+                                             Content="按价格"
+                                             ToolTip="指单位时间费用找相近项" />
+                                <ListBoxItem Margin="17,1,5,1"
+                                             Content="按时长"
+                                             ToolTip="指计费间隔时间(小时)精确查询" />
+                            </ListBox>
+                        </Expander>
+                        <Label Width="50"
+                               Height="40"
+                               HorizontalContentAlignment="Center"
+                               DockPanel.Dock="Right"
+                               MouseDown="SeachText"
+                               Padding="0">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="Background" Value="{Binding Foreground, ElementName=C}" />
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="false">
+                                            <Setter Property="Background" Value="{x:Null}" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                            <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/搜索.png" />
+                        </Label>
+                        <TextBox x:Name="InputSeachText"
+                                 Margin="5"
+                                 VerticalContentAlignment="Center"
+                                 Background="{x:Null}"
+                                 BorderThickness="0,0,0,1"
+                                 FontSize="18"
+                                 Foreground="{Binding Foreground,
+                                                      ElementName=C}"
+                                 KeyDown="InputSeachTextKeyDown" />
+                    </DockPanel>
+                </Border>
+
+                <!--  右侧面板  -->
+                <DockPanel MaxWidth="500" DockPanel.Dock="Right">
+                    <Label MinWidth="20"
+                           VerticalContentAlignment="Center"
+                           BorderBrush="{Binding Foreground,
+                                                 ElementName=C}"
+                           BorderThickness="0,0,1,0"
+                           Content="o"
+                           MouseDown="RightPanelSet"
+                           Opacity="0.7" />
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                        <TabControl Name="RightPanel"
+                                    Background="{x:Null}"
+                                    BorderBrush="{x:Null}"
+                                    BorderThickness="0"
+                                    Visibility="Collapsed">
+                            <!--  住房登记页面  -->
+                            <TabItem Background="{x:Null}"
+                                     BorderBrush="{x:Null}"
+                                     BorderThickness="0"
+                                     Visibility="Collapsed">
+                                <StackPanel MinWidth="400" Margin="15,10">
+                                    <TextBlock Margin="0,10,10,0"
+                                               FontSize="18"
+                                               Foreground="{Binding Foreground,
+                                                                    ElementName=C}"
+                                               Text="入住登记" />
+                                    <Border Height="2"
+                                            Margin="0,5,0,5"
+                                            Background="{Binding Foreground,
+                                                                 ElementName=C}"
+                                            BorderThickness="0"
+                                            DockPanel.Dock="Top" />
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="客户姓名：" />
+                                        <TextBox x:Name="InText"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 ToolTip="员工姓名(15字以内)" />
+                                    </DockPanel>
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="房间编号：" />
+                                        <TextBox x:Name="InRoomID"
+                                                 MinWidth="150"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                        <TextBlock MinWidth="55"
+                                                   Style="{StaticResource LeftTitle}"
+                                                   Text="单价："
+                                                   TextAlignment="Right" />
+                                        <TextBox x:Name="InRoomPrice"
+                                                 MinWidth="100"
+                                                 IsReadOnly="True"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 TextAlignment="Right" />
+                                    </DockPanel>
+
+                                    <StackPanel Margin="5" Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="性　　别：" />
+                                        <RadioButton x:Name="Sex1"
+                                                     VerticalAlignment="Center"
+                                                     Content="男"
+                                                     Foreground="White"
+                                                     IsChecked="True" />
+                                        <RadioButton x:Name="Sex0"
+                                                     VerticalAlignment="Center"
+                                                     Content="女"
+                                                     Foreground="White" />
+                                    </StackPanel>
+
+
+                                    <DockPanel x:Name="Address" Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="客户地址*：" />
+                                        <TextBox x:Name="InAdress" Style="{StaticResource ShortTextBox}" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="证件类型：" />
+                                        <ComboBox x:Name="InPapers"
+                                                  Margin="2"
+                                                  Background="{x:Null}"
+                                                  BorderBrush="{x:Null}"
+                                                  BorderThickness="0"
+                                                  DisplayMemberPath="PapersName"
+                                                  FontSize="15"
+                                                  ItemsSource="{Binding}"
+                                                  SelectedValuePath="PapersID" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="证件号码：" />
+                                        <TextBox x:Name="InCardID"
+                                                 MaxLength="30"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 ToolTip="有效二代身份证证件号" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="预付金额：" />
+                                        <TextBox x:Name="InMoney"
+                                                 MaxLength="9"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="手机号码*：" />
+                                        <TextBox x:Name="InTel"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 ToolTip="客户的联系方式(20字以内)" />
+                                    </DockPanel>
+
+                                    <DockPanel x:Name="IsVip" Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="VIP编号*：" />
+                                        <TextBlock MinWidth="35"
+                                                   VerticalAlignment="Center"
+                                                   DockPanel.Dock="Right"
+                                                   TextAlignment="Center">
+                                            <Hyperlink Foreground="{Binding Foreground, ElementName=C}">添加</Hyperlink>
+                                        </TextBlock>
+                                        <TextBox x:Name="InVIPID"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 ToolTip="客户的VIP号，如果没有则留空（15位以下）" />
+                                    </DockPanel>
+                                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                        <myc:No MouseDown="ReSetInRoomText" />
+                                        <myc:OK Margin="10,5" MouseDown="SubInRoom_Click" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </TabItem>
+
+                            <!--  房间更换页面  -->
+                            <TabItem Background="{x:Null}"
+                                     BorderBrush="{x:Null}"
+                                     BorderThickness="0"
+                                     Visibility="Collapsed">
+                                <StackPanel MinWidth="400" Margin="15,10">
+                                    <TextBlock Margin="0,10,10,0"
+                                               FontSize="18"
+                                               Foreground="{Binding Foreground,
+                                                                    ElementName=C}"
+                                               Text="房间更换" />
+                                    <Border Height="2"
+                                            Margin="0,5,0,5"
+                                            Background="{Binding Foreground,
+                                                                 ElementName=C}"
+                                            BorderThickness="0"
+                                            DockPanel.Dock="Top" />
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="原房间号：" />
+                                        <TextBox x:Name="OldRoomID"
+                                                 MinWidth="150"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                        <TextBlock MinWidth="55"
+                                                   Style="{StaticResource LeftTitle}"
+                                                   Text="单价："
+                                                   TextAlignment="Right" />
+                                        <TextBox x:Name="OldRoomPrice"
+                                                 MinWidth="100"
+                                                 IsReadOnly="True"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 TextAlignment="Right" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="新房间号：" />
+                                        <TextBox x:Name="NewRoomID"
+                                                 MinWidth="150"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                        <TextBlock MinWidth="55"
+                                                   Style="{StaticResource LeftTitle}"
+                                                   Text="单价："
+                                                   TextAlignment="Right" />
+                                        <TextBox x:Name="NewRoomPrice"
+                                                 MinWidth="100"
+                                                 IsReadOnly="True"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 TextAlignment="Right" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="加交金额：" />
+                                        <TextBox x:Name="AddMoney"
+                                                 MaxLength="9"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                    </DockPanel>
+
+                                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                        <myc:OK Margin="10,5" MouseDown="SubRenewal_Click" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </TabItem>
+
+                            <!--  续交房费页面  -->
+                            <TabItem Background="{x:Null}"
+                                     BorderBrush="{x:Null}"
+                                     BorderThickness="0"
+                                     Visibility="Collapsed">
+                                <StackPanel MinWidth="400" Margin="15,10">
+                                    <TextBlock Margin="0,10,10,0"
+                                               FontSize="18"
+                                               Foreground="{Binding Foreground,
+                                                                    ElementName=C}"
+                                               Text="房费续交" />
+                                    <Border Height="2"
+                                            Margin="0,5,0,5"
+                                            Background="{Binding Foreground,
+                                                                 ElementName=C}"
+                                            BorderThickness="0"
+                                            DockPanel.Dock="Top" />
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="客户姓名：" />
+                                        <TextBox x:Name="UpClientName"
+                                                 IsReadOnly="True"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 ToolTip="员工姓名(15字以内)" />
+                                    </DockPanel>
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="房间编号：" />
+                                        <TextBox x:Name="UpRoomID"
+                                                 MinWidth="150"
+                                                 IsReadOnly="True"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5" Visibility="Collapsed">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="数据序列：" />
+                                        <TextBox x:Name="UpGUID"
+                                                 IsReadOnly="True"
+                                                 MaxLength="30"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 ToolTip="有效二代身份证证件号" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="入住时间：" />
+                                        <TextBox x:Name="UpTime"
+                                                 IsReadOnly="True"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="上次结算：" />
+                                        <TextBox x:Name="LastDeduct"
+                                                 IsReadOnly="True"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="当前余额：" />
+                                        <TextBox x:Name="UpAccountO"
+                                                 IsReadOnly="True"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="追交金额：" />
+                                        <TextBox x:Name="UpAccountA" Style="{StaticResource ShortTextBox}" />
+                                    </DockPanel>
+                                    <myc:OK Margin="10,5"
+                                            HorizontalAlignment="Right"
+                                            MouseDown="ClientPay_SubMit" />
+                                </StackPanel>
+                            </TabItem>
+
+                            <!--  客户退房界面  -->
+                            <TabItem Background="{x:Null}"
+                                     BorderBrush="{x:Null}"
+                                     BorderThickness="0"
+                                     Visibility="Collapsed">
+                                <StackPanel MinWidth="400" Margin="15,10">
+                                    <TextBlock Margin="0,10,10,0"
+                                               FontSize="18"
+                                               Foreground="{Binding Foreground,
+                                                                    ElementName=C}"
+                                               Text="退房确认" />
+                                    <Border Height="2"
+                                            Margin="0,5,0,5"
+                                            Background="{Binding Foreground,
+                                                                 ElementName=C}"
+                                            BorderThickness="0"
+                                            DockPanel.Dock="Top" />
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="房间编号：" />
+                                        <TextBox x:Name="OutRoomID"
+                                                 MinWidth="150"
+                                                 IsReadOnly="True"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="客户姓名：" />
+                                        <TextBox x:Name="OutClientName"
+                                                 IsReadOnly="True"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 ToolTip="员工姓名(15字以内)" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5" Visibility="Collapsed">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="数据序列：" />
+                                        <TextBox x:Name="OutGUID"
+                                                 IsReadOnly="True"
+                                                 MaxLength="30"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 ToolTip="有效二代身份证证件号" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="入住时间：" />
+                                        <TextBox x:Name="OutInTime"
+                                                 IsReadOnly="True"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="上次结算：" />
+                                        <TextBox x:Name="OutLastDeduct"
+                                                 IsReadOnly="True"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="客户余额：" />
+                                        <TextBox x:Name="OutAccountO"
+                                                 IsReadOnly="True"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                    </DockPanel>
+                                    <myc:OK Margin="10,5"
+                                            HorizontalAlignment="Right"
+                                            MouseDown="ClientOut_SubMit" />
+                                </StackPanel>
+                            </TabItem>
+
+                            <!--  房间预订  -->
+                            <TabItem Background="{x:Null}"
+                                     BorderBrush="{x:Null}"
+                                     BorderThickness="0"
+                                     Visibility="Collapsed">
+                                <StackPanel MinWidth="400" Margin="15,10">
+                                    <TextBlock Margin="0,10,10,0"
+                                               FontSize="18"
+                                               Foreground="{Binding Foreground,
+                                                                    ElementName=C}"
+                                               Text="房间预订" />
+                                    <Border Height="2"
+                                            Margin="0,5,0,5"
+                                            Background="{Binding Foreground,
+                                                                 ElementName=C}"
+                                            BorderThickness="0"
+                                            DockPanel.Dock="Top" />
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="客户姓名：" />
+                                        <TextBox x:Name="BookText"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 ToolTip="员工姓名(15字以内)" />
+                                    </DockPanel>
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="房间编号：" />
+                                        <TextBox x:Name="BookRoomID"
+                                                 MinWidth="150"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                    </DockPanel>
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="有效时间：" />
+                                        <TextBlock MinWidth="5"
+                                                   DockPanel.Dock="Right"
+                                                   Style="{StaticResource LeftTitle}"
+                                                   Text="天" />
+                                        <TextBox x:Name="BookTime"
+                                                 MaxLength="30"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 ToolTip="设置房间预订几天以后失效（失效后系统自动清除）" />
+                                    </DockPanel>
+                                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                        <myc:No MouseDown="ReSetBookRoomText" />
+                                        <myc:OK Margin="10,5" MouseDown="SubBookRoom_Click" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </TabItem>
+
+                            <!--  房间状态修改  -->
+                            <TabItem Background="{x:Null}"
+                                     BorderBrush="{x:Null}"
+                                     BorderThickness="0"
+                                     Visibility="Collapsed">
+                                <StackPanel MinWidth="400" Margin="15,10">
+                                    <TextBlock Margin="0,10,10,0"
+                                               FontSize="18"
+                                               Foreground="{Binding Foreground,
+                                                                    ElementName=C}"
+                                               Text="更改状态" />
+                                    <Border Height="2"
+                                            Margin="0,5,0,5"
+                                            Background="{Binding Foreground,
+                                                                 ElementName=C}"
+                                            BorderThickness="0"
+                                            DockPanel.Dock="Top" />
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="房间编号：" />
+                                        <TextBox x:Name="SetRoomID"
+                                                 MinWidth="150"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="房间状态：" />
+                                        <ComboBox x:Name="SetRoomState"
+                                                  Margin="2"
+                                                  Background="{x:Null}"
+                                                  BorderBrush="{x:Null}"
+                                                  BorderThickness="0"
+                                                  DisplayMemberPath="StateName"
+                                                  FontSize="15"
+                                                  ItemsSource="{Binding}"
+                                                  SelectedValuePath="StateID" />
+                                    </DockPanel>
+
+                                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                        <myc:OK Margin="10,5" MouseDown="SubSetRoomState_Click" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </TabItem>
+
+                            <!--  预订正式入住登记页面  -->
+                            <TabItem Background="{x:Null}"
+                                     BorderBrush="{x:Null}"
+                                     BorderThickness="0"
+                                     Visibility="Collapsed">
+                                <StackPanel MinWidth="400" Margin="15,10">
+                                    <TextBlock Margin="0,10,10,0"
+                                               FontSize="18"
+                                               Foreground="{Binding Foreground,
+                                                                    ElementName=C}"
+                                               Text="入住登记(预订客户)" />
+                                    <Border Height="2"
+                                            Margin="0,5,0,5"
+                                            Background="{Binding Foreground,
+                                                                 ElementName=C}"
+                                            BorderThickness="0"
+                                            DockPanel.Dock="Top" />
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="客户姓名：" />
+                                        <TextBox x:Name="BookInText"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 ToolTip="员工姓名(15字以内)" />
+                                    </DockPanel>
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="房间编号：" />
+                                        <TextBox x:Name="BookInRoomID"
+                                                 MinWidth="150"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                        <TextBlock MinWidth="55"
+                                                   Style="{StaticResource LeftTitle}"
+                                                   Text="单价："
+                                                   TextAlignment="Right" />
+                                        <TextBox x:Name="BookInRoomPrice"
+                                                 MinWidth="100"
+                                                 IsReadOnly="True"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 TextAlignment="Right" />
+                                    </DockPanel>
+
+                                    <StackPanel Margin="5" Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="性　　别：" />
+                                        <RadioButton x:Name="BookSex1"
+                                                     VerticalAlignment="Center"
+                                                     Content="男"
+                                                     Foreground="White"
+                                                     IsChecked="True" />
+                                        <RadioButton x:Name="BookSex0"
+                                                     VerticalAlignment="Center"
+                                                     Content="女"
+                                                     Foreground="White" />
+                                    </StackPanel>
+
+
+                                    <DockPanel x:Name="BookAddress" Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="客户地址*：" />
+                                        <TextBox x:Name="BookInAdress" Style="{StaticResource ShortTextBox}" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="证件类型：" />
+                                        <ComboBox x:Name="BookInPapers"
+                                                  Margin="2"
+                                                  Background="{x:Null}"
+                                                  BorderBrush="{x:Null}"
+                                                  BorderThickness="0"
+                                                  DisplayMemberPath="PapersName"
+                                                  FontSize="15"
+                                                  ItemsSource="{Binding}"
+                                                  SelectedValuePath="PapersID" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="证件号码：" />
+                                        <TextBox x:Name="BookInCardID"
+                                                 MaxLength="30"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 ToolTip="有效二代身份证证件号" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="预付金额：" />
+                                        <TextBox x:Name="BookInMoney"
+                                                 MaxLength="9"
+                                                 Style="{StaticResource ShortTextBox}" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="手机号码*：" />
+                                        <TextBox x:Name="BookInTel"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 ToolTip="客户的联系方式(20字以内)" />
+                                    </DockPanel>
+
+                                    <DockPanel x:Name="BookIsVip" Margin="5">
+                                        <TextBlock Style="{StaticResource LeftTitle}" Text="VIP编号*：" />
+                                        <TextBlock MinWidth="35"
+                                                   VerticalAlignment="Center"
+                                                   DockPanel.Dock="Right"
+                                                   TextAlignment="Center">
+                                            <Hyperlink Foreground="{Binding Foreground, ElementName=C}">添加</Hyperlink>
+                                        </TextBlock>
+                                        <TextBox x:Name="BookInVIPID"
+                                                 Style="{StaticResource ShortTextBox}"
+                                                 ToolTip="客户的VIP号，如果没有则留空（15位以下）" />
+                                    </DockPanel>
+                                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                        <myc:No MouseDown="ReSetBookInText" />
+                                        <myc:OK Margin="10,5" MouseDown="SubBookIn_Click" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </TabItem>
+
+                        </TabControl>
+                    </ScrollViewer>
+                </DockPanel>
+
+                <!--  房间列表显示页面  -->
+                <Border x:Name="P" DockPanel.Dock="Left">
+                    <ListBox x:Name="WrapRoomList"
+                             MaxHeight="{Binding ActualHeight,
+                                                 ElementName=P}"
+                             Margin="20"
+                             Background="#0000"
+                             BorderBrush="{x:Null}"
+                             ContextMenuOpening="WrapRoomList_ContextMenuOpening"
+                             DockPanel.Dock="Top"
+                             ItemsSource="{Binding}"
+                             MouseDoubleClick="WrapRoomList_MouseDoubleClick"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                             SelectedValuePath="RoomID"
+                             VirtualizingPanel.CacheLength="100"
+                             VirtualizingPanel.IsVirtualizing="True">
+                        <ListBox.ContextMenu>
+                            <ContextMenu FontSize="16" Foreground="White">
+
+                                <MenuItem x:Name="ClientIn"
+                                          Click="ClientIn_Click"
+                                          ToolTip="登记客户信息并修改对应房间的状态">
+                                    <MenuItem.Header>
+                                        <StackPanel Style="{StaticResource LeftMenuPanel}">
+                                            <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/钥匙.png" />
+                                            <TextBlock VerticalAlignment="Center" FontSize="18">开房登记</TextBlock>
+                                        </StackPanel>
+                                    </MenuItem.Header>
+                                </MenuItem>
+
+                                <MenuItem x:Name="RoomBook"
+                                          Click="RoomBook_Click"
+                                          ToolTip="客户预订房间">
+                                    <MenuItem.Header>
+                                        <StackPanel Background="Orange" Style="{StaticResource LeftMenuPanel}">
+                                            <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/飞机.png" />
+                                            <TextBlock VerticalAlignment="Center" FontSize="18">房间预订</TextBlock>
+                                        </StackPanel>
+                                    </MenuItem.Header>
+                                </MenuItem>
+
+                                <MenuItem x:Name="ClientPay"
+                                          Click="ClientPay_Click"
+                                          ToolTip="客户续交房费">
+                                    <MenuItem.Header>
+                                        <StackPanel Background="Red" Style="{StaticResource LeftMenuPanel}">
+                                            <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/人民币.png" />
+                                            <TextBlock VerticalAlignment="Center" FontSize="18">续交房费</TextBlock>
+                                        </StackPanel>
+                                    </MenuItem.Header>
+                                </MenuItem>
+
+                                <MenuItem x:Name="RoomRenewal"
+                                          Click="ClientRenewal_Click"
+                                          ToolTip="登记客户信息并修改对应房间的状态">
+                                    <MenuItem.Header>
+                                        <StackPanel Background="#FF83004E" Style="{StaticResource LeftMenuPanel}">
+                                            <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/房间.png" />
+                                            <TextBlock VerticalAlignment="Center" FontSize="18">更换房间</TextBlock>
+                                        </StackPanel>
+                                    </MenuItem.Header>
+                                </MenuItem>
+
+                                <MenuItem x:Name="ClientBill"
+                                          Click="ClientBill_Click"
+                                          ToolTip="查询客户入住此房间以来或所有消费记录">
+                                    <MenuItem.Header>
+                                        <StackPanel Background="#FFAE5F00" Style="{StaticResource LeftMenuPanel}">
+                                            <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/购物车.png" />
+                                            <TextBlock VerticalAlignment="Center" FontSize="18">账目查看</TextBlock>
+                                        </StackPanel>
+                                    </MenuItem.Header>
+                                </MenuItem>
+
+                                <MenuItem x:Name="ClientOut"
+                                          Click="ClientOut_Click"
+                                          ToolTip="客户退房结算">
+                                    <MenuItem.Header>
+                                        <StackPanel Background="DarkGray" Style="{StaticResource LeftMenuPanel}">
+                                            <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/下楼.png" />
+                                            <TextBlock VerticalAlignment="Center" FontSize="18">退房结账</TextBlock>
+                                        </StackPanel>
+                                    </MenuItem.Header>
+                                </MenuItem>
+
+                                <MenuItem x:Name="BookClientIn"
+                                          Click="BookClientIn_Click"
+                                          ToolTip="登记客户信息并修改对应房间的状态">
+                                    <MenuItem.Header>
+                                        <StackPanel Background="Orange" Style="{StaticResource LeftMenuPanel}">
+                                            <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/钥匙.png" />
+                                            <TextBlock VerticalAlignment="Center" FontSize="18">正式入住</TextBlock>
+                                        </StackPanel>
+                                    </MenuItem.Header>
+                                </MenuItem>
+
+                                <MenuItem x:Name="EixtRoomBook"
+                                          Click="EixtBook_Click"
+                                          ToolTip="取消房间预订">
+                                    <MenuItem.Header>
+                                        <StackPanel Background="Green" Style="{StaticResource LeftMenuPanel}">
+                                            <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/退出.png" />
+                                            <TextBlock VerticalAlignment="Center" FontSize="18">取消预定</TextBlock>
+                                        </StackPanel>
+                                    </MenuItem.Header>
+                                </MenuItem>
+
+                                <MenuItem x:Name="StateSet"
+                                          Click="StateSet_Click"
+                                          ToolTip="修改房间的可用状态">
+                                    <MenuItem.Header>
+                                        <StackPanel Background="#FF00AEFF" Style="{StaticResource LeftMenuPanel}">
+                                            <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/设置.png" />
+                                            <TextBlock VerticalAlignment="Center" FontSize="18">状态修改</TextBlock>
+                                        </StackPanel>
+                                    </MenuItem.Header>
+                                </MenuItem>
+
+                                <MenuItem x:Name="ReLoad"
+                                          Click="ReLoadData"
+                                          ToolTip="根据筛选条件刷新房间列表">
+                                    <MenuItem.Header>
+                                        <StackPanel Background="#FFB8EE00" Style="{StaticResource LeftMenuPanel}">
+                                            <Image Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/刷新.png" />
+                                            <TextBlock VerticalAlignment="Center" FontSize="18">刷新列表</TextBlock>
+                                        </StackPanel>
+                                    </MenuItem.Header>
+                                </MenuItem>
+
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Width="160"
+                                        Height="90"
+                                        Margin="5">
+                                    <DockPanel Panel.ZIndex="0" Background="{Binding SCBrush}">
+                                        <Image Width="90"
+                                               Height="90"
+                                               DockPanel.Dock="Left"
+                                               Source="/酒店管理系统-主程序;component/Controls/Image/ICON0/DB.png" />
+                                        <StackPanel Margin="5"
+                                                    VerticalAlignment="Center"
+                                                    DockPanel.Dock="Left">
+                                            <TextBlock HorizontalAlignment="Center"
+                                                       FontSize="16"
+                                                       Text="{Binding RoomID}" />
+                                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                                <TextBlock HorizontalAlignment="Center" Text="{Binding PriceText}" />
+                                                <!--<TextBlock Text="￥"></TextBlock>
+                                        <TextBlock Text="{Binding TypePrice}" HorizontalAlignment="Center"></TextBlock>
+                                        <TextBlock Text="/" HorizontalAlignment="Center"></TextBlock>
+                                        <TextBlock Text="{Binding TypeRequency}" HorizontalAlignment="Center"></TextBlock>
+                                        <TextBlock Text="h" HorizontalAlignment="Center"></TextBlock>-->
+                                            </StackPanel>
+                                            <TextBlock HorizontalAlignment="Center" Text="{Binding TypeName}" />
+                                            <TextBlock HorizontalAlignment="Center" Text="{Binding RoomStateName}" />
+                                        </StackPanel>
+                                    </DockPanel>
+                                    <!--  ToolTip  -->
+                                    <Border.ToolTip>
+                                        <ToolTip Background="Black"
+                                                 Foreground="White"
+                                                 Padding="2">
+                                            <DockPanel Panel.ZIndex="0" Background="{Binding SCBrush}">
+                                                <StackPanel Margin="5"
+                                                            VerticalAlignment="Center"
+                                                            Background="#3000"
+                                                            DockPanel.Dock="Bottom"
+                                                            Orientation="Horizontal">
+                                                    <TextBlock Padding="10,5,0,5">备注：</TextBlock>
+                                                    <TextBlock Padding="0,5,10,5"
+                                                               Text="{Binding RoomRemark}"
+                                                               TextWrapping="Wrap" />
+                                                </StackPanel>
+                                                <StackPanel Margin="5"
+                                                            VerticalAlignment="Center"
+                                                            DockPanel.Dock="Left">
+                                                    <StackPanel Margin="5" Orientation="Horizontal">
+                                                        <TextBlock FontSize="16" Text="房号：" />
+                                                        <TextBlock FontSize="16" Text="{Binding RoomID}" />
+                                                    </StackPanel>
+                                                    <StackPanel Margin="5" Orientation="Horizontal">
+                                                        <TextBlock>价格：</TextBlock>
+                                                        <TextBlock Text="{Binding PriceText}" />
+                                                    </StackPanel>
+                                                    <StackPanel Margin="5" Orientation="Horizontal">
+                                                        <TextBlock>类型：</TextBlock>
+                                                        <TextBlock Text="{Binding TypeName}" />
+                                                    </StackPanel>
+                                                    <StackPanel Margin="5" Orientation="Horizontal">
+                                                        <TextBlock>状态：</TextBlock>
+                                                        <TextBlock Text="{Binding RoomStateName}" />
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </DockPanel>
+                                        </ToolTip>
+                                    </Border.ToolTip>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
+
+            </DockPanel>
+        </TabItem>
+
+        <!--  帮助文档  -->
+        <TabItem Background="{x:Null}"
+                 BorderBrush="{x:Null}"
+                 BorderThickness="0">
+            <!--  标题区域  -->
+            <DockPanel DockPanel.Dock="Top">
+                <DockPanel Margin="25,20,25,10" DockPanel.Dock="Top">
+                    <myc:Retreat VerticalAlignment="Center"
+                                 DockPanel.Dock="Left"
+                                 MouseDown="ReturnTo_RoomList" />
+                    <TextBlock MinWidth="160"
+                               Margin="15"
+                               HorizontalAlignment="Left"
+                               FontSize="45"
+                               Foreground="{Binding Foreground,
+                                                    ElementName=C}"
+                               Text="房间列表-功能说明" />
+                </DockPanel>
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                    <StackPanel Margin="65,0,0,20">
+                        <TextBlock FontSize="25"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="25">
+                            关于房间列表：
+                        </TextBlock>
+                        <TextBlock FontSize="18"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="20,0,20,0"
+                                   TextWrapping="Wrap">
+                            此页面提供客户入住、房费续交、换退房操作、预订、退订、预订入住、房态修改。
+                        </TextBlock>
+
+                        <TextBlock FontSize="25"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="25">
+                            筛选条件使用
+                        </TextBlock>
+                        <TextBlock FontSize="18"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="20,20,20,0"
+                                   TextWrapping="Wrap">
+                            筛选条件位于大标题右侧，下来列表中的所有条件均来源于基础数据设定，如果找不到你需要的条件，请向管理员咨询。并且每个筛选条件下拉框都有一个复选框与之对应，如果勾选了与其对应的复选框，则该筛选条件不会生效。下拉框1设置房间类型筛选条件，下拉框2设置房间状态筛选条件。两种条件可同时使用。
+                        </TextBlock>
+
+                        <TextBlock FontSize="25"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="25">
+                            刷新功能使用
+                        </TextBlock>
+                        <TextBlock FontSize="18"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="20,20,20,0"
+                                   TextWrapping="Wrap">
+                            刷新按钮位于界面左上角，点击刷新按钮可以重新加载本页面内的数据。
+                        </TextBlock>
+
+                        <TextBlock FontSize="25"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="25">
+                            搜索功能使用
+                        </TextBlock>
+                        <TextBlock FontSize="18"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="20,20,20,0"
+                                   TextWrapping="Wrap">
+                            搜索功能框位于界面下方，点击搜索框左侧下拉列表可选择搜索方式。
+                        </TextBlock>
+
+
+
+                        <TextBlock FontSize="25"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="25">
+                            房间操作
+                        </TextBlock>
+                        <TextBlock FontSize="18"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="20,20,20,0"
+                                   TextWrapping="Wrap">
+                            对于房间的一般性操作，只需双击房间图标即可进行操作。其它操作使用鼠标右键通过菜单操作。注意：根据房间状态不同，右键菜单显示的功能并不是一样的，请留意。
+                        </TextBlock>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </DockPanel>
+        </TabItem>
+    </TabControl>
+</UserControl>

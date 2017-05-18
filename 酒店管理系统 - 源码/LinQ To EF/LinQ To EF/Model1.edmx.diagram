@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f4080b316bfc4f6dba3ab5e168e1deee" Name="Diagram1" ZoomLevel="108">
+        <EntityTypeShape EntityType="TavernManageModel.T_AccountOld" Width="1.5" PointX="15" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_AccreditList" Width="1.5" PointX="10" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_AccreditType" Width="1.5" PointX="7.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_BookRoom" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_ClientInfo" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_ClientRoom" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_ClientRoomOld" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_CountryInfo" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_OperateType" Width="1.5" PointX="12.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_OutInInfo" Width="1.5" PointX="8" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_PaperType" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_RoomList" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_RoomStateType" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_RoomType" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_StaffInfo" Width="1.5" PointX="10" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_StaffList" Width="1.5" PointX="12.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_StaffType" Width="1.5" PointX="10" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_StockInfo" Width="1.5" PointX="11" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_SupplierInfo" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_SupplierType" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_UnitType" Width="1.5" PointX="5.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_VIPInfo" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_VIPLevel" Width="1.5" PointX="13.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.T_WaresType" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.View_Charge" Width="1.5" PointX="4.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.View_ClientRoomState" Width="1.5" PointX="13.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.view_ConsumeHistory" Width="1.5" PointX="14.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.view_HousingHistory" Width="1.5" PointX="14.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.View_RoomInfo" Width="1.5" PointX="15.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.View_RoomInfoAll" Width="1.5" PointX="6.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.View_RoomInfoNo" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.View_RoomStateCount" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TavernManageModel.View_RoomTypeCount" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="TavernManageModel.FK__T_Account__Opera__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="TavernManageModel.FK_ALevel" ManuallyRouted="false" />
+        <AssociationConnector Association="TavernManageModel.FK_STypeALevelID" ManuallyRouted="false" />
+        <AssociationConnector Association="TavernManageModel.FK__T_ClientI__Clien__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="TavernManageModel.FK__T_ClientR__Clien__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="TavernManageModel.FK__T_ClientR__RoomI__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="TavernManageModel.FK_IOUnit" ManuallyRouted="false" />
+        <AssociationConnector Association="TavernManageModel.FK_IOWaresID" ManuallyRouted="false" />
+        <AssociationConnector Association="TavernManageModel.FK__T_RoomLis__RoomS__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="TavernManageModel.FK__T_RoomLis__RoomT__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="TavernManageModel.FK_StaffGuid" ManuallyRouted="false" />
+        <AssociationConnector Association="TavernManageModel.FK_STypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="TavernManageModel.FK_StockUnit" ManuallyRouted="false" />
+        <AssociationConnector Association="TavernManageModel.FK_WaresID" ManuallyRouted="false" />
+        <AssociationConnector Association="TavernManageModel.FK_SupplierTypeID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

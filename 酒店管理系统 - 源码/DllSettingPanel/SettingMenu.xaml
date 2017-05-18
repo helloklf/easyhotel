@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="DllSettingPanel.SettingMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Loaded="UserControl_Loaded"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary Source="Style.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+    <DockPanel Name="SetingList" Style="{StaticResource SmallPage_LeftList}" Background="{Binding Background,ElementName=C}">
+        <TextBox x:Name="C" Visibility="Collapsed" Foreground="{Binding ForeColor}" Background="{Binding BgColor}"></TextBox>
+        <StackPanel>
+            <TextBlock DockPanel.Dock="Top" Text="设　置" FontSize="35" Padding="15,15,25,5" Foreground="{Binding Foreground,ElementName=C}"></TextBlock>
+            <RadioButton Name="Set1" Click="SetSelect1" Content="颜　色" Style="{StaticResource LMenu}" Focusable="True"/>
+            <RadioButton Name="Set3" Click="SetSelect2" Content="背　景" Style="{StaticResource LMenu}" Focusable="True"></RadioButton>
+            <RadioButton Name="Set4" Click="SetSelect3" Content="其　它" Style="{StaticResource LMenu}" Focusable="True"></RadioButton>
+            <RadioButton Name="Set5" Click="SetSelect4" Content="声　音" Style="{StaticResource LMenu}" Focusable="True"></RadioButton>
+            <RadioButton Name="Set0" Click="SetSelect0" Content="关　于" IsChecked="True" Style="{StaticResource LMenu}" Focusable="True"></RadioButton>
+            <RadioButton Click="Close_MiniPage_Content" x:Name="CloseBut" Content="保　存" Style="{StaticResource LMenu}"  Focusable="True"></RadioButton>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

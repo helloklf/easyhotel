@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="Project_Term2_Staff.StaffList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:my2="clr-namespace:Project_Term2_Staff"
+             mc:Ignorable="d" xmlns:my="clr-namespace:MyControls;assembly=MyControls" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary Source="../Style.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+    <DockPanel>
+        <TextBox x:Name="C" Visibility="Collapsed" Foreground="{Binding ForeColor}" Background="{Binding BgColor}"></TextBox>
+        <!--新增数据-->
+        <DockPanel DockPanel.Dock="Right">
+            <Label Content="o" MinWidth="20" VerticalContentAlignment="Center" Opacity="0.7" BorderThickness="0,0,1,0" BorderBrush="{Binding Foreground,ElementName=C}" MouseDown="RightPanelSet"></Label>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                <TabControl BorderBrush="{x:Null}" BorderThickness="0" Name="Tab" Background="{x:Null}" Margin="5" Visibility="Collapsed">
+                    <TabItem x:Name="Item0" Visibility="Collapsed">
+                        <StackPanel MaxWidth="400">
+                            <TextBlock Text="添加账户" FontSize="25" Foreground="{Binding Foreground,ElementName=C}"></TextBlock>
+                            <Border Height="2" DockPanel.Dock="Top" Background="{Binding Foreground,ElementName=C}" Margin="0,5,0,5"></Border>
+                            <DockPanel Margin="5">
+                                <TextBlock Text="序 列 号 ：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox Style="{StaticResource ShortTextBox}" x:Name="InGUID" IsReadOnly="True"></TextBox>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <TextBlock Text="员工工号：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox Style="{StaticResource ShortTextBox}" x:Name="InText"></TextBox>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <TextBlock Text="员工密码：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox Style="{StaticResource ShortTextBox}" x:Name="InPass"></TextBox>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <TextBlock Text="员工职务：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <ComboBox x:Name="InPost" SelectedValuePath="STypeID" DisplayMemberPath="STypeName" FontSize="15" HorizontalAlignment="Left" MinWidth="150" Margin="5" Background="{Binding Background,ElementName=C}" Foreground="{Binding Foreground,ElementName=C}"></ComboBox>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <TextBlock Text="授权码 *：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox Style="{StaticResource ShortTextBox}" x:Name="InSu" MaxLength="40"></TextBox>
+                            </DockPanel>
+                            <my:OK MouseDown="yes_MouseDown" HorizontalAlignment="Right" Margin="10,5"></my:OK>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem x:Name="Item1" Visibility="Collapsed">
+                        <StackPanel MaxWidth="400">
+                            <TextBlock Text="修改账户" FontSize="25" Foreground="{Binding Foreground,ElementName=C}"></TextBlock>
+                            <Border Height="2" DockPanel.Dock="Top" Background="{Binding Foreground,ElementName=C}" Margin="0,5,0,5"></Border>
+                            <DockPanel Margin="5">
+                                <TextBlock Text="序 列 号 ：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox Style="{StaticResource ShortTextBox}" x:Name="UpGUID" IsReadOnly="True"></TextBox>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <TextBlock Text="员工工号：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox Style="{StaticResource ShortTextBox}" x:Name="UpText"></TextBox>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <TextBlock Text="员工密码：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox Style="{StaticResource ShortTextBox}" x:Name="UpPass"></TextBox>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <TextBlock Text="员工职务：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <ComboBox x:Name="UpPost" SelectedValuePath="STypeID" DisplayMemberPath="STypeName" FontSize="15" HorizontalAlignment="Left" MinWidth="150" Margin="5" Background="{Binding Background,ElementName=C}" Foreground="{Binding Foreground,ElementName=C}">
+                                </ComboBox>
+                            </DockPanel>
+                            <DockPanel Margin="5">
+                                <TextBlock Text="授权码 *：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox Style="{StaticResource ShortTextBox}" x:Name="UpSu" MaxLength="40"></TextBox>
+                            </DockPanel>
+                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                <my:No MouseDown="HideTab"></my:No>
+                                <my:OK MouseDown="yes_MouseDown_1" Margin="10,5"></my:OK>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </TabItem>
+                </TabControl>
+            </ScrollViewer>
+        </DockPanel>
+        <!--现有数据操作-->
+        <ScrollViewer DockPanel.Dock="Left" Margin="20,5,10,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel>
+                <DataGrid DockPanel.Dock="Top" x:Name="DATAGRIDVIEW" ItemsSource="{Binding}" ColumnHeaderStyle="{StaticResource GRIDC}" Background="{Binding Background,ElementName=C}" RowBackground="{x:Null}" MouseDoubleClick="DATAGRIDVIEW_MouseDoubleClick" AutoGenerateColumns="False" CanUserAddRows="False" CanUserReorderColumns="False" IsReadOnly="True" TextBlock.Foreground="{Binding Foreground,ElementName=C}" TextBlock.TextAlignment="Center" VerticalGridLinesBrush="{Binding Foreground,ElementName=C}" TextBlock.FontSize="15">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="GUID" Binding="{Binding GUID}" Visibility="Collapsed"></DataGridTextColumn>
+                        <DataGridTextColumn Header="姓名" Binding="{Binding 姓名}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="身份证号" Binding="{Binding 身份证}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="工号" Binding="{Binding 工号}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="入职时间" Binding="{Binding 入职时间}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="电话号码" Binding="{Binding 电话号码}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="职务" Binding="{Binding 职务}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="授权码" Binding="{Binding 授权码}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

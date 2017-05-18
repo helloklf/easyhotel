@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="Project_Term2.UserPage.AboutInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             Loaded="UserControl_Loaded"
+             mc:Ignorable="d">
+    <ScrollViewer Name="ColorPanl_"
+                  MaxHeight="370"
+                  DockPanel.Dock="Top"
+                  HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Hidden">
+        <StackPanel Width="450">
+            <TextBox x:Name="C"
+                     Background="{Binding BgColor}"
+                     Foreground="{Binding ForeColor}"
+                     Visibility="Collapsed" />
+
+            <TextBlock Margin="10,10,10,5"
+                       FontSize="25"
+                       Foreground="{Binding Foreground,
+                                            ElementName=C}"
+                       Text="权限等级说明" />
+            <StackPanel Margin="10" Background="{Binding Background, ElementName=C}">
+                <TextBlock Margin="10,10,10,5"
+                           FontSize="20"
+                           Foreground="{Binding Foreground,
+                                                ElementName=C}"
+                           Text="超级管理员"
+                           TextWrapping="Wrap" />
+                <TextBlock Margin="30,0"
+                           FontSize="15"
+                           Foreground="{Binding Foreground,
+                                                ElementName=C}"
+                           TextWrapping="Wrap">
+                    权限最高 可以进行所有操作
+                </TextBlock>
+                <TextBlock Margin="10,20,10,5"
+                           FontSize="20"
+                           Foreground="{Binding Foreground,
+                                                ElementName=C}"
+                           Text="高级管理员"
+                           TextWrapping="Wrap" />
+                <TextBlock Margin="30,5"
+                           FontSize="15"
+                           Foreground="{Binding Foreground,
+                                                ElementName=C}"
+                           TextWrapping="Wrap">
+                    权限较高 可以进行大部分操作
+                </TextBlock>
+                <TextBlock Margin="10,20,10,5"
+                           DockPanel.Dock="Left"
+                           FontSize="20"
+                           Foreground="{Binding Foreground,
+                                                ElementName=C}"
+                           Text="管理员"
+                           TextWrapping="Wrap" />
+                <TextBlock Margin="30,0"
+                           DockPanel.Dock="Top"
+                           FontSize="15"
+                           Foreground="{Binding Foreground,
+                                                ElementName=C}"
+                           TextWrapping="Wrap">
+                    权限较低 可以进行一般性操作
+                </TextBlock>
+                <TextBlock Margin="10,20,10,5"
+                           FontSize="20"
+                           Foreground="{Binding Foreground,
+                                                ElementName=C}"
+                           Text="游客"
+                           TextWrapping="Wrap" />
+                <TextBlock Margin="30,0"
+                           FontSize="15"
+                           Foreground="{Binding Foreground,
+                                                ElementName=C}"
+                           TextWrapping="Wrap">
+                    不需登陆 只能进行简单的查询
+                </TextBlock>
+            </StackPanel>
+            <TextBlock Margin="10,20,10,5"
+                       FontSize="25"
+                       Foreground="{Binding Foreground,
+                                            ElementName=C}"
+                       Text="授权码说明" />
+            <StackPanel Margin="10" Background="{Binding Background, ElementName=C}">
+                <TextBlock Margin="30,0"
+                           DockPanel.Dock="Left"
+                           FontSize="15"
+                           Foreground="{Binding Foreground,
+                                                ElementName=C}"
+                           TextWrapping="Wrap">
+                    此功能在后续版本中完善...
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

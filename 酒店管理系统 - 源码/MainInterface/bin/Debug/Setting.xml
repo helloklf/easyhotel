@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<StartWindowSettings_String xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ForeC>#FFFFFFFF</ForeC>
+  <BgC>#FFFF8C00</BgC>
+  <Transparent>false</Transparent>
+  <BgImage>F:\媒体文件\图片\lovewallpaper\安卓5.0\ (5).jpg</BgImage>
+  <Overallview>true</Overallview>
+  <WhiteICON>true</WhiteICON>
+  <MessageTime>5</MessageTime>
+</StartWindowSettings_String>

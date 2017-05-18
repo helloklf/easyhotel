@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="DllSettingPanel.Setting_Page"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:my="clr-namespace:DllSettingPanel"
+             mc:Ignorable="d"  Loaded="UserControl_Loaded">
+    <DockPanel  Margin="0" Cursor="Hand">
+        <TextBox x:Name="C" Visibility="Collapsed" Foreground="{Binding ForeColor}" Background="{Binding BgColor}"></TextBox>
+        <!--列表-->
+        <my:SettingMenu Margin="0,2,0,0"></my:SettingMenu>
+        <Border Margin="0,2,0,0" DockPanel.Dock="Left" Width="2" Background="{Binding Foreground,ElementName=C}"></Border>
+        <TabControl  Background="{Binding Background,ElementName=C}" Name="SettingPanel" BorderBrush="{x:Null}" BorderThickness="0" SelectedIndex="{Binding TabItemIndex}">
+            <!--关于-->
+            <TabItem Visibility="Collapsed" Focusable="False">
+                <my:AboutInfo></my:AboutInfo>
+            </TabItem>
+            <!--色彩选择-->
+            <TabItem Visibility="Collapsed" Focusable="False">
+                <ScrollViewer VerticalScrollBarVisibility="Hidden" Height="370" Padding="0" Focusable="False">
+                    <StackPanel>
+                        <my:BgColor Focusable="False" HorizontalAlignment="Center"></my:BgColor>
+                        <my:FontColor Focusable="False" HorizontalAlignment="Center" Margin="0,20,0,0"></my:FontColor>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <!--图片选择-->
+            <TabItem Visibility="Collapsed" Focusable="False">
+                <my:SelectImage></my:SelectImage>
+            </TabItem>
+            <!--其它-->
+            <TabItem Visibility="Collapsed" Focusable="False">
+                <my:OtherSetting></my:OtherSetting>
+            </TabItem>
+            <!--声音-->
+            <TabItem Visibility="Collapsed" Focusable="False">
+                <my:AppSound></my:AppSound>
+            </TabItem>
+        </TabControl>
+        
+    </DockPanel>
+</UserControl>

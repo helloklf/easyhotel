@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="Project_Term2.Controls.SearchBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="FocusColor" Color="White" />
+        <Style TargetType="ListBox">
+            <Setter Property="BorderBrush" Value="{DynamicResource FocusColor}" />
+            <Setter Property="MaxHeight" Value="300" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="BorderThickness" Value="1,0,1,1" />
+            <Setter Property="Background" Value="#5fff" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Width" Value="{Binding ActualWidth, ElementName=InputContent}" />
+            <Setter Property="Visibility" Value="Collapsed" />
+            <Setter Property="Grid.Row" Value="1" />
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemsSource" Value="{Binding}" />
+        </Style>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Padding" Value="2" />
+            <Setter Property="Margin" Value="0,2" />
+            <Setter Property="Background" Value="#800f" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <!--  搜索  -->
+        <Border BorderBrush="{StaticResource FocusColor}" BorderThickness="1">
+            <DockPanel>
+                <Button MinWidth="28"
+                        MinHeight="25"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        BorderThickness="1,0,0,0"
+                        Click="Button_Click"
+                        Content="Q"
+                        DockPanel.Dock="Right" />
+                <Grid>
+                    <TextBox x:Name="InputContent"
+                             Margin="-1"
+                             VerticalContentAlignment="Center"
+                             Panel.ZIndex="1"
+                             Background="{x:Null}"
+                             BorderThickness="0"
+                             GotFocus="InputContent_GotFocus"
+                             KeyDown="InputContent_KeyDown"
+                             LostFocus="InputContent_LostFocus"
+                             Padding="5,2"
+                             TextChanged="InputContent_TextChanged" />
+                    <TextBlock x:Name="Xaml_watermark"
+                               VerticalAlignment="Center"
+                               Panel.ZIndex="0"
+                               Opacity="0.5"
+                               Padding="5,2"
+                               Text="在这里进行搜索" />
+                </Grid>
+            </DockPanel>
+        </Border>
+        <ListBox x:Name="Xaml_DownList" SelectionChanged="ListBox_SelectionChanged" />
+    </Grid>
+</UserControl>

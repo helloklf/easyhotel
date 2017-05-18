@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="Project_Term2_Client.HelpInfo" x:Name="this" Foreground="{Binding ForeColor}"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+        <StackPanel>
+            <TextBlock FontSize="20" Padding="25" Foreground="{Binding Foreground,ElementName=this}">关于客户中心：</TextBlock>
+            <TextBlock TextWrapping="Wrap" Padding="20,0,20,0" FontSize="17" Foreground="{Binding Foreground,ElementName=this}" Margin="35">
+                            你可以在这里查询客户的所有相关存档。但鉴于客户档案对于酒店运营的历史意义，客户的个人信息记录不允许删除操作。本页面的所有数据均来源于客户入住酒店时的登记，本页面不提供客户信息的录入功能。你可以通过双击条目来修改客户的个人信息（如果不是有特殊需求，我们并不赞同这样的操作。）此外，可以切换到VIP管理界面增加或禁用VIP账号，VIP账户的使用是在客户入住酒店时登记的，如果不登记，VIP账号并不会与客户直接关联！
+            </TextBlock>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

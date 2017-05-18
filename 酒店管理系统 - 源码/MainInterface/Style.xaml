@@ -1,0 +1,90 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--顶部工具栏底边-->
+    <Style TargetType="Border" x:Key="TopBorder">
+        <Setter Property="Padding" Value="5,2"></Setter>
+        <Setter Property="DockPanel.Dock" Value="Top"></Setter>
+        <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+        <Setter Property="BorderBrush" Value="White"></Setter>
+    </Style>
+
+    <Style TargetType="TabControl">
+        <Setter Property="BorderBrush" Value="{x:Null}"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Padding" Value="0"></Setter>
+    </Style>
+    <Style TargetType="TabItem">
+        <Setter Property="Visibility" Value="Collapsed"></Setter>
+    </Style>
+
+    <!--搜搜栏-->
+    <Style TargetType="Border" x:Key="Tools_Input">
+        <Setter Property="MinWidth" Value="250"></Setter>
+        <Setter Property="DockPanel.Dock" Value="Right"></Setter>
+        <Setter Property="BorderBrush" Value="{Binding Foreground,ElementName=C}"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Margin" Value="5"></Setter>
+        <Setter Property="Padding" Value="0"></Setter>
+        <Style.Triggers>
+            <Trigger Property="Control.IsMouseOver" Value="true">
+                <Setter Property="Background" Value="{Binding Background,ElementName=C}"></Setter>
+            </Trigger>
+            <Trigger Property="Control.IsMouseOver" Value="false">
+                <Setter Property="BorderThickness" Value="0"></Setter>
+                <Setter Property="Background" Value="{x:Null}"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--标题文本-->
+    <Style TargetType="TextBlock" x:Key="TopTitle">
+        <Setter Property="Text" Value="　　　　　"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="Foreground" Value="{Binding Foreground,ElementName=C}"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="TextAlignment" Value="Center"></Setter>
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="Padding" Value="0,5,0,0"></Setter>
+        <Setter Property="ToolTip" Value="双击缩放窗口，按住鼠标移动窗口"></Setter>
+    </Style>
+
+    <!--对话框边框样式-->
+    <Style TargetType="Border" x:Key="MiniPageBorder">
+        <Setter Property="BorderBrush" Value="{x:Null}"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+        <Setter Property="Background" Value="#5000"></Setter>
+    </Style>
+
+    <!--提交或取消按钮:如登陆框-->
+    <Style TargetType="Border" x:Key="SeachBut">
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect ShadowDepth="1" Color="{Binding Background,ElementName=C}"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="CornerRadius" Value="90"></Setter>
+        <Setter Property="DockPanel.Dock" Value="Right"></Setter>
+        <Setter Property="BorderThickness" Value="2"></Setter>
+        <Setter Property="BorderBrush" Value="{Binding Background,ElementName=C}"></Setter>
+        <Setter Property="Height" Value="25"></Setter>
+        <Setter Property="Width" Value="25"></Setter>
+        <Setter Property="Margin" Value="0"></Setter>
+        <Setter Property="Padding" Value="1"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" Value="{Binding Foreground,ElementName=C}"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--中心面板风格-->
+    <Style TargetType="ScrollViewer"  x:Key="MainMenuView">
+        <Setter Property="PanningMode" Value="Both"></Setter>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"></Setter>
+        <Setter Property="VerticalScrollBarVisibility" Value="Disabled"></Setter>
+        <Setter Property="CanContentScroll" Value="True"></Setter>
+        <Setter Property="TextOptions.TextFormattingMode"  Value="Display"></Setter>
+    </Style>
+    
+</ResourceDictionary>

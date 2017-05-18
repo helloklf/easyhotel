@@ -1,0 +1,175 @@
+﻿<UserControl x:Class="Project_Term2.DataView.DataGrid1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:myc="clr-namespace:MyControls;assembly=MyControls"
+             Loaded="UserControl_Loaded"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary Source="DataGridStyle.xaml" />
+    </UserControl.Resources>
+    <TabControl Name="MainTab" Style="{StaticResource PageManage}">
+        <TabItem Background="{x:Null}"
+                 BorderBrush="{x:Null}"
+                 BorderThickness="0">
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                <DockPanel Grid.Column="0" Background="#3555">
+                    <TextBlock x:Name="C"
+                               Background="{Binding BgColor}"
+                               Foreground="{Binding ForeColor}"
+                               Visibility="Collapsed" />
+                    <DockPanel Margin="25,20,25,10" DockPanel.Dock="Top">
+                        <myc:Retreat VerticalAlignment="Center"
+                                     DockPanel.Dock="Left"
+                                     MouseLeftButtonUp="ReturnTo_MainMenu" />
+                        <TextBlock MinWidth="160"
+                                   Margin="15"
+                                   HorizontalAlignment="Left"
+                                   FontSize="45"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   MouseDown="ToHelpPage"
+                                   Text="历史记录" />
+                        <Expander x:Name="SearchType"
+                                  MinWidth="100"
+                                  Margin="5"
+                                  VerticalAlignment="Center"
+                                  DockPanel.Dock="Left"
+                                  FontSize="15"
+                                  Foreground="{Binding Foreground,
+                                                       ElementName=C}"
+                                  Header="住房历史">
+                            <ListBox x:Name="SearchTypeList"
+                                     Background="{x:Null}"
+                                     BorderBrush="{x:Null}"
+                                     FontSize="15"
+                                     Foreground="{Binding Foreground,
+                                                          ElementName=C}"
+                                     SelectedValuePath="Content"
+                                     SelectionChanged="SearchTypeChanged">
+                                <ListBoxItem Margin="17,1,5,1"
+                                             Content="住房历史"
+                                             ToolTip="查询客户的住房历史记录" />
+                                <ListBoxItem Margin="17,1,5,1"
+                                             Content="消费记录"
+                                             ToolTip="查询客户消费历史记录" />
+                            </ListBox>
+                        </Expander>
+                        <ComboBox x:Name="TimeSpanSelect"
+                                  MinWidth="100"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Center"
+                                  DropDownClosed="TimeSpanSelect_DropDownClosed"
+                                  FontSize="14"
+                                  Template="{DynamicResource ComboBoxControlTemplate1}"
+                                  Text="当天">
+                            <ComboBoxItem Content="当天" />
+                            <ComboBoxItem Content="7天" />
+                            <ComboBoxItem Content="30天" />
+                            <ComboBoxItem Content="365天" />
+                            <ComboBoxItem Content="全部" />
+                        </ComboBox>
+                    </DockPanel>
+
+                    <DataGrid x:Name="DataList"
+                              AreRowDetailsFrozen="True"
+                              AutoGenerateColumns="True"
+                              Background="{x:Null}"
+                              BorderBrush="{x:Null}"
+                              ColumnHeaderStyle="{StaticResource GRIDC}"
+                              ColumnWidth="Auto"
+                              DockPanel.Dock="Top"
+                              IsReadOnly="True"
+                              ItemsSource="{Binding}"
+                              Padding="25,10"
+                              RowBackground="{x:Null}"
+                              TextBlock.FontSize="15"
+                              TextBlock.Foreground="{Binding Foreground,
+                                                             ElementName=C}"
+                              TextBlock.TextAlignment="Center"
+                              VerticalGridLinesBrush="{Binding Foreground,
+                                                               ElementName=C}">
+                        <DataGrid.ContextMenu>
+                            <ContextMenu Foreground="#FFF" Visibility="Collapsed">
+                                <MenuItem Header="查看" />
+                                <MenuItem Header="编辑" />
+                                <MenuItem Header="删除" />
+                                <MenuItem Header="关于" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                    </DataGrid>
+
+                </DockPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <TabItem Background="{x:Null}"
+                 BorderBrush="{x:Null}"
+                 BorderThickness="0">
+
+            <!--  标题区域  -->
+            <DockPanel DockPanel.Dock="Top">
+                <DockPanel Margin="25,20,25,10" DockPanel.Dock="Top">
+                    <myc:Retreat VerticalAlignment="Center"
+                                 DockPanel.Dock="Left"
+                                 MouseDown="ReturnTo_RoomList" />
+                    <TextBlock MinWidth="160"
+                               Margin="15"
+                               HorizontalAlignment="Left"
+                               FontSize="45"
+                               Foreground="{Binding Foreground,
+                                                    ElementName=C}"
+                               Text="历史记录-功能说明" />
+                </DockPanel>
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                    <StackPanel Margin="65,0,0,20">
+                        <TextBlock FontSize="25"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="25">
+                            关于历史记录
+                        </TextBlock>
+                        <TextBlock FontSize="18"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="20,0,20,0"
+                                   TextWrapping="Wrap">
+                            此页面提供对一个时间段内的住房、客户消费历史记录查询。
+                        </TextBlock>
+
+                        <TextBlock FontSize="25"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="25">
+                            筛选条件使用
+                        </TextBlock>
+                        <TextBlock FontSize="18"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="20,20,20,0"
+                                   TextWrapping="Wrap">
+                            筛选条件位于大标题右侧，可以选择要查询的内容、时间段。
+                        </TextBlock>
+
+                        <TextBlock FontSize="25"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="25">
+                            其它功能
+                        </TextBlock>
+                        <TextBlock FontSize="18"
+                                   Foreground="{Binding Foreground,
+                                                        ElementName=C}"
+                                   Padding="20,20,20,0"
+                                   TextWrapping="Wrap">
+                            目前为止，该模块仅提供这些基本功能，更多功能敬请期待...
+                        </TextBlock>
+
+
+                    </StackPanel>
+                </ScrollViewer>
+            </DockPanel>
+        </TabItem>
+    </TabControl>
+</UserControl>

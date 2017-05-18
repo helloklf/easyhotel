@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="DllSettingPanel.OtherSetting" Loaded="UserControl_Loaded"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:my="clr-namespace:DllSettingPanel.OtherSet"
+             mc:Ignorable="d">
+    <ScrollViewer MaxHeight="370" Name="ColorPanl_" VerticalScrollBarVisibility="Hidden" DockPanel.Dock="Top" HorizontalScrollBarVisibility="Disabled" Focusable="False">
+        <StackPanel Width="450" Focusable="False">
+            <TextBox x:Name="C" Visibility="Collapsed" Foreground="{Binding ForeColor}" Background="{Binding BgColor}" BorderBrush="{Binding FColor}"></TextBox>
+            <TextBlock Text="显示风格" FontSize="25" Foreground="{Binding Foreground,ElementName=C}" Margin="10,10,10,5" Focusable="False"></TextBlock>
+            <my:WindowStyle></my:WindowStyle>
+            <!--<my:IconColor Visibility="Collapsed"></my:IconColor>-->
+            <my:ColorTrans></my:ColorTrans>
+
+
+            <TextBlock Text="高级功能" FontSize="25" Foreground="{Binding Foreground,ElementName=C}" Margin="10,25,10,5" Focusable="False"></TextBlock>
+            <my:DataBaseSet Visibility="Collapsed"></my:DataBaseSet>
+
+            <TextBlock Margin="10" Text="更多功能请期待后续版本..." Foreground="{Binding Foreground,ElementName=C}"></TextBlock>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

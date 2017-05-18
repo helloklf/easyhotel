@@ -1,0 +1,163 @@
+﻿<UserControl x:Class="Project_Term2_BaseData.Pages.RoomStateType"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" xmlns:my="clr-namespace:MyControls;assembly=MyControls" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary Source="../Style.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+    <DockPanel>
+        <TextBox x:Name="C" Visibility="Collapsed" Foreground="{Binding ForeColor}" Background="{Binding BgColor}"></TextBox>
+
+        <my:DataListMenu DockPanel.Dock="Top" x:Name="IsCheck" OnAddItem="AddItem" OnEditItem="EditItem" OnSelectedItemEnabled="SelectedItemEnabled"  OnSelectedItemEnabledNo="SelectedItemEnabledNo" OnCheckBox_Click="CheckBox_Click"></my:DataListMenu>
+        <Border Height="2" DockPanel.Dock="Top" Opacity="0.6" Margin="2,10" Background="{Binding Background,ElementName=C}"></Border>
+
+        <!--新增数据-->
+        <DockPanel DockPanel.Dock="Right">
+            <Label Content="o" MinWidth="20" VerticalContentAlignment="Center" Opacity="0.7" BorderThickness="0,0,1,0" BorderBrush="{Binding Foreground,ElementName=C}" MouseDown="RightPanelSet"></Label>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                <TabControl BorderBrush="{x:Null}" BorderThickness="0" Visibility="Collapsed" Name="Tab" Background="{x:Null}" Margin="5">
+                    <TabItem Visibility="Collapsed" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0">
+                        <StackPanel>
+                            <TextBlock Text="新增类型" FontSize="25" Margin="0,5,10,10" Foreground="{Binding Foreground,ElementName=C}"></TextBlock>
+                            <DockPanel Margin="2">
+                                <TextBlock Text="房态名称*：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox x:Name="InText" ToolTip="房间状态名(15字以内)，如:空房" Style="{StaticResource ShortTextBox}"/>
+                            </DockPanel>
+                            <DockPanel Margin="2">
+                                <TextBlock Text="显示颜色：" Background="#0000" ToolTip="此状态下的房间磁贴显示的背景颜色" x:Name="InColor" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal" x:Name="InColorPanel" ToolTip="不透明的背景颜色">
+                                        <Button Height="20" Width="20" Background="Gold" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="Orange" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#FFFF409F" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="Red" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="Green" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="Blue" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="White" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#FFFFEED0" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="Pink" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="Gray" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="Black" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="Yellow" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#FFD2FF08" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#FFB140FF" Margin="2" BorderBrush="{x:Null}"></Button>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" x:Name="InColorPanel2" ToolTip="半透明的背景色">
+                                        <Button Height="20" Width="20" Background="#7FFFD700" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7FFFA500" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7FFF409F" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7FFF0000" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7F008000" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7F0000FF" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7FFFFFFF" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#FFFFEED0" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7FFFC0CB" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7F808080" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7F000000" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7FFFFF00" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7FD2FF08" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7FB140FF" Margin="2" BorderBrush="{x:Null}"></Button>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DockPanel>
+                            <DockPanel Margin="2">
+                                <TextBlock Text="备注信息：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox x:Name="InRemark" MaxWidth="400" ToolTip="备注信息(100字以内)" Style="{StaticResource LongTextBox}"></TextBox>
+                            </DockPanel>
+                            <my:OK MouseDown="Label_MouseDown" HorizontalAlignment="Right" Margin="10,5"></my:OK>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Visibility="Collapsed" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0">
+                        <StackPanel>
+                            <TextBlock Text="修改类型" FontSize="25" Margin="0,5,10,10" Foreground="{Binding Foreground,ElementName=C}"></TextBlock>
+                            <DockPanel Margin="2">
+                                <TextBlock Text="房态名称*：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox x:Name="UpText" ToolTip="房间状态名(15字以内)，如:空房" Style="{StaticResource ShortTextBox}"/>
+                            </DockPanel>
+                            <DockPanel Margin="2">
+                                <TextBlock Text="显示颜色：" ToolTip="此状态下的房间磁贴显示的背景颜色" x:Name="UpColor" Style="{StaticResource LeftTitle}" Background="#0000"></TextBlock>
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal" x:Name="UpColorPanel" ToolTip="不透明的背景颜色">
+                                        <Button Height="20" Width="20" Background="Gold" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="Orange" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#FFFF409F" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="Red" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="Green" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="Blue" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="White" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#FFFFEED0" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="Pink" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="Gray" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="Black" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="Yellow" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#FFD2FF08" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#FFB140FF" Margin="2" BorderBrush="{x:Null}"></Button>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" x:Name="UpColorPanel2" ToolTip="半透明的背景色">
+                                        <Button Height="20" Width="20" Background="#7FFFD700" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7FFFA500" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7FFF409F" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7FFF0000" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7F008000" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7F0000FF" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7FFFFFFF" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#FFFFEED0" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7FFFC0CB" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7F808080" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7F000000" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7FFFFF00" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7FD2FF08" Margin="2" BorderBrush="{x:Null}"></Button>
+                                        <Button Height="20" Width="20" Background="#7FB140FF" Margin="2" BorderBrush="{x:Null}"></Button>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DockPanel>
+                            <DockPanel Margin="2">
+                                <TextBlock Text="备注信息：" Style="{StaticResource LeftTitle}"></TextBlock>
+                                <TextBox x:Name="UpRemark" MaxWidth="400" ToolTip="备注信息(100字以内)" Style="{StaticResource LongTextBox}"></TextBox>
+                            </DockPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+                                <my:No MouseDown="ReturnList"></my:No>
+                                <my:OK MouseDown="Label_MouseDown_1" HorizontalAlignment="Right" Margin="10,5"></my:OK>
+                            </StackPanel>
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+            </ScrollViewer>
+        </DockPanel>
+        <!--现有数据操作-->
+        <DockPanel Margin="5" DockPanel.Dock="Top">
+            <my:DataListBox x:Name="LB" SelectedValuePath="ALevelID" OnAddItem="AddItem" OnEditItem="EditItem" OnSelectedItemEnabled="SelectedItemEnabled" OnLBContextMenuOpening="LB_ContextMenuOpening" OnSelectedItemEnabledNo="SelectedItemEnabledNo">
+                <my:DataListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel Background="#FFFFCC" MinWidth="300">
+                            <StackPanel Margin="10">
+                                <StackPanel Orientation="Horizontal" Visibility="Visible">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <TextBlock VerticalAlignment="Center">编号：</TextBlock>
+                                        <TextBlock VerticalAlignment="Center" Text="{Binding StateID}" Padding="2"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <TextBlock VerticalAlignment="Center">有效性：</TextBlock>
+                                        <TextBlock VerticalAlignment="Center" Text="{Binding IsValidText}" Padding="2"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock VerticalAlignment="Center">房态名称：</TextBlock>
+                                    <TextBlock VerticalAlignment="Center" FontSize="18" Text="{Binding StateName}" Padding="2"></TextBlock>
+                                    <TextBlock VerticalAlignment="Center" Margin="20,0,0,0">强调色：</TextBlock>
+                                    <Border VerticalAlignment="Center" Height="27" Width="48" Background="{Binding StateColorBrush}" Padding="2"></Border>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock VerticalAlignment="Center">备注信息：</TextBlock>
+                                    <TextBlock VerticalAlignment="Center" MaxWidth="215" TextWrapping="Wrap" Text="{Binding StateRemark}" Padding="2"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </DockPanel>
+                    </DataTemplate>
+                </my:DataListBox.ItemTemplate>
+            </my:DataListBox>
+        </DockPanel>
+    </DockPanel>
+</UserControl>

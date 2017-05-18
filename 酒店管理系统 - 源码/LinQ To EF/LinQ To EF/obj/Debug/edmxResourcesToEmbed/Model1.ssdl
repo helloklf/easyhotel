@@ -1,0 +1,821 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TavernManageModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="T_AccountOld">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="ClientGUID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="OperateTime" Type="datetime" />
+    <Property Name="OperateMoney" Type="int" Nullable="false" />
+    <Property Name="OperatorTypeID" Type="int" Nullable="false" />
+    <Property Name="OperatorGUID" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_AccreditList">
+    <Key>
+      <PropertyRef Name="AccreditGUID" />
+    </Key>
+    <Property Name="AccreditGUID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="AStartDate" Type="datetime" Nullable="false" />
+    <Property Name="AEndDate" Type="datetime" Nullable="false" />
+    <Property Name="ALevel" Type="int" />
+  </EntityType>
+  <EntityType Name="T_AccreditType">
+    <Key>
+      <PropertyRef Name="ALevelID" />
+    </Key>
+    <Property Name="ALevelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ALevelName" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="ALevelRemark" Type="varchar" MaxLength="200" />
+    <Property Name="IsValid" Type="bit" />
+  </EntityType>
+  <EntityType Name="T_BookRoom">
+    <Key>
+      <PropertyRef Name="guid" />
+    </Key>
+    <Property Name="guid" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="RoomID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="BookTime" Type="datetime" />
+    <Property Name="BookValidTime" Type="int" />
+    <Property Name="ClientName" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_ClientInfo">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="ClientCType" Type="int" />
+    <Property Name="ClientIDCard" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ClientIName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ClientSex" Type="bit" />
+    <Property Name="ClientAdress" Type="varchar" MaxLength="50" />
+    <Property Name="ClientTel" Type="varchar" MaxLength="40" />
+    <Property Name="ClientVIPID" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="T_ClientRoom">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="ClientGUID" Type="varchar" MaxLength="40" />
+    <Property Name="ClientAccount" Type="float" />
+    <Property Name="InTime" Type="datetime" />
+    <Property Name="LastDeduct" Type="datetime" Nullable="false" />
+    <Property Name="OperatorGUID" Type="varchar" MaxLength="40" />
+    <Property Name="RoomID" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_ClientRoomOld">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="ClientGUID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="RoomID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="CRinTime" Type="datetime" Nullable="false" />
+    <Property Name="CROutTime" Type="datetime" />
+    <Property Name="OperatorOGUID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="OperatorEGUID" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_CountryInfo">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="IsValid" Type="bit" />
+  </EntityType>
+  <EntityType Name="T_OperateType">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperateName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="IsValid" Type="bit" />
+  </EntityType>
+  <EntityType Name="T_OutInInfo">
+    <Key>
+      <PropertyRef Name="IOGUID" />
+    </Key>
+    <Property Name="IOGUID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="IOWaresID" Type="int" Nullable="false" />
+    <Property Name="SupplierID" Type="int" />
+    <Property Name="IOCount" Type="int" />
+    <Property Name="IOUnit" Type="int" />
+    <Property Name="OperatorGUID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="OperatorTime" Type="datetime" />
+    <Property Name="IORemark" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="T_PaperType">
+    <Key>
+      <PropertyRef Name="PapersID" />
+    </Key>
+    <Property Name="PapersID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PapersName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="IsValid" Type="bit" />
+  </EntityType>
+  <EntityType Name="T_RoomList">
+    <Key>
+      <PropertyRef Name="RoomID" />
+    </Key>
+    <Property Name="RoomID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="RoomType" Type="int" Nullable="false" />
+    <Property Name="RoomState" Type="int" Nullable="false" />
+    <Property Name="RoomRemark" Type="varchar" MaxLength="200" />
+    <Property Name="IsValid" Type="bit" />
+  </EntityType>
+  <EntityType Name="T_RoomStateType">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StateName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="StateColor" Type="varchar" MaxLength="20" />
+    <Property Name="StateRemark" Type="varchar" MaxLength="200" />
+    <Property Name="IsValid" Type="bit" />
+  </EntityType>
+  <EntityType Name="T_RoomType">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="TypePrice" Type="int" />
+    <Property Name="TypeImage" Type="image" />
+    <Property Name="TypeVipPrice" Type="int" />
+    <Property Name="TypeRequency" Type="bigint" />
+    <Property Name="IsValid" Type="bit" />
+  </EntityType>
+  <EntityType Name="T_StaffInfo">
+    <Key>
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="StaffID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="StaffName" Type="varchar" MaxLength="30" />
+    <Property Name="StaffSex" Type="bit" />
+    <Property Name="StaffCouID" Type="int" />
+    <Property Name="StaffAdress" Type="varchar" MaxLength="50" />
+    <Property Name="StaffIdCard" Type="varchar" MaxLength="30" />
+    <Property Name="StaffInDate" Type="date" />
+    <Property Name="StaffImage" Type="image" />
+    <Property Name="StaffTel" Type="varchar" MaxLength="40" />
+    <Property Name="IsValid" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_StaffList">
+    <Key>
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="StaffID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="StaffPwdMD5" Type="varchar" MaxLength="50" />
+    <Property Name="StaffGuid" Type="varchar" MaxLength="40" />
+    <Property Name="StaffAccredit" Type="varchar" MaxLength="40" />
+    <Property Name="STypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="T_StaffType">
+    <Key>
+      <PropertyRef Name="STypeID" />
+    </Key>
+    <Property Name="STypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STypeName" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="STypeALevelID" Type="int" />
+    <Property Name="IsValid" Type="bit" />
+  </EntityType>
+  <EntityType Name="T_StockInfo">
+    <Key>
+      <PropertyRef Name="GUID" />
+    </Key>
+    <Property Name="GUID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="WaresID" Type="int" Nullable="false" />
+    <Property Name="Inventory" Type="int" Nullable="false" />
+    <Property Name="LowCuount" Type="int" Nullable="false" />
+    <Property Name="StockUnit" Type="int" Nullable="false" />
+    <Property Name="IsValid" Type="bit" />
+  </EntityType>
+  <EntityType Name="T_SupplierInfo">
+    <Key>
+      <PropertyRef Name="SupplierID" />
+    </Key>
+    <Property Name="SupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SupplierName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="SupplierCouID" Type="int" />
+    <Property Name="SupplierAdress" Type="varchar" MaxLength="50" />
+    <Property Name="SupplierTel" Type="varchar" MaxLength="30" />
+    <Property Name="SupplierTypeID" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="varchar" MaxLength="200" />
+    <Property Name="IsValid" Type="bit" />
+  </EntityType>
+  <EntityType Name="T_SupplierType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Remark" Type="varchar" MaxLength="200" />
+    <Property Name="IsValid" Type="bit" />
+  </EntityType>
+  <EntityType Name="T_UnitType">
+    <Key>
+      <PropertyRef Name="UnitID" />
+    </Key>
+    <Property Name="UnitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UnitName" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="IsValid" Type="bit" />
+  </EntityType>
+  <EntityType Name="T_VIPInfo">
+    <Key>
+      <PropertyRef Name="VIPID" />
+    </Key>
+    <Property Name="VIPID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="VIPIntegral" Type="int" />
+    <Property Name="CountryID" Type="int" />
+    <Property Name="IsValid" Type="bit" />
+  </EntityType>
+  <EntityType Name="T_VIPLevel">
+    <Key>
+      <PropertyRef Name="LevelID" />
+    </Key>
+    <Property Name="LevelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LevelName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="LevelIntegral" Type="int" Nullable="false" />
+    <Property Name="VipDiscount" Type="int" />
+    <Property Name="IsValid" Type="bit" />
+  </EntityType>
+  <EntityType Name="T_WaresType">
+    <Key>
+      <PropertyRef Name="WaresID" />
+    </Key>
+    <Property Name="WaresID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WaresName" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="WaresImage" Type="image" />
+    <Property Name="WaresRemark" Type="varchar" MaxLength="100" />
+    <Property Name="IsValid" Type="bit" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“TavernManage.dbo.View_Charge”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="View_Charge">
+    <Key>
+      <PropertyRef Name="GUID" />
+      <PropertyRef Name="LastDeduct" />
+      <PropertyRef Name="RoomID" />
+    </Key>
+    <Property Name="GUID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="ClientAccount" Type="float" />
+    <Property Name="LastDeduct" Type="datetime" Nullable="false" />
+    <Property Name="RoomID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="TypePrice" Type="int" />
+    <Property Name="VipDiscount" Type="numeric" Precision="13" Scale="2" />
+    <Property Name="Multiple" Type="bigint" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“TavernManage.dbo.View_ClientRoomState”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="View_ClientRoomState">
+    <Key>
+      <PropertyRef Name="DataGUID" />
+      <PropertyRef Name="LastDeduct" />
+      <PropertyRef Name="RoomID" />
+      <PropertyRef Name="ClientName" />
+    </Key>
+    <Property Name="DataGUID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="ClientAccount" Type="float" />
+    <Property Name="InRoomTime" Type="datetime" />
+    <Property Name="LastDeduct" Type="datetime" Nullable="false" />
+    <Property Name="RoomID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ClientName" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“TavernManage.dbo.view_ConsumeHistory”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="view_ConsumeHistory">
+    <Key>
+      <PropertyRef Name="客户编号" />
+      <PropertyRef Name="客户姓名" />
+      <PropertyRef Name="操作类型" />
+      <PropertyRef Name="操作金额" />
+    </Key>
+    <Property Name="客户编号" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="客户姓名" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="操作类型" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="操作金额" Type="int" Nullable="false" />
+    <Property Name="操作时间" Type="datetime" />
+    <Property Name="客户名" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6013: 表/视图“TavernManage.dbo.view_HotelFund”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="view_HotelFund">
+          <Property Name="OperateName" Type="varchar" MaxLength="12" />
+          <Property Name="Cash" Type="int" />
+        </EntityType>-->
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“TavernManage.dbo.view_HousingHistory”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="view_HousingHistory">
+    <Key>
+      <PropertyRef Name="记录编号" />
+      <PropertyRef Name="客户姓名" />
+      <PropertyRef Name="房间编号" />
+      <PropertyRef Name="入住时间" />
+    </Key>
+    <Property Name="记录编号" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="客户姓名" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="房间编号" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="入住时间" Type="datetime" Nullable="false" />
+    <Property Name="退房时间" Type="datetime" />
+    <Property Name="入住登记" Type="varchar" MaxLength="30" />
+    <Property Name="退房操作" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“TavernManage.dbo.View_RoomInfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="View_RoomInfo">
+    <Key>
+      <PropertyRef Name="房间编号" />
+      <PropertyRef Name="类型编号" />
+      <PropertyRef Name="类型名" />
+      <PropertyRef Name="状态编号" />
+      <PropertyRef Name="状态名" />
+    </Key>
+    <Property Name="房间编号" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="类型编号" Type="int" Nullable="false" />
+    <Property Name="类型名" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="单价" Type="int" />
+    <Property Name="结算频率" Type="bigint" />
+    <Property Name="状态编号" Type="int" Nullable="false" />
+    <Property Name="状态名" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="颜色" Type="varchar" MaxLength="20" />
+    <Property Name="房间备注" Type="varchar" MaxLength="200" />
+    <Property Name="有效状态" Type="bit" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“TavernManage.dbo.View_RoomInfoAll”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="View_RoomInfoAll">
+    <Key>
+      <PropertyRef Name="房间编号" />
+      <PropertyRef Name="类型编号" />
+      <PropertyRef Name="类型名" />
+      <PropertyRef Name="状态编号" />
+      <PropertyRef Name="状态名" />
+    </Key>
+    <Property Name="房间编号" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="类型编号" Type="int" Nullable="false" />
+    <Property Name="类型名" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="单价" Type="int" />
+    <Property Name="结算频率" Type="bigint" />
+    <Property Name="状态编号" Type="int" Nullable="false" />
+    <Property Name="状态名" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="颜色" Type="varchar" MaxLength="20" />
+    <Property Name="房间备注" Type="varchar" MaxLength="200" />
+    <Property Name="有效状态" Type="bit" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“TavernManage.dbo.View_RoomInfoNo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="View_RoomInfoNo">
+    <Key>
+      <PropertyRef Name="房间编号" />
+      <PropertyRef Name="类型编号" />
+      <PropertyRef Name="类型名" />
+      <PropertyRef Name="状态编号" />
+      <PropertyRef Name="状态名" />
+    </Key>
+    <Property Name="房间编号" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="类型编号" Type="int" Nullable="false" />
+    <Property Name="类型名" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="单价" Type="int" />
+    <Property Name="结算频率" Type="bigint" />
+    <Property Name="状态编号" Type="int" Nullable="false" />
+    <Property Name="状态名" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="颜色" Type="varchar" MaxLength="20" />
+    <Property Name="房间备注" Type="varchar" MaxLength="200" />
+    <Property Name="有效状态" Type="bit" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“TavernManage.dbo.View_RoomStateCount”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="View_RoomStateCount">
+    <Key>
+      <PropertyRef Name="StateName" />
+    </Key>
+    <Property Name="StateName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="RCount" Type="int" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“TavernManage.dbo.View_RoomTypeCount”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="View_RoomTypeCount">
+    <Key>
+      <PropertyRef Name="TypeName" />
+    </Key>
+    <Property Name="TypeName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="RCount" Type="int" />
+  </EntityType>
+  <Association Name="FK__T_Account__Opera__5CD6CB2B">
+    <End Role="T_OperateType" Type="Self.T_OperateType" Multiplicity="1" />
+    <End Role="T_AccountOld" Type="Self.T_AccountOld" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_OperateType">
+        <PropertyRef Name="TypeID" />
+      </Principal>
+      <Dependent Role="T_AccountOld">
+        <PropertyRef Name="OperatorTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_ClientI__Clien__2A4B4B5E">
+    <End Role="T_PaperType" Type="Self.T_PaperType" Multiplicity="0..1" />
+    <End Role="T_ClientInfo" Type="Self.T_ClientInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_PaperType">
+        <PropertyRef Name="PapersID" />
+      </Principal>
+      <Dependent Role="T_ClientInfo">
+        <PropertyRef Name="ClientCType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_ClientR__Clien__44FF419A">
+    <End Role="T_ClientInfo" Type="Self.T_ClientInfo" Multiplicity="0..1" />
+    <End Role="T_ClientRoom" Type="Self.T_ClientRoom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_ClientInfo">
+        <PropertyRef Name="GUID" />
+      </Principal>
+      <Dependent Role="T_ClientRoom">
+        <PropertyRef Name="ClientGUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_ClientR__RoomI__47DBAE45">
+    <End Role="T_RoomList" Type="Self.T_RoomList" Multiplicity="1" />
+    <End Role="T_ClientRoom" Type="Self.T_ClientRoom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_RoomList">
+        <PropertyRef Name="RoomID" />
+      </Principal>
+      <Dependent Role="T_ClientRoom">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_RoomLis__RoomS__3B75D760">
+    <End Role="T_RoomStateType" Type="Self.T_RoomStateType" Multiplicity="1" />
+    <End Role="T_RoomList" Type="Self.T_RoomList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_RoomStateType">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="T_RoomList">
+        <PropertyRef Name="RoomState" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_RoomLis__RoomT__3A81B327">
+    <End Role="T_RoomType" Type="Self.T_RoomType" Multiplicity="1" />
+    <End Role="T_RoomList" Type="Self.T_RoomList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_RoomType">
+        <PropertyRef Name="TypeID" />
+      </Principal>
+      <Dependent Role="T_RoomList">
+        <PropertyRef Name="RoomType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ALevel">
+    <End Role="T_AccreditType" Type="Self.T_AccreditType" Multiplicity="0..1" />
+    <End Role="T_AccreditList" Type="Self.T_AccreditList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_AccreditType">
+        <PropertyRef Name="ALevelID" />
+      </Principal>
+      <Dependent Role="T_AccreditList">
+        <PropertyRef Name="ALevel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IOUnit">
+    <End Role="T_UnitType" Type="Self.T_UnitType" Multiplicity="0..1" />
+    <End Role="T_OutInInfo" Type="Self.T_OutInInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_UnitType">
+        <PropertyRef Name="UnitID" />
+      </Principal>
+      <Dependent Role="T_OutInInfo">
+        <PropertyRef Name="IOUnit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IOWaresID">
+    <End Role="T_WaresType" Type="Self.T_WaresType" Multiplicity="1" />
+    <End Role="T_OutInInfo" Type="Self.T_OutInInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_WaresType">
+        <PropertyRef Name="WaresID" />
+      </Principal>
+      <Dependent Role="T_OutInInfo">
+        <PropertyRef Name="IOWaresID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StaffGuid">
+    <End Role="T_StaffInfo" Type="Self.T_StaffInfo" Multiplicity="0..1" />
+    <End Role="T_StaffList" Type="Self.T_StaffList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_StaffInfo">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="T_StaffList">
+        <PropertyRef Name="StaffGuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StockUnit">
+    <End Role="T_UnitType" Type="Self.T_UnitType" Multiplicity="1" />
+    <End Role="T_StockInfo" Type="Self.T_StockInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_UnitType">
+        <PropertyRef Name="UnitID" />
+      </Principal>
+      <Dependent Role="T_StockInfo">
+        <PropertyRef Name="StockUnit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_STypeALevelID">
+    <End Role="T_AccreditType" Type="Self.T_AccreditType" Multiplicity="0..1" />
+    <End Role="T_StaffType" Type="Self.T_StaffType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_AccreditType">
+        <PropertyRef Name="ALevelID" />
+      </Principal>
+      <Dependent Role="T_StaffType">
+        <PropertyRef Name="STypeALevelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_STypeID">
+    <End Role="T_StaffType" Type="Self.T_StaffType" Multiplicity="0..1" />
+    <End Role="T_StaffList" Type="Self.T_StaffList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_StaffType">
+        <PropertyRef Name="STypeID" />
+      </Principal>
+      <Dependent Role="T_StaffList">
+        <PropertyRef Name="STypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplierTypeID">
+    <End Role="T_SupplierType" Type="Self.T_SupplierType" Multiplicity="1" />
+    <End Role="T_SupplierInfo" Type="Self.T_SupplierInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_SupplierType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="T_SupplierInfo">
+        <PropertyRef Name="SupplierTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WaresID">
+    <End Role="T_WaresType" Type="Self.T_WaresType" Multiplicity="1" />
+    <End Role="T_StockInfo" Type="Self.T_StockInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_WaresType">
+        <PropertyRef Name="WaresID" />
+      </Principal>
+      <Dependent Role="T_StockInfo">
+        <PropertyRef Name="WaresID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Proc_AccountRemind" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Proc_AutoDeleteBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Proc_AutoSettleAccounts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Proc_BookClientIn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClientIName" Type="varchar" Mode="In" />
+    <Parameter Name="ClientCType" Type="int" Mode="In" />
+    <Parameter Name="ClientIDCard" Type="varchar" Mode="In" />
+    <Parameter Name="ClientSex" Type="bit" Mode="In" />
+    <Parameter Name="ClientAdress" Type="varchar" Mode="In" />
+    <Parameter Name="ClientTel" Type="varchar" Mode="In" />
+    <Parameter Name="ClientVipID" Type="varchar" Mode="In" />
+    <Parameter Name="ClientAccount" Type="float" Mode="In" />
+    <Parameter Name="OperatorID" Type="varchar" Mode="In" />
+    <Parameter Name="RoomID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_BookRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClientName" Type="varchar" Mode="In" />
+    <Parameter Name="RoomID" Type="varchar" Mode="In" />
+    <Parameter Name="BookValidTime" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_ClientCheckIn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClientIName" Type="varchar" Mode="In" />
+    <Parameter Name="ClientCType" Type="int" Mode="In" />
+    <Parameter Name="ClientIDCard" Type="varchar" Mode="In" />
+    <Parameter Name="ClientSex" Type="bit" Mode="In" />
+    <Parameter Name="ClientAdress" Type="varchar" Mode="In" />
+    <Parameter Name="ClientTel" Type="varchar" Mode="In" />
+    <Parameter Name="ClientVipID" Type="varchar" Mode="In" />
+    <Parameter Name="ClientAccount" Type="float" Mode="In" />
+    <Parameter Name="OperatorID" Type="varchar" Mode="In" />
+    <Parameter Name="RoomID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_ClientOut" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoomID" Type="varchar" Mode="In" />
+    <Parameter Name="OperatorID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_DeleteBookRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoomID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_EmptyRoomCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Proc_PriceSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="maxprice" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_RoomChange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OperatorID" Type="varchar" Mode="In" />
+    <Parameter Name="oldRoomID" Type="varchar" Mode="In" />
+    <Parameter Name="newRoomID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_StaffResign" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StaffID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_UserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StaffID" Type="varchar" Mode="In" />
+    <Parameter Name="StaffPass" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="TavernManageModelStoreContainer">
+    <EntitySet Name="T_AccountOld" EntityType="Self.T_AccountOld" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_AccreditList" EntityType="Self.T_AccreditList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_AccreditType" EntityType="Self.T_AccreditType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_BookRoom" EntityType="Self.T_BookRoom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_ClientInfo" EntityType="Self.T_ClientInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_ClientRoom" EntityType="Self.T_ClientRoom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_ClientRoomOld" EntityType="Self.T_ClientRoomOld" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_CountryInfo" EntityType="Self.T_CountryInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_OperateType" EntityType="Self.T_OperateType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_OutInInfo" EntityType="Self.T_OutInInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_PaperType" EntityType="Self.T_PaperType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_RoomList" EntityType="Self.T_RoomList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_RoomStateType" EntityType="Self.T_RoomStateType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_RoomType" EntityType="Self.T_RoomType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_StaffInfo" EntityType="Self.T_StaffInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_StaffList" EntityType="Self.T_StaffList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_StaffType" EntityType="Self.T_StaffType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_StockInfo" EntityType="Self.T_StockInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_SupplierInfo" EntityType="Self.T_SupplierInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_SupplierType" EntityType="Self.T_SupplierType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_UnitType" EntityType="Self.T_UnitType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_VIPInfo" EntityType="Self.T_VIPInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_VIPLevel" EntityType="Self.T_VIPLevel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_WaresType" EntityType="Self.T_WaresType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="View_Charge" EntityType="Self.View_Charge" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[View_Charge].[GUID] AS [GUID], 
+[View_Charge].[ClientAccount] AS [ClientAccount], 
+[View_Charge].[LastDeduct] AS [LastDeduct], 
+[View_Charge].[RoomID] AS [RoomID], 
+[View_Charge].[TypePrice] AS [TypePrice], 
+[View_Charge].[VipDiscount] AS [VipDiscount], 
+[View_Charge].[Multiple] AS [Multiple]
+FROM [dbo].[View_Charge] AS [View_Charge]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_ClientRoomState" EntityType="Self.View_ClientRoomState" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[View_ClientRoomState].[DataGUID] AS [DataGUID], 
+[View_ClientRoomState].[ClientAccount] AS [ClientAccount], 
+[View_ClientRoomState].[InRoomTime] AS [InRoomTime], 
+[View_ClientRoomState].[LastDeduct] AS [LastDeduct], 
+[View_ClientRoomState].[RoomID] AS [RoomID], 
+[View_ClientRoomState].[ClientName] AS [ClientName]
+FROM [dbo].[View_ClientRoomState] AS [View_ClientRoomState]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_ConsumeHistory" EntityType="Self.view_ConsumeHistory" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[view_ConsumeHistory].[客户编号] AS [客户编号], 
+[view_ConsumeHistory].[客户姓名] AS [客户姓名], 
+[view_ConsumeHistory].[操作类型] AS [操作类型], 
+[view_ConsumeHistory].[操作金额] AS [操作金额], 
+[view_ConsumeHistory].[操作时间] AS [操作时间], 
+[view_ConsumeHistory].[客户名] AS [客户名]
+FROM [dbo].[view_ConsumeHistory] AS [view_ConsumeHistory]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_HousingHistory" EntityType="Self.view_HousingHistory" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[view_HousingHistory].[记录编号] AS [记录编号], 
+[view_HousingHistory].[客户姓名] AS [客户姓名], 
+[view_HousingHistory].[房间编号] AS [房间编号], 
+[view_HousingHistory].[入住时间] AS [入住时间], 
+[view_HousingHistory].[退房时间] AS [退房时间], 
+[view_HousingHistory].[入住登记] AS [入住登记], 
+[view_HousingHistory].[退房操作] AS [退房操作]
+FROM [dbo].[view_HousingHistory] AS [view_HousingHistory]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_RoomInfo" EntityType="Self.View_RoomInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[View_RoomInfo].[房间编号] AS [房间编号], 
+[View_RoomInfo].[类型编号] AS [类型编号], 
+[View_RoomInfo].[类型名] AS [类型名], 
+[View_RoomInfo].[单价] AS [单价], 
+[View_RoomInfo].[结算频率] AS [结算频率], 
+[View_RoomInfo].[状态编号] AS [状态编号], 
+[View_RoomInfo].[状态名] AS [状态名], 
+[View_RoomInfo].[颜色] AS [颜色], 
+[View_RoomInfo].[房间备注] AS [房间备注], 
+[View_RoomInfo].[有效状态] AS [有效状态]
+FROM [dbo].[View_RoomInfo] AS [View_RoomInfo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_RoomInfoAll" EntityType="Self.View_RoomInfoAll" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[View_RoomInfoAll].[房间编号] AS [房间编号], 
+[View_RoomInfoAll].[类型编号] AS [类型编号], 
+[View_RoomInfoAll].[类型名] AS [类型名], 
+[View_RoomInfoAll].[单价] AS [单价], 
+[View_RoomInfoAll].[结算频率] AS [结算频率], 
+[View_RoomInfoAll].[状态编号] AS [状态编号], 
+[View_RoomInfoAll].[状态名] AS [状态名], 
+[View_RoomInfoAll].[颜色] AS [颜色], 
+[View_RoomInfoAll].[房间备注] AS [房间备注], 
+[View_RoomInfoAll].[有效状态] AS [有效状态]
+FROM [dbo].[View_RoomInfoAll] AS [View_RoomInfoAll]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_RoomInfoNo" EntityType="Self.View_RoomInfoNo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[View_RoomInfoNo].[房间编号] AS [房间编号], 
+[View_RoomInfoNo].[类型编号] AS [类型编号], 
+[View_RoomInfoNo].[类型名] AS [类型名], 
+[View_RoomInfoNo].[单价] AS [单价], 
+[View_RoomInfoNo].[结算频率] AS [结算频率], 
+[View_RoomInfoNo].[状态编号] AS [状态编号], 
+[View_RoomInfoNo].[状态名] AS [状态名], 
+[View_RoomInfoNo].[颜色] AS [颜色], 
+[View_RoomInfoNo].[房间备注] AS [房间备注], 
+[View_RoomInfoNo].[有效状态] AS [有效状态]
+FROM [dbo].[View_RoomInfoNo] AS [View_RoomInfoNo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_RoomStateCount" EntityType="Self.View_RoomStateCount" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[View_RoomStateCount].[StateName] AS [StateName], 
+[View_RoomStateCount].[RCount] AS [RCount]
+FROM [dbo].[View_RoomStateCount] AS [View_RoomStateCount]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_RoomTypeCount" EntityType="Self.View_RoomTypeCount" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[View_RoomTypeCount].[TypeName] AS [TypeName], 
+[View_RoomTypeCount].[RCount] AS [RCount]
+FROM [dbo].[View_RoomTypeCount] AS [View_RoomTypeCount]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__T_Account__Opera__5CD6CB2B" Association="Self.FK__T_Account__Opera__5CD6CB2B">
+      <End Role="T_OperateType" EntitySet="T_OperateType" />
+      <End Role="T_AccountOld" EntitySet="T_AccountOld" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_ClientI__Clien__2A4B4B5E" Association="Self.FK__T_ClientI__Clien__2A4B4B5E">
+      <End Role="T_PaperType" EntitySet="T_PaperType" />
+      <End Role="T_ClientInfo" EntitySet="T_ClientInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_ClientR__Clien__44FF419A" Association="Self.FK__T_ClientR__Clien__44FF419A">
+      <End Role="T_ClientInfo" EntitySet="T_ClientInfo" />
+      <End Role="T_ClientRoom" EntitySet="T_ClientRoom" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_ClientR__RoomI__47DBAE45" Association="Self.FK__T_ClientR__RoomI__47DBAE45">
+      <End Role="T_RoomList" EntitySet="T_RoomList" />
+      <End Role="T_ClientRoom" EntitySet="T_ClientRoom" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_RoomLis__RoomS__3B75D760" Association="Self.FK__T_RoomLis__RoomS__3B75D760">
+      <End Role="T_RoomStateType" EntitySet="T_RoomStateType" />
+      <End Role="T_RoomList" EntitySet="T_RoomList" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_RoomLis__RoomT__3A81B327" Association="Self.FK__T_RoomLis__RoomT__3A81B327">
+      <End Role="T_RoomType" EntitySet="T_RoomType" />
+      <End Role="T_RoomList" EntitySet="T_RoomList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ALevel" Association="Self.FK_ALevel">
+      <End Role="T_AccreditType" EntitySet="T_AccreditType" />
+      <End Role="T_AccreditList" EntitySet="T_AccreditList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IOUnit" Association="Self.FK_IOUnit">
+      <End Role="T_UnitType" EntitySet="T_UnitType" />
+      <End Role="T_OutInInfo" EntitySet="T_OutInInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IOWaresID" Association="Self.FK_IOWaresID">
+      <End Role="T_WaresType" EntitySet="T_WaresType" />
+      <End Role="T_OutInInfo" EntitySet="T_OutInInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StaffGuid" Association="Self.FK_StaffGuid">
+      <End Role="T_StaffInfo" EntitySet="T_StaffInfo" />
+      <End Role="T_StaffList" EntitySet="T_StaffList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StockUnit" Association="Self.FK_StockUnit">
+      <End Role="T_UnitType" EntitySet="T_UnitType" />
+      <End Role="T_StockInfo" EntitySet="T_StockInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_STypeALevelID" Association="Self.FK_STypeALevelID">
+      <End Role="T_AccreditType" EntitySet="T_AccreditType" />
+      <End Role="T_StaffType" EntitySet="T_StaffType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_STypeID" Association="Self.FK_STypeID">
+      <End Role="T_StaffType" EntitySet="T_StaffType" />
+      <End Role="T_StaffList" EntitySet="T_StaffList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplierTypeID" Association="Self.FK_SupplierTypeID">
+      <End Role="T_SupplierType" EntitySet="T_SupplierType" />
+      <End Role="T_SupplierInfo" EntitySet="T_SupplierInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WaresID" Association="Self.FK_WaresID">
+      <End Role="T_WaresType" EntitySet="T_WaresType" />
+      <End Role="T_StockInfo" EntitySet="T_StockInfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
